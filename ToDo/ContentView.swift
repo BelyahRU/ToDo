@@ -16,11 +16,23 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        
     }
+    let a = TodoItem.parse(json: [
+        "id": "1",
+        "text": "Buy groceries",
+        "importance": "обычная",
+        "deadline": "2022-04-30",
+        "IsTaskDone": false,
+        "creationDate": "2012-04-21",
+        "modifiedDate": nil
+    ])
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+
     }
 }
+
