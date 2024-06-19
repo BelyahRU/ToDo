@@ -23,18 +23,19 @@ extension TodoItem {
         dictionary[Keys.id.stringValue] = id
         dictionary[Keys.text.stringValue] = text
         dictionary[Keys.IsTaskDone.stringValue] = IsTaskDone
-        dictionary[Keys.creationDate.stringValue] = creationDate.description
+        
+        dictionary[Keys.creationDate.stringValue] = Date.getStringFromDate(date: creationDate)
         
         if importance != .ordinary {
             dictionary[Keys.importance.stringValue] = importance
         }
         
         if let deadline = deadline{
-            dictionary[Keys.deadline.stringValue] = deadline
+            dictionary[Keys.deadline.stringValue] = Date.getStringFromDate(date: deadline)
         }
         
         if let modifiedDate = modifiedDate {
-            dictionary[Keys.deadline.stringValue] = modifiedDate.description
+            dictionary[Keys.modifiedDate.stringValue] = Date.getStringFromDate(date: modifiedDate)
         }
         return dictionary
     }
@@ -49,14 +50,7 @@ extension TodoItem {
             return nil
         }
         
-        guard let importanceStr = dictionary["importance"] as? String else {
-            print("JSON parsing error.Importance nil")
-            return nil
-        }
-        guard let importance = Importance(rawValue: importanceStr) else {
-            print("JSON parsing error. Importance is not nil but not found")
-            return nil
-        }
+
         guard let text = dictionary["text"] as? String else {
             print("JSON parsing error.text nil")
             return nil
@@ -67,16 +61,26 @@ extension TodoItem {
             return nil
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let creationDate = dateFormatter.date(from: (dictionary["creationDate"] as? String)!) else {
+        let importanceStr = dictionary["importance"] as? String ?? "обычная"
+        
+        guard let importance = Importance(rawValue: importanceStr) else {
+            print("JSON parsing error.Importance not fount")
+            return nil
+        }
+        
+        guard let dateStr = dictionary["creationDate"] as? String else {
+            print("JSON parsing error.creationDate nil")
+            return nil
+        }
+        
+        guard let creationDate = Date.getDateFromString(stringDate: dateStr) else {
             print("JSON parsing error.creationDate nil")
             return nil
         }
         
         let id = dictionary["id"] as? String ?? nil
-        let deadline = dictionary["deadline"] as? Date
-        let modifiedDate = dictionary["modifiedDate"] as? Date
+        let deadline = Date.getDateFromString(stringDate: dictionary["deadline"] as? String)
+        let modifiedDate = Date.getDateFromString(stringDate: dictionary["modifiedDate"] as? String)
         
         let item = TodoItem(id: id, text: text, importance:  importance, deadline: deadline, IsTaskDone: IsTaskDone, creationDate: creationDate, modifiedDate: modifiedDate)
         print(item)

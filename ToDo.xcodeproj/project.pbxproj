@@ -14,6 +14,8 @@
 		1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD02C20D3080026F420 /* TodoItem.swift */; };
 		1A9FBBD32C20D3200026F420 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD22C20D3200026F420 /* Importance.swift */; };
 		1A9FBBD52C20D33B0026F420 /* TodoItem + JSON parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */; };
+		1A9FBBD82C2364EB0026F420 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD72C2364EB0026F420 /* FileCache.swift */; };
+		1A9FBBDC2C2391520026F420 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBDB2C2391520026F420 /* Date + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		1A9FBBD02C20D3080026F420 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		1A9FBBD22C20D3200026F420 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem + JSON parsing.swift"; sourceTree = "<group>"; };
+		1A9FBBD72C2364EB0026F420 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		1A9FBBDB2C2391520026F420 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +81,29 @@
 		1A9FBBCF2C20D2240026F420 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A9FBBDD2C2391570026F420 /* Extension */,
+				1A9FBBD92C2364F50026F420 /* Cache */,
 				1A9FBBD02C20D3080026F420 /* TodoItem.swift */,
 				1A9FBBD22C20D3200026F420 /* Importance.swift */,
 				1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1A9FBBD92C2364F50026F420 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				1A9FBBD72C2364EB0026F420 /* FileCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		1A9FBBDD2C2391570026F420 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1A9FBBDB2C2391520026F420 /* Date + Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +180,8 @@
 				1A9FBBD52C20D33B0026F420 /* TodoItem + JSON parsing.swift in Sources */,
 				1A9FBBD32C20D3200026F420 /* Importance.swift in Sources */,
 				1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */,
+				1A9FBBD82C2364EB0026F420 /* FileCache.swift in Sources */,
+				1A9FBBDC2C2391520026F420 /* Date + Ext.swift in Sources */,
 				1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
