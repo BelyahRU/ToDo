@@ -8,6 +8,36 @@
 import Foundation
 extension TodoItem {
     
+    private enum Keys: CodingKey {
+        case id
+        case text
+        case importance
+        case deadline
+        case IsTaskDone
+        case creationDate
+        case modifiedDate
+    }
+    
+    var json: Any {
+        var dictionary = [String: Any]()
+        dictionary[Keys.id.stringValue] = id
+        dictionary[Keys.text.stringValue] = text
+        dictionary[Keys.IsTaskDone.stringValue] = IsTaskDone
+        dictionary[Keys.creationDate.stringValue] = creationDate.description
+        
+        if importance != .ordinary {
+            dictionary[Keys.importance.stringValue] = importance
+        }
+        
+        if let deadline = deadline{
+            dictionary[Keys.deadline.stringValue] = deadline
+        }
+        
+        if let modifiedDate = modifiedDate {
+            dictionary[Keys.deadline.stringValue] = modifiedDate.description
+        }
+        return dictionary
+    }
     
     static func parse(json: Any) -> TodoItem? {
         
@@ -19,14 +49,12 @@ extension TodoItem {
             return nil
         }
         
-        
-        
         guard let importanceStr = dictionary["importance"] as? String else {
             print("JSON parsing error.Importance nil")
             return nil
         }
         guard let importance = Importance(rawValue: importanceStr) else {
-            print("JSON parsing error. Importance not found")
+            print("JSON parsing error. Importance is not nil but not found")
             return nil
         }
         guard let text = dictionary["text"] as? String else {
