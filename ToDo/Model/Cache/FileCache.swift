@@ -7,12 +7,12 @@
 
 import Foundation
 
-final class FileCache{
+final class FileCache {
     private(set) var toDos: [TodoItem] = []
     
     func add(new task: TodoItem) {
-        //дублирование
-        if let item = toDos.first(where: { $0.id == task.id }){
+        //проверка на дублирование
+        if toDos.first(where: { $0.id == task.id }) != nil {
             print("FileCache Error. Task added before")
         } else{
             toDos.append(task)
@@ -23,47 +23,55 @@ final class FileCache{
         toDos.removeAll(where: { $0.id == id })
     }
     
+
     func saveInFile(fileName: String) {
         let jsonDataArray = toDos.map({ $0.json })
-        print(jsonDataArray)
+        
+        //getUrl(from: ) - extension for FileManager
+        guard let url = FileManager.default.getUrl(from: fileName) else {
+            return
+        }
+        let isValidJson = JSONSerialization.isValidJSONObject(jsonDataArray)
+        if !isValidJson {
+            print("Error JSON is not valid")
+            return
+        }
+        
+        let data: Data
         do {
-            let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            
-            guard let documentDirectory = urls.first else {
-                return
-            }
-            let url = documentDirectory.appendingPathComponent(fileName)
-            
-            let isValidJson = JSONSerialization.isValidJSONObject(jsonDataArray)
-            print(isValidJson)
-            if !isValidJson {
-                print("JSON is not valid")
-                return
-            }
-            let data = try JSONSerialization.data(withJSONObject: jsonDataArray)
-            print(data)
+            data = try JSONSerialization.data(withJSONObject: jsonDataArray, options: [])
+        } catch {
+            print("Error creating JSON data: \(error.localizedDescription)")
+            return
+        }
+        
+        do {
             try data.write(to: url)
             print("File saved: \(url.description)")
         } catch {
-            print("Error reading file: \(error.localizedDescription)")
+            print("Error writing file: \(error.localizedDescription)")
         }
+        
     }
     
+    //Может быть нужно вернуть nil?
     func uploadFromFile(fileName: String) -> [TodoItem] {
+        //getUrl(from: ) - extension for FileManager
+        guard let url = FileManager.default.getUrl(from: fileName) else {
+            return []
+        }
+        let data: Data
         do {
-            let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            
-            guard let documentDirectory = urls.first else {
-                return []
-            }
-            let url = documentDirectory.appendingPathComponent(fileName)
-            
-            let jsonData = try Data(contentsOf: url)
-            let todosJson = try JSONSerialization.jsonObject(with: jsonData) as? [[String: Any]] ?? []
-            
-            return todosJson.compactMap({ TodoItem.parse(json: $0) })
-            
+            data = try Data(contentsOf: url)
         } catch {
+            print("Error uploading data from file: \(error.localizedDescription)")
+            return []
+        }
+        do {
+            let todosJson = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
+            return todosJson!.compactMap({ TodoItem.parse(json: $0) })
+        } catch {
+            print("Error convert data to JSON: \(error.localizedDescription)")
             return []
         }
     }

@@ -11,17 +11,17 @@ struct TodoItem {
     let text: String
     let importance: Importance
     let deadline: Date?
-    let IsTaskDone: Bool // флаг
+    let isTaskDone: Bool // флаг
     let creationDate: Date
     let modifiedDate: Date?
     
     
-    init(id: String?, text: String, importance: Importance, deadline: Date?, IsTaskDone: Bool, creationDate: Date, modifiedDate: Date?) {
+    init(id: String?, text: String, importance: Importance, deadline: Date?, isTaskDone: Bool, creationDate: Date, modifiedDate: Date?) {
         self.id = id ?? UUID().uuidString
         self.text = text
         self.importance = importance
         self.deadline = deadline
-        self.IsTaskDone = IsTaskDone
+        self.isTaskDone = isTaskDone
         self.creationDate = creationDate
         self.modifiedDate = modifiedDate
     }

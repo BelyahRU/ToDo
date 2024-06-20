@@ -7,130 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDo/Model/Cache/FileCache.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "saveInFile(fileName:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "532">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "256">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "580">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "268">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "576">
-               </Location>
-               <Location
-                  uuid = "7588BA53-F51D-4B5D-A6B3-5597512E8EE2 - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "480">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "994C8B26-903A-4D93-B3CC-889FBF6655A4"
+            uuid = "506419E6-D98B-4DD1-9327-C4DA45DE428D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -139,69 +16,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "uploadFromFile(fileName:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "994C8B26-903A-4D93-B3CC-889FBF6655A4 - 8b2926adf4a6315"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.uploadFromFile(fileName: Swift.String) -&gt; Swift.Array&lt;ToDo.TodoItem&gt;"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "300">
-               </Location>
-               <Location
-                  uuid = "994C8B26-903A-4D93-B3CC-889FBF6655A4 - 8b2926adf4a6315"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.uploadFromFile(fileName: Swift.String) -&gt; Swift.Array&lt;ToDo.TodoItem&gt;"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "292">
-               </Location>
-               <Location
-                  uuid = "994C8B26-903A-4D93-B3CC-889FBF6655A4 - 8b2926adf4a6315"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.uploadFromFile(fileName: Swift.String) -&gt; Swift.Array&lt;ToDo.TodoItem&gt;"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "272">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "506419E6-D98B-4DD1-9327-C4DA45DE428D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDo/Model/Cache/FileCache.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
             landmarkName = "saveInFile(fileName:)"
             landmarkType = "7">
             <Locations>
@@ -257,22 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "56A9E220-CB46-4D55-9DDC-598E6A23795B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDo/Model/Cache/FileCache.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "uploadFromFile(fileName:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4BD51545-AFAE-4CE0-A232-9AA37C969389"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -280,8 +78,8 @@
             filePath = "ToDo/Model/TodoItem + JSON parsing.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "parse(json:)"
             landmarkType = "7">
          </BreakpointContent>
