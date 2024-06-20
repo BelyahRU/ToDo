@@ -8,7 +8,7 @@
 import Foundation
 extension TodoItem {
     
-    private enum Keys: String {
+    private enum ToDoDictionaryKeys: String {
         case id = "id"
         case text = "text"
         case importance = "importance"
@@ -20,22 +20,23 @@ extension TodoItem {
     
     var json: Any {
         var dictionary = [String: Any]()
-        dictionary[Keys.id.rawValue] = id
-        dictionary[Keys.text.rawValue] = text
-        dictionary[Keys.isTaskDone.rawValue] = isTaskDone
+        dictionary[ToDoDictionaryKeys.id.rawValue] = id
+        dictionary[ToDoDictionaryKeys.text.rawValue] = text
+        dictionary[ToDoDictionaryKeys.isTaskDone.rawValue] = isTaskDone
         
-        dictionary[Keys.creationDate.rawValue] = Date.getStringFromDate(date: creationDate)
+        
+        dictionary[ToDoDictionaryKeys.creationDate.rawValue] = Date.getStringFromDate(date: creationDate)
         
         if importance != .ordinary {
-            dictionary[Keys.importance.rawValue] = importance
+            dictionary[ToDoDictionaryKeys.importance.rawValue] = importance
         }
         
         if let deadline = deadline{
-            dictionary[Keys.deadline.rawValue] = Date.getStringFromDate(date: deadline)
+            dictionary[ToDoDictionaryKeys.deadline.rawValue] = Date.getStringFromDate(date: deadline)
         }
         
         if let modifiedDate = modifiedDate {
-            dictionary[Keys.modifiedDate.rawValue] = Date.getStringFromDate(date: modifiedDate)
+            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = Date.getStringFromDate(date: modifiedDate)
         }
         return dictionary
     }
@@ -49,27 +50,26 @@ extension TodoItem {
         guard let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
             return nil
         }
-        
 
-        guard let text = dictionary[Keys.text.rawValue] as? String else {
+        guard let text = dictionary[ToDoDictionaryKeys.text.rawValue] as? String else {
             print("JSON parsing error.text nil")
             return nil
         }
         
-        guard let isTaskDone = dictionary[Keys.isTaskDone.rawValue] as? Bool else {
+        guard let isTaskDone = dictionary[ToDoDictionaryKeys.isTaskDone.rawValue] as? Bool else {
             print("JSON parsing error.IsTaskDone nil")
             return nil
         }
         
         //?
-        let importanceStr = dictionary[Keys.importance.rawValue] as? String ?? "обычная"
+        let importanceStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "обычная"
         
         guard let importance = Importance(rawValue: importanceStr) else {
             print("JSON parsing error.Importance not fount")
             return nil
         }
         
-        guard let dateStr = dictionary[Keys.creationDate.rawValue] as? String else {
+        guard let dateStr = dictionary[ToDoDictionaryKeys.creationDate.rawValue] as? String else {
             print("JSON parsing error.creationDate nil")
             return nil
         }
@@ -79,12 +79,14 @@ extension TodoItem {
             return nil
         }
         
-        let id = dictionary[Keys.id.rawValue] as? String ?? nil
-        let deadline = Date.getDateFromString(stringDate: dictionary[Keys.deadline.rawValue] as? String)
-        let modifiedDate = Date.getDateFromString(stringDate: dictionary[Keys.modifiedDate.rawValue] as? String)
+        //If id is nil -> id = UUID().uuidString
+        let id = dictionary[ToDoDictionaryKeys.id.rawValue] as? String ?? UUID().uuidString
+        let deadline = Date.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
+        let modifiedDate = Date.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
+        
         
         let item = TodoItem(id: id, text: text, importance:  importance, deadline: deadline, isTaskDone: isTaskDone, creationDate: creationDate, modifiedDate: modifiedDate)
-        print(item)
+
         return item
     }
 }
