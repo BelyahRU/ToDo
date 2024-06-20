@@ -23,7 +23,7 @@ final class FileCache {
         toDos.removeAll(where: { $0.id == id })
     }
     
-
+    //Нужна ли какая-то проверка на валидность файла?
     func saveInFile(fileName: String) {
         let jsonDataArray = toDos.map({ $0.json })
         

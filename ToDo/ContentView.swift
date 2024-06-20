@@ -33,45 +33,7 @@ struct Start {
     }
     
     func setup() {
-        print("OK")
-        let item1 = TodoItem.parse(json: [
-            "id": "1",
-            "text": "Buy groceries",
-            "importance": "обычная",
-            "deadline": "2022-04-30",
-            "IsTaskDone": false,
-            "creationDate": "2012-04-21",
-            "modifiedDate": nil
-        ])
         
-        let item2 = TodoItem.parse(json: [
-            "id": "2",
-            "text": "Buy groceries",
-            "importance": "обычная",
-            "deadline": "2022-04-30",
-            "IsTaskDone": false,
-            "creationDate": "2012-04-21",
-            "modifiedDate": nil
-        ])
-
-        let item3 = TodoItem.parse(json: [
-            "id": "3",
-            "text": "Buy groceries",
-            "importance": "обычная",
-            "deadline": "2022-04-30",
-            "IsTaskDone": false,
-            "creationDate": "2012-04-21",
-            "modifiedDate": nil
-        ])
-
-        
-
-        
-        filecache.add(new: item1!)
-        filecache.add(new: item2!)
-        filecache.add(new: item3!)
-        filecache.saveInFile(fileName: "1.txt")
-        print(filecache.uploadFromFile(fileName: "1.txt"))
     }
 }
 
