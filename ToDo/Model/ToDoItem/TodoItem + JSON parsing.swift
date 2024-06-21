@@ -38,6 +38,7 @@ extension TodoItem {
             dictionary[ToDoDictionaryKeys.deadline.rawValue] = DateHelper.getStringFromDate(date: deadline, dateFormatter: dateFormatter)
         }
         
+        //нужно ли сохранять modifiedFate если он nil?
         if let modifiedDate = modifiedDate {
             dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate, dateFormatter: dateFormatter)
         }
@@ -45,6 +46,9 @@ extension TodoItem {
     }
     
     static func parse(json: Any) -> TodoItem? {
+        if JSONSerialization.isValidJSONObject(json) {
+            return nil
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
@@ -89,7 +93,7 @@ extension TodoItem {
         let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String, dateFormatter: dateFormatter)
         let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String, dateFormatter: dateFormatter)
         
-        
+        print(creationDate)
         let item = TodoItem(id: id, text: text, importance:  importance, deadline: deadline, isTaskDone: isTaskDone, creationDate: creationDate, modifiedDate: modifiedDate)
 
         return item

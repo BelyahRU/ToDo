@@ -33,7 +33,14 @@ struct Start {
     }
     
     func setup() {
-        
+        let todoItem = TodoItem(id: "1", text: "покрасить забор", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let invalidJson: [String: Any] = [
+            "id": "123",
+            "text": "Test Task",
+            "creationDate": Date() // Использование строки даты вместо объекта Date
+        ]
+        let answ = TodoItem.parse(json: invalidJson)
+        print(answ)
     }
 }
 
