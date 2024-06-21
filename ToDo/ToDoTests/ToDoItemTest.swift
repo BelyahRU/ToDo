@@ -66,17 +66,17 @@ final class ToDoItemTest: XCTestCase {
         //использую description так как при сравнении Date могу быть ошибки
     }
     
-//    func testTodoItemParseInvalidJson() {
-//        let invalidJson: [String: Any] = [
-//            "id": "123",
-//            "text": "Test Task",
-//            // Missing 'isTaskDone' key
-//            "creationDate": Date()
-//        ]
-//        
-//        let parsedItem = TodoItem.parse(json: invalidJson)
-//        XCTAssertNil(parsedItem)
-//    }
+    func testTodoItemParseInvalidJson() {
+        let invalidJson: [String: Any] = [
+            "id": "123",
+            "text": "Test Task",
+            // Missing 'isTaskDone' key
+            "creationDate": Date().description
+        ]
+
+        let parsedItem = TodoItem.parse(json: invalidJson)
+        XCTAssertNil(parsedItem)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

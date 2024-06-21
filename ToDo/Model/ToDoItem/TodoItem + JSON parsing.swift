@@ -8,7 +8,7 @@
 import Foundation
 extension TodoItem {
     
-    private enum ToDoDictionaryKeys: String {
+    enum ToDoDictionaryKeys: String, CaseIterable {
         case id = "id"
         case text = "text"
         case importance = "importance"
