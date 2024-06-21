@@ -13,31 +13,15 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Hello, ШМРовец!")
         }
         .padding()
         
     }
     
-    let start = Start()
-    
     
 }
 
-struct Start {
-    
-    let filecache = FileCache()
-    
-    init() {
-        setup()
-    }
-    
-    func setup() {
-        let todoItem = TodoItem(id: "1", text: "покрасить забор", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
-        let csv = todoItem.csv
-        print(TodoItem.parse(csv: csv)!)
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

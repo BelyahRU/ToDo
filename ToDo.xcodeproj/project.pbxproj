@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1A92233E2C2599F3001B3E72 /* TodoItem + CSV parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */; };
 		1A9223402C261122001B3E72 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233F2C261122001B3E72 /* String + Ext.swift */; };
+		1A9223422C2617E3001B3E72 /* TodoItem + CSV parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */; };
+		1A9223432C261843001B3E72 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233F2C261122001B3E72 /* String + Ext.swift */; };
 		1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */; };
 		1A9FBBC42C20D21C0026F420 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC32C20D21C0026F420 /* ContentView.swift */; };
 		1A9FBBC62C20D21E0026F420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC52C20D21E0026F420 /* Assets.xcassets */; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A9223412C2616E3001B3E72 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				1A9FBBFA2C24CD050026F420 /* DateHelp.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		1A9FBBB52C20D21C0026F420 = {
 			isa = PBXGroup;
 			children = (
@@ -119,11 +129,10 @@
 		1A9FBBCF2C20D2240026F420 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A9223412C2616E3001B3E72 /* Help */,
 				1A9FBC122C24E1FE0026F420 /* ToDoItem */,
 				1A9FBBDD2C2391570026F420 /* Extension */,
 				1A9FBBD92C2364F50026F420 /* Cache */,
-				1A9FBBD22C20D3200026F420 /* Importance.swift */,
-				1A9FBBFA2C24CD050026F420 /* DateHelp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 		1A9FBC122C24E1FE0026F420 /* ToDoItem */ = {
 			isa = PBXGroup;
 			children = (
+				1A9FBBD22C20D3200026F420 /* Importance.swift */,
 				1A9FBBD02C20D3080026F420 /* TodoItem.swift */,
 				1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */,
 				1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */,
@@ -281,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A9223432C261843001B3E72 /* String + Ext.swift in Sources */,
 				1A9FBC202C24E2D10026F420 /* FileCache.swift in Sources */,
 				1A9FBC242C24E3F30026F420 /* TodoItem + JSON parsing.swift in Sources */,
 				1A9FBC2A2C24E51E0026F420 /* FileManager + Ext.swift in Sources */,
@@ -289,6 +300,7 @@
 				1A9FBC282C24E3FD0026F420 /* ContentView.swift in Sources */,
 				1A9FBC232C24E3F10026F420 /* TodoItem.swift in Sources */,
 				1A9FBC222C24E33C0026F420 /* FileCacheTest.swift in Sources */,
+				1A9223422C2617E3001B3E72 /* TodoItem + CSV parsing.swift in Sources */,
 				1A9FBC2C2C24EB4B0026F420 /* ToDoItemTest.swift in Sources */,
 				1A9FBC272C24E3FB0026F420 /* ToDoApp.swift in Sources */,
 			);

@@ -46,7 +46,7 @@ extension TodoItem {
     }
     
     static func parse(json: Any) -> TodoItem? {
-        if JSONSerialization.isValidJSONObject(json) {
+        if !JSONSerialization.isValidJSONObject(json) {
             return nil
         }
         let dateFormatter = DateFormatter()
@@ -70,7 +70,6 @@ extension TodoItem {
             return nil
         }
         
-        //?
         let importanceStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "обычная"
         
         guard let importance = Importance(rawValue: importanceStr) else {

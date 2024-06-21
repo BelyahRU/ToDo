@@ -18,4 +18,14 @@ extension FileManager {
         
         return url
     }
+    
+    public func isFileExist(fileName: String) -> Bool {
+        let url = getUrl(from: fileName)
+        if url == nil {
+            return false
+        } else {
+            return FileManager.default.fileExists(atPath: url!.path)
+        }
+        
+    }
 }

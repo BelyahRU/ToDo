@@ -6,6 +6,7 @@
 //
 
 import Foundation
+//Класс для обработки Date. Тут мы можем получить date из string и наоборот
 class DateHelper {
     static func getStringFromDate(date: Date?, dateFormatter: DateFormatter) -> String? {
         guard let date = date else { return nil }

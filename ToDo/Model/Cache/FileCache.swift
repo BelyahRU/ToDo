@@ -23,17 +23,22 @@ final class FileCache {
         toDos.removeAll(where: { $0.id == id })
     }
     
-    //Нужна ли какая-то проверка на валидность файла?
     func saveInFile(fileName: String) {
         let jsonDataArray = toDos.map({ $0.json })
         
         //getUrl(from: ) - extension for FileManager
         guard let url = FileManager.default.getUrl(from: fileName) else {
+            print("Error getting url")
             return
+        }
+        //isFileExist(fileName: ) - extension for FileManager
+        if FileManager.default.isFileExist(fileName: fileName) {
+             print("Error, file existed before")
+             return
         }
         let isValidJson = JSONSerialization.isValidJSONObject(jsonDataArray)
         if !isValidJson {
-            print("Error JSON is not valid")
+            print("Error, JSON is not valid")
             return
         }
         

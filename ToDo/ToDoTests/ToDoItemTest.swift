@@ -22,6 +22,7 @@ final class ToDoItemTest: XCTestCase {
         try super.tearDownWithError()
     }
     
+    //тестирование инициализатора
     func testTodoItemInitializator() {
         XCTAssertEqual(todoItem.id, "1")
         XCTAssertEqual(todoItem.text, "покрасить забор")
@@ -35,6 +36,7 @@ final class ToDoItemTest: XCTestCase {
         
     }
     
+    //создание json
     func testTodoItemJson() {
         let json = todoItem.json as? [String: Any]
         XCTAssertNotNil(json)
@@ -49,6 +51,7 @@ final class ToDoItemTest: XCTestCase {
         XCTAssertNil(json?["modifiedDate"]) //?
     }
     
+    //парсинг валидного json'а
     func testTodoItemParseValidJson() {
         let json = todoItem.json
         
@@ -66,6 +69,7 @@ final class ToDoItemTest: XCTestCase {
         //использую description так как при сравнении Date могу быть ошибки
     }
     
+    //парсинг не валидного json'а
     func testTodoItemParseInvalidJson() {
         let invalidJson: [String: Any] = [
             "id": "123",
@@ -76,6 +80,36 @@ final class ToDoItemTest: XCTestCase {
 
         let parsedItem = TodoItem.parse(json: invalidJson)
         XCTAssertNil(parsedItem)
+    }
+    
+    //создание csv
+    func testTodoItemCreatingCSV() {
+        let csv = todoItem.csv
+        XCTAssertNotNil(csv)
+    }
+    
+    //парсинг валидного csv
+    func testTodoItemParseValidCSV() {
+        let csv = todoItem.csv
+        let parsedTodoItem = TodoItem.parse(csv: csv)
+        
+        XCTAssertNotNil(parsedTodoItem)
+        
+        XCTAssertEqual(todoItem.id, parsedTodoItem!.id)
+        XCTAssertEqual(todoItem.text, parsedTodoItem!.text)
+        XCTAssertEqual(todoItem.importance, parsedTodoItem!.importance)
+        XCTAssertEqual(todoItem.isTaskDone, parsedTodoItem!.isTaskDone)
+        XCTAssertEqual(todoItem.modifiedDate?.description, parsedTodoItem!.modifiedDate?.description)
+        XCTAssertEqual(todoItem.deadline?.description, parsedTodoItem!.deadline?.description)
+        XCTAssertEqual(todoItem.creationDate.description, parsedTodoItem!.creationDate.description)
+    }
+    
+    //парсинг не валидного csv
+    func testTodoItemParseInvalidCSV() {
+        let csv = "asdgasfodgineorignoewirg, asdg, asfg, sdfg, dfsgsd, sdfgsdef, sdfg, fdsg"
+        let parsedToDoItem = TodoItem.parse(csv: csv)
+        
+        XCTAssertNil(parsedToDoItem)
     }
 
     func testPerformanceExample() throws {

@@ -21,6 +21,7 @@ final class FileCacheTest: XCTestCase {
         try super.tearDownWithError()
     }
     
+    //тестирование на добавление новой задачи
     func testAddNewTask() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
@@ -30,6 +31,7 @@ final class FileCacheTest: XCTestCase {
         XCTAssertEqual(fileCache.toDos.first?.id, "1")
     }
     
+    //тестирование на добавление новой задачи с уже добавленным id
     func testAddDuplicateTask() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
@@ -39,6 +41,7 @@ final class FileCacheTest: XCTestCase {
         XCTAssertEqual(fileCache.toDos.count, 1)
     }
 
+    //тест на удаление задачи из filecache
     func testRemoveTask() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
@@ -48,6 +51,7 @@ final class FileCacheTest: XCTestCase {
         XCTAssertEqual(fileCache.toDos.count, 0)
     }
     
+    //тест на удаление несуществующей задачи из fileCache
     func testRemoveUnexistTask() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
@@ -57,7 +61,7 @@ final class FileCacheTest: XCTestCase {
         XCTAssertEqual(fileCache.toDos.count, 1)
     }
     
-    
+    //тест на проверку сохранения в файл
     func testSaveInFile() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
@@ -75,6 +79,7 @@ final class FileCacheTest: XCTestCase {
         }
     }
     
+    //тест на проверку загрузки из файла
     func testUploadFromFile() {
         let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         fileCache.add(new: todo)
@@ -94,23 +99,7 @@ final class FileCacheTest: XCTestCase {
             try? FileManager.default.removeItem(at: url)
         }
     }
-
-//    func testSaveInUnexistFile() {
-//        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
-//
-//        fileCache.add(new: todo)
-//        let fileName = "228.txtttkjkjnnkjnonoinoino"
-//        fileCache.saveInFile(fileName: fileName)
-//
-//        //проверяем, создался ли файл
-//        let url = FileManager.default.getUrl(from: fileName)
-//        XCTAssertNil(url)
-//
-//        //очистка
-//
-//    }
     
-
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

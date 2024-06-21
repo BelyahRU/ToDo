@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "506419E6-D98B-4DD1-9327-C4DA45DE428D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDo/Model/Cache/FileCache.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "saveInFile(fileName:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "506419E6-D98B-4DD1-9327-C4DA45DE428D - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "480">
-               </Location>
-               <Location
-                  uuid = "506419E6-D98B-4DD1-9327-C4DA45DE428D - 7b2f04e0d13fa338"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDo.FileCache.saveInFile(fileName: Swift.String) -&gt; ()"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/Cache/FileCache.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "636">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4BD51545-AFAE-4CE0-A232-9AA37C969389"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -78,8 +30,8 @@
             filePath = "ToDo/ToDoTests/FileCacheTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "testRemoveUnexistTask()"
             landmarkType = "7">
          </BreakpointContent>
