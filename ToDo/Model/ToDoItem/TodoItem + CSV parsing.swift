@@ -29,12 +29,21 @@ extension TodoItem {
             let text = columns[1]
             let importanceStr = columns[2]
             let isTaskDone = columns[3].lowercased() == "true"
-            let creationDate = columns[4]
-            let modifiedDate = columns[5].isEmpty ? nil : columns[5]
-            let deadline = columns[6].isEmpty ? nil : columns[6]
+            guard let creationDate = DateHelper.getDateFromString(stringDate: columns[4]) else {
+                return nil
+            }
+            let modifiedDate = columns[5].isEmpty ? nil :
+            DateHelper.getDateFromString(stringDate: columns[5])
+            let deadline = columns[6].isEmpty ? nil : DateHelper.getDateFromString(stringDate: columns[6])
             let importance = Importance(rawValue: importanceStr) ?? Importance.ordinary
             
-            return TodoItem(id: id, text: text, importance: importance, deadline: DateHelper.getDateFromString(stringDate: deadline), isTaskDone: isTaskDone, creationDate: DateHelper.getDateFromString(stringDate: creationDate)!, modifiedDate: DateHelper.getDateFromString(stringDate: modifiedDate))
+            return TodoItem(id: id,
+                            text: text,
+                            importance: importance,
+                            deadline: deadline,
+                            isTaskDone: isTaskDone,
+                            creationDate: creationDate,
+                            modifiedDate: modifiedDate)
         } else {
             print("CSV parse error")
             return nil

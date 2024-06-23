@@ -50,17 +50,17 @@ extension TodoItem {
                     return nil
                 }
                 
-        guard let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+        guard let dictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return nil
         }
 
         guard let text = dictionary[ToDoDictionaryKeys.text.rawValue] as? String else {
-            print("JSON parsing error.text nil")
+            print("JSON parsing error.text is nil")
             return nil
         }
         
         guard let isTaskDone = dictionary[ToDoDictionaryKeys.isTaskDone.rawValue] as? Bool else {
-            print("JSON parsing error.IsTaskDone nil")
+            print("JSON parsing error.IsTaskDone is nil")
             return nil
         }
         
@@ -71,22 +71,32 @@ extension TodoItem {
         }
         
         guard let dateStr = dictionary[ToDoDictionaryKeys.creationDate.rawValue] as? String else {
-            print("JSON parsing error.creationDate nil")
+            print("JSON parsing error.creationDate is nil")
             return nil
         }
         
         guard let creationDate = DateHelper.getDateFromString(stringDate: dateStr) else {
-            print("JSON parsing error.creationDate nil")
+            print("JSON parsing error.creationDate is nil")
             return nil
         }
         
-        //If id is nil -> id = UUID().uuidString
-        let id = dictionary[ToDoDictionaryKeys.id.rawValue] as? String ?? UUID().uuidString
+        guard let id = dictionary[ToDoDictionaryKeys.id.rawValue] as? String else {
+            print("JSON parsing error.id is nil")
+            return nil
+        }
+        
         let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
+        
         let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
         
         print(creationDate)
-        let item = TodoItem(id: id, text: text, importance:  importance, deadline: deadline, isTaskDone: isTaskDone, creationDate: creationDate, modifiedDate: modifiedDate)
+        let item = TodoItem(id: id,
+                            text: text,
+                            importance:  importance,
+                            deadline: deadline,
+                            isTaskDone: isTaskDone,
+                            creationDate: creationDate,
+                            modifiedDate: modifiedDate)
 
         return item
     }
