@@ -28,7 +28,7 @@ extension TodoItem {
         dictionary[ToDoDictionaryKeys.creationDate.rawValue] = DateHelper.getStringFromDate(date: creationDate)
         
         if importance != .ordinary {
-            dictionary[ToDoDictionaryKeys.importance.rawValue] = importance
+            dictionary[ToDoDictionaryKeys.importance.rawValue] = importance.rawValue
         }
         
         if let deadline = deadline{
@@ -43,9 +43,8 @@ extension TodoItem {
     }
     
     static func parse(json: Any) -> TodoItem? {
-        if !JSONSerialization.isValidJSONObject(json) {
-            return nil
-        }
+        
+        guard JSONSerialization.isValidJSONObject(json) else { return nil }
         
         guard let data = try? JSONSerialization.data(withJSONObject: json) else {
                     return nil
@@ -66,7 +65,6 @@ extension TodoItem {
         }
         
         let importanceStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "обычная"
-        
         guard let importance = Importance(rawValue: importanceStr) else {
             print("JSON parsing error.Importance not fount")
             return nil

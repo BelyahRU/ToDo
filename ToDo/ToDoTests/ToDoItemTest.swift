@@ -13,7 +13,7 @@ final class ToDoItemTest: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        todoItem = TodoItem(id: "1", text: "покрасить забор", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        todoItem = TodoItem(id: "1", text: "покрасить забор", importance: TodoItem.Importance.important, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
     }
 
@@ -26,7 +26,7 @@ final class ToDoItemTest: XCTestCase {
     func testTodoItemInitializator() {
         XCTAssertEqual(todoItem.id, "1")
         XCTAssertEqual(todoItem.text, "покрасить забор")
-        XCTAssertEqual(todoItem.importance, TodoItem.Importance.ordinary)
+        XCTAssertEqual(todoItem.importance, TodoItem.Importance.important)
         XCTAssertEqual(todoItem.isTaskDone, true)
         XCTAssertEqual(todoItem.modifiedDate, nil)
         
@@ -44,7 +44,7 @@ final class ToDoItemTest: XCTestCase {
         XCTAssertTrue(isValidJson)
         XCTAssertEqual(json?["id"] as? String, "1")
         XCTAssertEqual(json?["text"] as? String, "покрасить забор")
-        XCTAssertNil(json?["importance"]) // т.к. если важность обычная, то она не сохраняется в json
+        XCTAssertNotNil(json?["importance"]) // т.к. если важность обычная, то она не сохраняется в json
         XCTAssertNil(json?["deadline"]) // т.к. сохраняем deadline только если он задан
         XCTAssertEqual(json?["isTaskDone"] as? Bool, true)
         XCTAssertNotNil(json?["creationDate"]) //?
