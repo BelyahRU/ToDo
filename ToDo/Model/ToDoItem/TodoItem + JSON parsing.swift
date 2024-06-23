@@ -9,13 +9,13 @@ import Foundation
 extension TodoItem {
     
     enum ToDoDictionaryKeys: String, CaseIterable {
-        case id = "id"
-        case text = "text"
-        case importance = "importance"
-        case deadline = "deadline"
-        case isTaskDone = "isTaskDone"
-        case creationDate = "creationDate"
-        case modifiedDate = "modifiedDate"
+        case id
+        case text
+        case importance
+        case deadline
+        case isTaskDone
+        case creationDate
+        case modifiedDate
     }
     
     var json: Any {

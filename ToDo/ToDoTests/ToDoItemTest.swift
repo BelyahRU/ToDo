@@ -13,7 +13,7 @@ final class ToDoItemTest: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        todoItem = TodoItem(id: "1", text: "покрасить забор", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        todoItem = TodoItem(id: "1", text: "покрасить забор", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
     }
 
@@ -26,7 +26,7 @@ final class ToDoItemTest: XCTestCase {
     func testTodoItemInitializator() {
         XCTAssertEqual(todoItem.id, "1")
         XCTAssertEqual(todoItem.text, "покрасить забор")
-        XCTAssertEqual(todoItem.importance, Importance.ordinary)
+        XCTAssertEqual(todoItem.importance, TodoItem.Importance.ordinary)
         XCTAssertEqual(todoItem.isTaskDone, true)
         XCTAssertEqual(todoItem.modifiedDate, nil)
         
