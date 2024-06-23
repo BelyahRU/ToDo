@@ -16,7 +16,6 @@
 		1A9FBBC62C20D21E0026F420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC52C20D21E0026F420 /* Assets.xcassets */; };
 		1A9FBBC92C20D21E0026F420 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC82C20D21E0026F420 /* Preview Assets.xcassets */; };
 		1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD02C20D3080026F420 /* TodoItem.swift */; };
-		1A9FBBD32C20D3200026F420 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD22C20D3200026F420 /* Importance.swift */; };
 		1A9FBBD52C20D33B0026F420 /* TodoItem + JSON parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */; };
 		1A9FBBD82C2364EB0026F420 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD72C2364EB0026F420 /* FileCache.swift */; };
 		1A9FBBF92C24C0B50026F420 /* FileManager + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBF82C24C0B50026F420 /* FileManager + Ext.swift */; };
@@ -25,7 +24,6 @@
 		1A9FBC222C24E33C0026F420 /* FileCacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBC212C24E33C0026F420 /* FileCacheTest.swift */; };
 		1A9FBC232C24E3F10026F420 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD02C20D3080026F420 /* TodoItem.swift */; };
 		1A9FBC242C24E3F30026F420 /* TodoItem + JSON parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */; };
-		1A9FBC252C24E3F60026F420 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD22C20D3200026F420 /* Importance.swift */; };
 		1A9FBC262C24E3F90026F420 /* DateHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBFA2C24CD050026F420 /* DateHelp.swift */; };
 		1A9FBC272C24E3FB0026F420 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */; };
 		1A9FBC282C24E3FD0026F420 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC32C20D21C0026F420 /* ContentView.swift */; };
@@ -52,7 +50,6 @@
 		1A9FBBC52C20D21E0026F420 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A9FBBC82C20D21E0026F420 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A9FBBD02C20D3080026F420 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
-		1A9FBBD22C20D3200026F420 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem + JSON parsing.swift"; sourceTree = "<group>"; };
 		1A9FBBD72C2364EB0026F420 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		1A9FBBF82C24C0B50026F420 /* FileManager + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager + Ext.swift"; sourceTree = "<group>"; };
@@ -157,7 +154,6 @@
 		1A9FBC122C24E1FE0026F420 /* ToDoItem */ = {
 			isa = PBXGroup;
 			children = (
-				1A9FBBD22C20D3200026F420 /* Importance.swift */,
 				1A9FBBD02C20D3080026F420 /* TodoItem.swift */,
 				1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */,
 				1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */,
@@ -278,7 +274,6 @@
 				1A9FBBF92C24C0B50026F420 /* FileManager + Ext.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,
 				1A9FBBD52C20D33B0026F420 /* TodoItem + JSON parsing.swift in Sources */,
-				1A9FBBD32C20D3200026F420 /* Importance.swift in Sources */,
 				1A92233E2C2599F3001B3E72 /* TodoItem + CSV parsing.swift in Sources */,
 				1A9FBBFB2C24CD050026F420 /* DateHelp.swift in Sources */,
 				1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */,
@@ -296,7 +291,6 @@
 				1A9FBC242C24E3F30026F420 /* TodoItem + JSON parsing.swift in Sources */,
 				1A9FBC2A2C24E51E0026F420 /* FileManager + Ext.swift in Sources */,
 				1A9FBC262C24E3F90026F420 /* DateHelp.swift in Sources */,
-				1A9FBC252C24E3F60026F420 /* Importance.swift in Sources */,
 				1A9FBC282C24E3FD0026F420 /* ContentView.swift in Sources */,
 				1A9FBC232C24E3F10026F420 /* TodoItem.swift in Sources */,
 				1A9FBC222C24E33C0026F420 /* FileCacheTest.swift in Sources */,
