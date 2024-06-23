@@ -46,8 +46,8 @@
             filePath = "ToDo/Model/ToDoItem/TodoItem + JSON parsing.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "parse(json:)"
             landmarkType = "7">
             <Locations>

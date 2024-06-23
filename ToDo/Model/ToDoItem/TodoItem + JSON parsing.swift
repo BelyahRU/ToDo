@@ -21,26 +21,23 @@ extension TodoItem {
     var json: Any {
         var dictionary = [String: Any]()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
         dictionary[ToDoDictionaryKeys.id.rawValue] = id
         dictionary[ToDoDictionaryKeys.text.rawValue] = text
         dictionary[ToDoDictionaryKeys.isTaskDone.rawValue] = isTaskDone
         
-        dictionary[ToDoDictionaryKeys.creationDate.rawValue] = DateHelper.getStringFromDate(date: creationDate, dateFormatter: dateFormatter)
+        dictionary[ToDoDictionaryKeys.creationDate.rawValue] = DateHelper.getStringFromDate(date: creationDate)
         
         if importance != .ordinary {
             dictionary[ToDoDictionaryKeys.importance.rawValue] = importance
         }
         
         if let deadline = deadline{
-            dictionary[ToDoDictionaryKeys.deadline.rawValue] = DateHelper.getStringFromDate(date: deadline, dateFormatter: dateFormatter)
+            dictionary[ToDoDictionaryKeys.deadline.rawValue] = DateHelper.getStringFromDate(date: deadline)
         }
         
         //нужно ли сохранять modifiedFate если он nil?
         if let modifiedDate = modifiedDate {
-            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate, dateFormatter: dateFormatter)
+            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate)
         }
         return dictionary
     }
@@ -49,8 +46,6 @@ extension TodoItem {
         if !JSONSerialization.isValidJSONObject(json) {
             return nil
         }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         guard let data = try? JSONSerialization.data(withJSONObject: json) else {
                     return nil
@@ -82,15 +77,15 @@ extension TodoItem {
             return nil
         }
         
-        guard let creationDate = DateHelper.getDateFromString(stringDate: dateStr, dateFormatter: dateFormatter) else {
+        guard let creationDate = DateHelper.getDateFromString(stringDate: dateStr) else {
             print("JSON parsing error.creationDate nil")
             return nil
         }
         
         //If id is nil -> id = UUID().uuidString
         let id = dictionary[ToDoDictionaryKeys.id.rawValue] as? String ?? UUID().uuidString
-        let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String, dateFormatter: dateFormatter)
-        let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String, dateFormatter: dateFormatter)
+        let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
+        let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
         
         print(creationDate)
         let item = TodoItem(id: id, text: text, importance:  importance, deadline: deadline, isTaskDone: isTaskDone, creationDate: creationDate, modifiedDate: modifiedDate)
