@@ -22,7 +22,7 @@ struct TodoItem {
         case important = "важная"
     }
     
-    init(id: String,
+    init(id: String = UUID().uuidString,
          text: String,
          importance: Importance,
          deadline: Date?,
