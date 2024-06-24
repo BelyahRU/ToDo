@@ -6,13 +6,13 @@
 //
 
 import Foundation
-struct TodoItem {
+struct TodoItem: Identifiable {
     
     let id: String
     let text: String
     let importance: Importance
     let deadline: Date?
-    let isTaskDone: Bool // флаг
+    var isTaskDone: Bool // флаг
     let creationDate: Date
     let modifiedDate: Date?
     
