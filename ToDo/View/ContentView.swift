@@ -19,11 +19,19 @@ struct ContentView: View {
     @StateObject var viewModel = MainViewModel()
     
     var body: some View {
-        VStack(spacing: 20) {
-            mainVStack
-            plansList
+        ZStack {
+            VStack(spacing: 20) {
+                mainVStack
+                plansList
+            }
+                .background(Resources.LightTheme.Back.primaryColor)
+            VStack {
+                Spacer()
+                addButton
+                    .padding(.bottom, 54)
+            }
         }
-        .background(Resources.LightTheme.Back.primaryColor)
+        
     
     }
     
@@ -55,11 +63,11 @@ struct ContentView: View {
             List {
                 ForEach($viewModel.todosArray) { $item in
                     TodoItemView(todoItem: $item)
-                        .frame(height: 56)
+                        .frame(height: 50)
                 }
                 // Последняя ячейка без чекбокса
                 lastItem
-                    .frame(height: 56)
+                    .frame(height: 50)
             }
             .cornerRadius(16)
             .listStyle(PlainListStyle())
@@ -92,31 +100,33 @@ struct ContentView: View {
     }
     
     var completedText: some View {
-        Text("Выполнено - 5")
+        Text("Выполнено - \(viewModel.getToDosArray().filter{$0.isTaskDone == true}.count)")
             .foregroundColor(.black.opacity(0.3))
             .font(.system(size: 15))
     }
     
     var showButton: some View {
-        Button("Показать") {}
+        Button("Показать"){}
             .foregroundColor(Resources.LightTheme.blueColor)
             .font(.system(size: 15))
             .bold()
     }
     
+    var addButton: some View {
+        Button {
+            print("add pressed")
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .frame(width: 44, height: 44)
+        }
+            .padding(.bottom, 15)
+            
+    }
+    
 }
-
+//
 struct iOSCheckboxToggleStyle: ToggleStyle {
-    
-    var checkmarkIsOn: some View {
-        Image(systemName: "checkmark.circle.fill")
-            .foregroundColor(Resources.LightTheme.greenColor)
-    }
-    
-    var checkmarkIsOff: some View {
-        Image(systemName: "circle")
-            .foregroundColor(Resources.LightTheme.grayColor)
-    }
     
     func makeBody(configuration: Configuration) -> some View {
         // 1
@@ -125,39 +135,77 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
         }, label: {
             HStack {
                 // 3
-                if configuration.isOn {
-                    checkmarkIsOn
-                } else {
-                    checkmarkIsOff
-                }
-                
+                Image(systemName: imageName(forState: configuration.isOn))
+                    .resizable()
+                    .foregroundColor(color(forState: configuration.isOn))
+                    .frame(width: 30, height: 30)
                 configuration.label
             }
         }
         )
-        .frame(width: 30, height: 30)
     }
+    
+    func imageName(forState isSelected: Bool) -> String {
+        isSelected ? "checkmark.circle.fill" : "circle"
+    }
+    
+    func color(forState isSelected: Bool) -> Color {
+        isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
+        
+    }
+    
+//
+//        Toggle("", isOn: $todoItem.isTaskDone)
+//            .labelsHidden()
+//            .toggleStyle(iOSCheckboxToggleStyle())
 }
 
 struct TodoItemView: View {
-    //Binding создаёт двухстороннюю привязку к данным. Это позволяет передавать данные из одного View в другой и позволяет дочернему View изменять данные, которые пренадлежат родительскому View
-    //Здесь @Binding var todoItem: TodoItem позволяет передавать каждый элемент
-    //задачи в TodoItemView как привязку.
-    //Когда состояние задачи изменяется в дочернем
     @Binding var todoItem: TodoItem
-    
+
     var body: some View {
         HStack {
-            Toggle("", isOn: $todoItem.isTaskDone)
-                .labelsHidden()
-                .toggleStyle(iOSCheckboxToggleStyle())
+            Button(action: {
+                print("Checkbox tapped")
+                todoItem.isTaskDone.toggle()
+            }) {
+                Image(systemName: imageName(forState: todoItem.isTaskDone))
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(color(forState: todoItem.isTaskDone))
+                    .contentShape(Rectangle()) // Ensure the entire frame is tappable
+            }
+            .buttonStyle(PlainButtonStyle())
+
             Text(todoItem.text)
-                .foregroundColor(todoItem.isTaskDone ? .gray : .primary)
+                .foregroundColor(todoItem.isTaskDone ? Resources.LightTheme.Label.TetiaryColor : Resources.LightTheme.Label.blackColor)
+                .strikethrough(todoItem.isTaskDone)
+                .padding(.leading, 8)
+
+            Spacer()
+
+            Button(action: {
+                print("Arrow button tapped")
+            }) {
+                Image(Resources.LightTheme.Buttons.arrowButton)
+                    .contentShape(Rectangle()) // Ensure the entire frame is tappable
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding(.trailing, 8) // Add padding to avoid overlap
         }
-        
-        
+        .frame(height: 50) // Define a fixed height to avoid overlapping issues
+    }
+
+    func imageName(forState isSelected: Bool) -> String {
+        isSelected ? "checkmark.circle.fill" : "circle"
+    }
+
+    func color(forState isSelected: Bool) -> Color {
+        isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
     }
 }
+
+
 
 
 

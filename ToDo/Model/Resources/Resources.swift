@@ -39,8 +39,8 @@ enum Resources {
             static let elevantedColor = Color(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
         }
         
-        
-        
-        
+        enum Buttons {
+            static let arrowButton = "arrowButton"
+        }
     }
 }
