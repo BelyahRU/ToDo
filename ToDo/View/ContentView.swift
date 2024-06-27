@@ -17,6 +17,9 @@ struct ContentView: View {
     //Когда свойства @Published в MainViewModel изменяются,
     //представление автоматически обновляется.
     @StateObject var viewModel = MainViewModel()
+    @State private var editingTodoItem: TodoItem? = nil
+    
+    @State private var isShowingModal = false
     
     var body: some View {
         ZStack {
@@ -114,86 +117,111 @@ struct ContentView: View {
     
     var addButton: some View {
         Button {
-            print("add pressed")
+            self.editingTodoItem = nil // Prepare to create a new item
+            self.isShowingModal = true
+            
         } label: {
             Image(systemName: "plus.circle.fill")
                 .resizable()
                 .frame(width: 44, height: 44)
         }
             .padding(.bottom, 15)
+            .sheet(isPresented: $isShowingModal, onDismiss: {
+                if let newItem = editingTodoItem {
+                    viewModel.addToDo(new: newItem)
+                }
+            }) {
+                ToDoModalView(todoItem: $editingTodoItem)
+            }
             
     }
     
 }
+////
+//struct iOSCheckboxToggleStyle: ToggleStyle {
 //
-struct iOSCheckboxToggleStyle: ToggleStyle {
-    
-    func makeBody(configuration: Configuration) -> some View {
-        // 1
-        Button(action: {
-            configuration.isOn.toggle()
-        }, label: {
-            HStack {
-                // 3
-                Image(systemName: imageName(forState: configuration.isOn))
-                    .resizable()
-                    .foregroundColor(color(forState: configuration.isOn))
-                    .frame(width: 30, height: 30)
-                configuration.label
-            }
-        }
-        )
-    }
-    
-    func imageName(forState isSelected: Bool) -> String {
-        isSelected ? "checkmark.circle.fill" : "circle"
-    }
-    
-    func color(forState isSelected: Bool) -> Color {
-        isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
-        
-    }
-    
+//    func makeBody(configuration: Configuration) -> some View {
+//        // 1
+//        Button(action: {
+//            configuration.isOn.toggle()
+//        }, label: {
+//            HStack {
+//                // 3
+//                Image(systemName: imageName(forState: configuration.isOn))
+//                    .resizable()
+//                    .foregroundColor(color(forState: configuration.isOn))
+//                    .frame(width: 30, height: 30)
+//                configuration.label
+//            }
+//        }
+//        )
+//    }
 //
-//        Toggle("", isOn: $todoItem.isTaskDone)
-//            .labelsHidden()
-//            .toggleStyle(iOSCheckboxToggleStyle())
-}
+//    func imageName(forState isSelected: Bool) -> String {
+//        isSelected ? "checkmark.circle.fill" : "circle"
+//    }
+//
+//    func color(forState isSelected: Bool) -> Color {
+//        isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
+//
+//    }
+//
+////
+////        Toggle("", isOn: $todoItem.isTaskDone)
+////            .labelsHidden()
+////            .toggleStyle(iOSCheckboxToggleStyle())
+//}
 
 struct TodoItemView: View {
     @Binding var todoItem: TodoItem
+    @State private var isShowingModal = false
 
     var body: some View {
         HStack {
-            Button(action: {
-                print("Checkbox tapped")
-                todoItem.isTaskDone.toggle()
-            }) {
-                Image(systemName: imageName(forState: todoItem.isTaskDone))
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(color(forState: todoItem.isTaskDone))
-                    .contentShape(Rectangle()) // Ensure the entire frame is tappable
-            }
-            .buttonStyle(PlainButtonStyle())
-
-            Text(todoItem.text)
-                .foregroundColor(todoItem.isTaskDone ? Resources.LightTheme.Label.TetiaryColor : Resources.LightTheme.Label.blackColor)
-                .strikethrough(todoItem.isTaskDone)
-                .padding(.leading, 8)
-
+            checkboxButton
+            titleText
             Spacer()
-
-            Button(action: {
-                print("Arrow button tapped")
-            }) {
-                Image(Resources.LightTheme.Buttons.arrowButton)
-                    .contentShape(Rectangle()) // Ensure the entire frame is tappable
-            }
-            .buttonStyle(PlainButtonStyle())
-            .padding(.trailing, 8) // Add padding to avoid overlap
+            arrowChangeButton
+            
         }
-        .frame(height: 50) // Define a fixed height to avoid overlapping issues
+        .frame(height: 50)
+    }
+    
+    var checkboxButton: some View {
+        Button(action: {
+            todoItem.isTaskDone.toggle()
+        }) {
+            Image(systemName: imageName(forState: todoItem.isTaskDone))
+                .resizable()
+                .frame(width: 30, height: 30)
+                .foregroundColor(color(forState: todoItem.isTaskDone))
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+    
+    
+    var titleText: some View {
+        Text(todoItem.text)
+            .foregroundColor(todoItem.isTaskDone ? Resources.LightTheme.Label.TetiaryColor : Resources.LightTheme.Label.blackColor)
+            .strikethrough(todoItem.isTaskDone)
+            .padding(.leading, 8)
+
+    }
+    
+    var arrowChangeButton: some View {
+        Button(action: {
+            self.isShowingModal = true
+        }) {
+            Image(Resources.LightTheme.Buttons.arrowButton)
+                .contentShape(Rectangle())
+        }
+            .buttonStyle(PlainButtonStyle())
+            .padding(.trailing, 8)
+            .sheet(isPresented: $isShowingModal) {
+                // Wrap the binding in an optional binding
+                ToDoModalView(todoItem: Binding($todoItem))
+            }
     }
 
     func imageName(forState isSelected: Bool) -> String {
@@ -204,6 +232,18 @@ struct TodoItemView: View {
         isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
     }
 }
+
+extension Binding {
+    /// Creates an optional binding from a non-optional binding.
+    /// - Parameter base: The non-optional binding.
+    init(_ base: Binding<Value>) {
+        self.init(
+            get: { base.wrappedValue },
+            set: { newValue in base.wrappedValue = newValue }
+        )
+    }
+}
+
 
 
 

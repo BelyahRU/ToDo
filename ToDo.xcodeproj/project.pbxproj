@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A82F24F2C2C95AE00352D56 /* AddToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* AddToDoModalView.swift */; };
+		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
 		1A92233E2C2599F3001B3E72 /* TodoItem + CSV parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */; };
 		1A9223402C261122001B3E72 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233F2C261122001B3E72 /* String + Ext.swift */; };
 		1A9223422C2617E3001B3E72 /* TodoItem + CSV parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */; };
@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A82F24E2C2C95AE00352D56 /* AddToDoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoModalView.swift; sourceTree = "<group>"; };
+		1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModalView.swift; sourceTree = "<group>"; };
 		1A92233D2C2599F3001B3E72 /* TodoItem + CSV parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem + CSV parsing.swift"; sourceTree = "<group>"; };
 		1A92233F2C261122001B3E72 /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
 		1A9223452C28E52D001B3E72 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */,
 				1A9FBBC32C20D21C0026F420 /* ContentView.swift */,
-				1A82F24E2C2C95AE00352D56 /* AddToDoModalView.swift */,
+				1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 				1A92233E2C2599F3001B3E72 /* TodoItem + CSV parsing.swift in Sources */,
 				1A9FBBFB2C24CD050026F420 /* DateHelp.swift in Sources */,
 				1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */,
-				1A82F24F2C2C95AE00352D56 /* AddToDoModalView.swift in Sources */,
+				1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */,
 				1A9FBBD82C2364EB0026F420 /* FileCache.swift in Sources */,
 				1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */,
 				1A92234A2C299A50001B3E72 /* MainViewModel.swift in Sources */,

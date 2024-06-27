@@ -50,6 +50,38 @@ class MainViewModel: ObservableObject {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil
+            ),
+            TodoItem(
+                text: "Забрать посылку",
+                importance: .unimportant,
+                deadline: Calendar.current.date(byAdding: .day, value: 3, to: Date()),
+                isTaskDone: true,
+                creationDate: Date(),
+                modifiedDate: Date()
+            ),
+            TodoItem(
+                text: "Прочитать книгу",
+                importance: .ordinary,
+                deadline: nil,
+                isTaskDone: false,
+                creationDate: Date(),
+                modifiedDate: nil
+            ),
+            TodoItem(
+                text: "Забрать посылку",
+                importance: .unimportant,
+                deadline: Calendar.current.date(byAdding: .day, value: 3, to: Date()),
+                isTaskDone: true,
+                creationDate: Date(),
+                modifiedDate: Date()
+            ),
+            TodoItem(
+                text: "Прочитать книгу",
+                importance: .ordinary,
+                deadline: nil,
+                isTaskDone: false,
+                creationDate: Date(),
+                modifiedDate: nil
             )
         ]
     
