@@ -182,7 +182,6 @@ struct TodoItemView: View {
             titleText
             Spacer()
             arrowChangeButton
-            
         }
         .frame(height: 50)
     }

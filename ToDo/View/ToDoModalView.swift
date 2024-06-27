@@ -6,50 +6,53 @@
 //
 
 import SwiftUI
-
 struct ToDoModalView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var todoItem: TodoItem?
-    
+    @State private var text: String = ""
+    @State private var importanse: Importance = .ordinary
+
     var body: some View {
-        VStack(spacing: 20) {
-            headHStack
-            mainVStack
-                .padding(.top, 15)
-            Spacer()
-        }
-        .background(Resources.LightTheme.Back.primaryColor)
+        mainNavigationStack
     }
     
-    var headHStack: some View {
-        HStack {
-            cancelButton
-            Spacer()
-            deloText
-            Spacer()
-            saveButton
+    var mainNavigationStack: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 16) {
+                    textEditor
+                    Spacer()
+                    list
+                        .background(.black)
+                    Spacer()
+                    removeButton
+                }
+                .navigationTitle("Дело")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        cancelButton
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        saveButton
+                    }
+                })
+                .background(Resources.LightTheme.Back.primaryColor)
+            }
+            .onAppear {
+                text = todoItem?.text ?? ""
+            }
         }
-        .frame(height: 56)
-        .padding(.top, 0)
     }
     
-    var cancelButton: some View {
-        Button {
-            print("Отменить")
-            self.presentationMode.wrappedValue.dismiss()
-        } label: {
-            Text("Отменить")
-                .font(.system(size: 17))
-        }
-        .frame(width: 105)
-        .frame(height: 56)
     
-    }
-    
-    var deloText: some View {
-        Text("Дело")
-            .font(.system(size: 17))
-            
+    var textEditor: some View {
+        TextEditor(text: $text)
+            .frame(minHeight: 120)
+            .background(Color.white)
+            .cornerRadius(16)
+            .padding(.horizontal)
     }
     
     var saveButton: some View {
@@ -65,24 +68,17 @@ struct ToDoModalView: View {
 
     }
     
-    var mainVStack: some View {
-        VStack {
-            whatToDoTextView
-            Spacer()
-            list
-            removeButton
-            Spacer()
+    var cancelButton: some View {
+        Button {
+            print("Отменить")
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Отменить")
+                .font(.system(size: 17))
         }
-        .frame(height: 352.5)
-        .padding(.leading, 15)
-        .padding(.trailing, 15)
+        .frame(width: 105)
+        .frame(height: 56)
 
-    }
-    
-    var whatToDoTextView: some View {
-        Text("asdgas")
-            .frame(minWidth: 343, minHeight: 120)
-            .background(.black)
     }
     
     var list: some View {
@@ -94,26 +90,26 @@ struct ToDoModalView: View {
         .frame(minWidth: 343)
         .listStyle(PlainListStyle())
     }
-    
+
     var importanceHStack: some View {
         HStack {
-            
+
         }
     }
-    
+
     var deadlineHStack: some View {
         HStack {
-            
+
         }
     }
-    
+
     var removeButton: some View {
         Button {
             print("sfdgsef")
         } label: {
             Text("Удалить")
                 .foregroundColor(Resources.LightTheme.redColor)
-            
+
         }
         .frame(height: 56)
         .frame(minWidth: 343)
@@ -122,7 +118,16 @@ struct ToDoModalView: View {
 
     }
     
+    private func saveTodoItem() {
+        if let _ = todoItem {
+//            self.todoItem?.text = text
+        } else {
+//            todoItem = TodoItem(text: text, isTaskDone: false)
+        }
+    }
 }
+
+    
 
 struct AddToDoModalView_Previews: PreviewProvider {
     @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
