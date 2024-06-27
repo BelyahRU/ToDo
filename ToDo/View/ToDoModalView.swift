@@ -11,6 +11,10 @@ struct ToDoModalView: View {
     @Binding var todoItem: TodoItem?
     @State private var text: String = ""
     @State private var importanse: Importance = .ordinary
+    @State private var deadline: Date? = nil
+    @State private var isTaskDone: Bool = false
+    @State private var creationDate: Date = Date()
+    @State private var modifiedDate: Date? = nil
 
     var body: some View {
         mainNavigationStack
@@ -23,7 +27,6 @@ struct ToDoModalView: View {
                     textEditor
                     Spacer()
                     list
-                        .background(.black)
                     Spacer()
                     removeButton
                 }
@@ -40,10 +43,12 @@ struct ToDoModalView: View {
                 })
                 .background(Resources.LightTheme.Back.primaryColor)
             }
+            .background(Resources.LightTheme.Back.primaryColor)
             .onAppear {
                 text = todoItem?.text ?? ""
             }
         }
+        .background(Resources.LightTheme.Back.primaryColor)
     }
     
     
@@ -63,8 +68,6 @@ struct ToDoModalView: View {
                 .font(.system(size: 17))
                 .fontWeight(.bold)
         }
-        .frame(width: 105)
-        .frame(height: 56)
 
     }
     
@@ -76,32 +79,63 @@ struct ToDoModalView: View {
             Text("Отменить")
                 .font(.system(size: 17))
         }
-        .frame(width: 105)
-        .frame(height: 56)
 
     }
     
     var list: some View {
-        List {
+        VStack(spacing: 0) {
             importanceHStack
+                .frame(height: 56)
+                .padding(.horizontal, 16)
+                .background(Color.white)
+            Divider().background(Color.gray.opacity(0.5))
             deadlineHStack
+                .frame(height: 56)
+                .padding(.horizontal, 16)
+                .background(Color.white)
         }
-        .cornerRadius(16)
-        .frame(minWidth: 343)
-        .listStyle(PlainListStyle())
+            .frame(height: 112.5)
+            .background(Color.white)
+            .cornerRadius(16)
+            .padding(.horizontal)
     }
-
+        
     var importanceHStack: some View {
         HStack {
-
+            Text("Важность")
+                .font(.system(size: 17))
+            Spacer()
+            // Ваши кнопки важности
+            Button(action: {
+                // действие для изменения важности
+            }) {
+                Text("низкая")
+            }
+            Button(action: {
+                // действие для изменения важности
+            }) {
+                Text("нет")
+            }
+            Button(action: {
+                // действие для изменения важности
+            }) {
+                Text("!!")
+            }
         }
     }
 
     var deadlineHStack: some View {
         HStack {
-
+            Text("Сделать до")
+                .font(.system(size: 17))
+            Spacer()
+            Toggle(isOn: $isTaskDone) {
+                Text("")
+            }
+            .toggleStyle(SwitchToggleStyle())
         }
     }
+
 
     var removeButton: some View {
         Button {
