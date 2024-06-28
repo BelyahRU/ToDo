@@ -23,7 +23,7 @@ final class FileCacheTest: XCTestCase {
     
     //тестирование на добавление новой задачи
     func testAddNewTask() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
         fileCache.add(new: todo)
         
@@ -33,7 +33,7 @@ final class FileCacheTest: XCTestCase {
     
     //тестирование на добавление новой задачи с уже добавленным id
     func testAddDuplicateTask() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
         fileCache.add(new: todo)
         fileCache.add(new: todo)
@@ -43,7 +43,7 @@ final class FileCacheTest: XCTestCase {
 
     //тест на удаление задачи из filecache
     func testRemoveTask() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
         fileCache.add(new: todo)
         fileCache.removeTask(by: "1")
@@ -53,7 +53,7 @@ final class FileCacheTest: XCTestCase {
     
     //тест на удаление несуществующей задачи из fileCache
     func testRemoveUnexistTask() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
         fileCache.add(new: todo)
         fileCache.removeTask(by: "5")
@@ -63,7 +63,7 @@ final class FileCacheTest: XCTestCase {
     
     //тест на проверку сохранения в файл
     func testSaveInFile() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         
         fileCache.add(new: todo)
         let fileName = "228.txt"
@@ -81,7 +81,7 @@ final class FileCacheTest: XCTestCase {
     
     //тест на проверку загрузки из файла
     func testUploadFromFile() {
-        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: TodoItem.Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+        let todo = TodoItem(id: "1", text: "тут должен быть текст", importance: Importance.ordinary, deadline: nil, isTaskDone: true, creationDate: Date(), modifiedDate: nil)
         fileCache.add(new: todo)
         
         let fileName = "testFile.json"
