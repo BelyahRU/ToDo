@@ -42,5 +42,9 @@ enum Resources {
         enum Buttons {
             static let arrowButton = "arrowButton"
         }
+        
+        enum Images {
+            static let exclamationMark = "exclamationMark"
+        }
     }
 }

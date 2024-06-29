@@ -75,7 +75,6 @@ struct ContentView: View {
                 }
                 .background(Color.white)
                 .listRowBackground(Color.white)
-//                .listSectionSpacing(16)
                 // Последняя ячейка без чекбокса
                 lastItem
                     .frame(height: 50)
@@ -99,7 +98,6 @@ struct ContentView: View {
                     .padding(.leading, 39)
                 Spacer()
             }
-            
         }
     
     var myPlansText: some View {

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 struct TodoItemView: View {
+    
     @Binding var todoItem: TodoItem
     @State private var isShowingModal = false
     @EnvironmentObject var viewModel: MainViewModel

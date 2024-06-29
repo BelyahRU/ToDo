@@ -28,8 +28,6 @@ class MainViewModel: ObservableObject {
         countingAreDone()
     }
     
-    
-    
     private func countingAreDone() {
         countItemsAreDone = todosArray.filter({$0.isTaskDone == true}).count
     }
@@ -48,7 +46,7 @@ class MainViewModel: ObservableObject {
     
     public func addToDo(new item: TodoItem?) {
         guard let item = item else { return }
-        fileCacheModel.add(new: item) // Также обновляем fileCacheModel
+        fileCacheModel.add(new: item)
         updateData()
     }
     
@@ -60,9 +58,16 @@ class MainViewModel: ObservableObject {
     }
     
     public func updateTodoItem(_ item: TodoItem) {
-            if let index = todosArray.firstIndex(where: { $0.id == item.id }) {
-                todosArray[index] = item
-                countingAreDone()
-            }
+        // Обновление элемента в fileCacheModel
+        fileCacheModel.updateTask(item)
+        
+        // Обновление элемента в todosArray
+        if let index = todosArray.firstIndex(where: { $0.id == item.id }) {
+            todosArray[index] = item
         }
+        
+        // Перефильтровка данных
+        updateData()
+    }
 }
+

@@ -96,6 +96,12 @@ final class FileCache {
         toDos.removeAll(where: { $0.id == id })
     }
     
+    func updateTask(_ item: TodoItem) {
+        if let index = toDos.firstIndex(where: { $0.id == item.id }) {
+            toDos[index] = item
+        }
+    }
+    
     func saveInFile(fileName: String) {
         let jsonDataArray = toDos.map({ $0.json })
         
