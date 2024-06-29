@@ -45,8 +45,7 @@ struct MainListView: View {
     var textEditor: some View {
         TextEditor(text: $text)
             .frame(minHeight: 120)
-            .background(Color.white)
-            .foregroundColor(.black)
+            
             .cornerRadius(16)
     }
     
@@ -54,7 +53,6 @@ struct MainListView: View {
         HStack {
             Text("Важность")
                 .font(.system(size: 17))
-                .foregroundColor(Resources.LightTheme.Label.blackColor)
             Spacer()
             
             Picker("importance", selection: $selectedImportanceIndex) {
@@ -73,7 +71,6 @@ struct MainListView: View {
             VStack(alignment: .leading) {
                 Text("Сделать до")
                     .font(.system(size: 17))
-                    .foregroundColor(Resources.LightTheme.Label.blackColor)
                 if switchIsOn && deadline != nil {
                     Text("\(deadline!.formattedDate())")
                         .bold()
@@ -92,6 +89,7 @@ struct MainListView: View {
             .onChange(of: switchIsOn) { newValue in
                 if newValue {
                     if deadline == nil {
+                        deadline = Date().nextDayFormatted()
                         datePickerIsOn = true
                     }
                 } else {
@@ -126,10 +124,9 @@ struct MainListView: View {
         } label: {
             Text("Удалить")
                 .foregroundColor(Resources.LightTheme.redColor)
-                .frame(minHeight: 56)
-                .frame(minWidth: 343)
+                .frame(maxHeight: 70)
+                .frame(maxWidth: .infinity)
         }
-        .background(Resources.LightTheme.blueColor)
         .cornerRadius(16)
     }
 }

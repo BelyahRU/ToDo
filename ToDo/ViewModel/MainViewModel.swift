@@ -29,7 +29,7 @@ class MainViewModel: ObservableObject {
     }
     
     private func countingAreDone() {
-        countItemsAreDone = todosArray.filter({$0.isTaskDone == true}).count
+        countItemsAreDone = fileCacheModel.toDos.filter({$0.isTaskDone == true}).count
     }
     
     private func filterTodos() {
