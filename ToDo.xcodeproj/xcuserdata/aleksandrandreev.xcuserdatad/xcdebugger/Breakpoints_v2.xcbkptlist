@@ -50,38 +50,22 @@
             endingLineNumber = "47"
             landmarkName = "parse(json:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4139B76B-2D43-4A0B-8F49-F58A473B5E6E - be45a1be9b621e56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static ToDo.TodoItem.parse(json: Any) -&gt; Swift.Optional&lt;ToDo.TodoItem&gt;"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/ToDoItem/TodoItem%20+%20JSON%20parsing.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "576">
-               </Location>
-               <Location
-                  uuid = "4139B76B-2D43-4A0B-8F49-F58A473B5E6E - be45a1be9b621e56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static ToDo.TodoItem.parse(json: Any) -&gt; Swift.Optional&lt;ToDo.TodoItem&gt;"
-                  moduleName = "ToDo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrandreev/Desktop/Yandex/ToDo/ToDo/Model/ToDoItem/TodoItem%20+%20JSON%20parsing.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "564">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43FD6505-17CD-4658-BEAD-FB8802668439"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDo/View/ToDoItemView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "checkboxButton"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
