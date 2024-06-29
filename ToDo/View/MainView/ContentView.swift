@@ -20,15 +20,18 @@ struct ContentView: View {
                 
                 ListView(viewModel: viewModel, editingTodoItem: $editingTodoItem, isShowingModal: $isShowingModal, buttonTitle: $buttonTitle)
                     .navigationTitle("Мои дела")
-                    .background(colorScheme == .light 
+                    .background(colorScheme == .light
                         ? Resources.LightTheme.Back.primaryColor
                         :   Resources.DarkTheme.Back.primaryColor
                     )
             
             } detail: {
-                // Detail view content
+                
             }
-            
+            .background(colorScheme == .light
+                ? Resources.LightTheme.Back.primaryColor
+                :   Resources.DarkTheme.Back.primaryColor
+            )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             VStack {
@@ -36,9 +39,15 @@ struct ContentView: View {
                 addButton
                     .padding(.bottom, 54)
             }
+            
         }
         .environmentObject(viewModel)
+        .background(colorScheme == .light
+            ? Resources.LightTheme.Back.primaryColor
+            :   Resources.DarkTheme.Back.primaryColor
+        )
     }
+    
     
     var addButton: some View {
         Button {

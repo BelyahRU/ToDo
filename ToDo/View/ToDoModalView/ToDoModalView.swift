@@ -12,7 +12,7 @@ struct ToDoModalView: View {
     @Binding var todoItem: TodoItem?
     @EnvironmentObject var viewModel: MainViewModel
     
-    @State private var text: String = ""
+    @State private var text: String = "Что надо сделать?"
     @State private var importance: Importance = .unimportant
     @State private var deadline: Date? = nil
     @State private var isTaskDone: Bool = false
@@ -118,7 +118,7 @@ struct ToDoModalView: View {
         case .important:
             selectedImportanceIndex = 2
         }
-        text = todoItem?.text ?? ""
+        text = todoItem?.text ?? "Что надо сделать?"
         deadline = todoItem?.deadline ?? nil
         if deadline != nil {
             switchIsOn = true

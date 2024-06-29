@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MainListView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var text: String
     @Binding var importance: Importance
     @Binding var deadline: Date?
@@ -18,6 +19,7 @@ struct MainListView: View {
     @Binding var todoItem: TodoItem?
     @EnvironmentObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode
+    
 
     var body: some View {
         List {
@@ -44,9 +46,21 @@ struct MainListView: View {
 
     var textEditor: some View {
         TextEditor(text: $text)
+            .foregroundStyle(self.text == "Что надо сделать?" ?
+                                (colorScheme == .light ?
+                                 Resources.LightTheme.Label.TetiaryColor
+                                 :Resources.DarkTheme.Label.TetiaryColor)
+                             :(colorScheme == .light ?
+                               Resources.LightTheme.Label.blackColor
+                               :Resources.DarkTheme.Label.primaryColor))
             .frame(minHeight: 120)
             
             .cornerRadius(16)
+            .onTapGesture {
+                if self.text == "Что надо сделать?" {
+                    self.text = ""
+                }
+            }
     }
     
     var importanceHStack: some View {

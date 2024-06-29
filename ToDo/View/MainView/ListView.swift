@@ -14,6 +14,7 @@ struct ListView: View {
     @Binding var editingTodoItem: TodoItem?
     @Binding var isShowingModal: Bool
     @Binding var buttonTitle: String
+    @State private var newItemText: String = ""
     
     var body: some View {
         List {
@@ -26,9 +27,11 @@ struct ListView: View {
                         .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 0))
                 }
                 //новое
-                lastItem
+                NewToDoItemView(text: "") { text in
+                    viewModel.addToDo(new: TodoItem(text: text, importance: .ordinary, deadline: nil, isTaskDone: false, creationDate: Date(), modifiedDate: nil))
+                }
                     .frame(height: 50)
-                    .background(colorScheme == .light ? Resources.LightTheme.Back.secondaryColor : Resources.DarkTheme.Back.secondaryColor)
+//                    .background(colorScheme == .light ? Resources.LightTheme.Back.secondaryColor : Resources.DarkTheme.Back.secondaryColor)
                     .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 0))
             //ListHeaderView - Выполнено - 5    Показать
             } header: {
@@ -47,12 +50,24 @@ struct ListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
-    var lastItem: some View {
-        HStack {
-            Text("Новое")
-                .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.TetiaryColor : Resources.DarkTheme.Label.TetiaryColor)
+    var newItemEditor: some View {
+        ZStack(alignment: .leading) {
+            if newItemText.isEmpty {
+                Text("Новое")
+                    .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.TetiaryColor : Resources.DarkTheme.Label.TetiaryColor)
+                    .padding(.leading, 50)
+            }
+            TextEditor(text: $newItemText)
+                .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.blackColor : Resources.DarkTheme.Label.primaryColor)
+                .background(colorScheme == .light ? Resources.LightTheme.Back.primaryColor : Resources.DarkTheme.Back.primaryColor)
+                .onTapGesture {
+                    if newItemText == "Новое" {
+                        newItemText = ""
+                    }
+                }
                 .padding(.leading, 39)
-            Spacer()
         }
     }
+    
+    
 }
