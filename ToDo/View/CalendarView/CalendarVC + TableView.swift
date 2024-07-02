@@ -30,14 +30,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         ])
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.scrollIndicatorInsets == tableView.scrollIndicatorInsets {
-//            let section = sectionForTopCell()
-//            if let section = section {
-//                collectionView.selectItem(at: IndexPath(row: section, section: 0), animated: true, scrollPosition: .left)
-//            }
-//        }
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //(196.5, 424.5) - позиция scrollView у tableView
+        if scrollView.layer.position.x == 196.5 && scrollView.layer.position.y == 424.5 {
+            if let section = sectionForTopCell() {
+                collectionView.selectItem(at: IndexPath(row: section, section: 0), animated: false, scrollPosition: .left)
+            }
+        }
+    }
     
         
     func sectionForTopCell() -> Int? {

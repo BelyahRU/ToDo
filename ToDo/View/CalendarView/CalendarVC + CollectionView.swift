@@ -60,7 +60,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         cell.isSelected = true
         
         DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: true)
+            //animation ?
+            self.tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: false)
         }
     }
     
