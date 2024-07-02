@@ -15,6 +15,10 @@ class CalendarViewController: UIViewController {
     var tableVC: UITableViewController!
     var layout: UICollectionViewFlowLayout!
     var viewModel: CalendarViewModel!
+    var customNavigationBar: CustomNavigationBar!
+    
+    
+    var onItemsChanged: (([TodoItem]) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,11 @@ class CalendarViewController: UIViewController {
         collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
     }
     
+    public func updateUI() {
+        collectionView.reloadData()
+        tableView.reloadData()
+    }
+    
     public func setupViewModel(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
     }
@@ -34,9 +43,23 @@ class CalendarViewController: UIViewController {
     
     private func configure() {
         setupView()
+        setupCustomNavigationBar()
         setupCollectionView()
-//        tableVC = TableViewController(viewModel: viewModel)
         setupTableView()
+    }
+    
+    private func setupCustomNavigationBar() {
+        customNavigationBar = CustomNavigationBar(title: "Мои дела")
+        view.addSubview(customNavigationBar)
+        customNavigationBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            customNavigationBar.widthAnchor.constraint(equalTo: view.widthAnchor),
+            customNavigationBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            customNavigationBar.topAnchor.constraint(equalTo: view.topAnchor),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        customNavigationBar.backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
     }
     
     private func setupView() {
@@ -45,6 +68,13 @@ class CalendarViewController: UIViewController {
         view.backgroundColor = Resources.uikitColors.backGroundColor
     }
     
+}
+//MARK: Action
+extension CalendarViewController {
+    @objc func backPressed() {
+        onItemsChanged?(viewModel.toDosModel)
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 

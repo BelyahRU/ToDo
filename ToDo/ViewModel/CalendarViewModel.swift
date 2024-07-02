@@ -11,7 +11,7 @@ import Foundation
 
 class CalendarViewModel {
     
-    private var toDosModel:[TodoItem] = [] {
+    var toDosModel: [TodoItem] = [] {
         willSet {
             setupDict()
             setupKeys()

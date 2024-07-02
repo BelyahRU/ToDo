@@ -11,18 +11,22 @@ import SwiftUI
 
 struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
     
-    let items: [TodoItem]
+    @Binding var items: [TodoItem]
     
     func makeUIViewController(context: Context) -> CalendarViewController {
-        var vc = CalendarViewController()
-        var viewModel = CalendarViewModel(toDosModel: items)
+        let vc = CalendarViewController()
+        let viewModel = CalendarViewModel(toDosModel: items)
+        vc.onItemsChanged = { updatedItems in
+           items = updatedItems
+       }
         vc.setupViewModel(viewModel: viewModel)
-        vc.navigationItem.title = "Мои дела"
         return vc
     }
 
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
         // Обновление данных во ViewController если требуется
+        uiViewController.setupViewModel(viewModel: CalendarViewModel(toDosModel: items))
+        uiViewController.updateUI()
     }
     
 }

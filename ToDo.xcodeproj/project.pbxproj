@@ -20,6 +20,7 @@
 		1A6651912C34879900E7DC01 /* ToDoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651902C34879900E7DC01 /* ToDoCollectionViewCell.swift */; };
 		1A6651932C3487E600E7DC01 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651922C3487E600E7DC01 /* ToDoTableViewCell.swift */; };
 		1A6651952C34886300E7DC01 /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651942C34886300E7DC01 /* UIView + Ext.swift */; };
+		1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */; };
 		1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */; };
 		1A80797B2C2F643600E42C5C /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80797A2C2F643600E42C5C /* ToDoItemView.swift */; };
 		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
@@ -72,6 +73,7 @@
 		1A6651902C34879900E7DC01 /* ToDoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A6651922C3487E600E7DC01 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		1A6651942C34886300E7DC01 /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
+		1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFilter.swift; sourceTree = "<group>"; };
 		1A80797A2C2F643600E42C5C /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
 		1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModalView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				1A6651872C3486CC00E7DC01 /* CalendarViewController.swift */,
 				1A66518B2C34871C00E7DC01 /* CalendarVC + TableView.swift */,
 				1A66518D2C34874200E7DC01 /* CalendarVC + CollectionView.swift */,
+				1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A9FBBC42C20D21C0026F420 /* ContentView.swift in Sources */,
+				1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */,
 				1A9FBBF92C24C0B50026F420 /* FileManager + Ext.swift in Sources */,
 				1A5C4FE12C2FBF8B0022D15B /* NewToDoItemView.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,

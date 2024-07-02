@@ -15,44 +15,56 @@ struct ContentView: View {
     @State private var buttonTitle = "Скрыть"
     
     var body: some View {
-//        content
-        CalendarViewControllerRepresentable(items: viewModel.todosArray)
-    }
-    
-    var content: some View {
-        ZStack {
-            NavigationSplitView {
+            NavigationView {
+                ZStack {
+                    NavigationSplitView {
+                        ListView(viewModel: viewModel, editingTodoItem: $editingTodoItem, isShowingModal: $isShowingModal, buttonTitle: $buttonTitle)
+                            .navigationTitle("Мои дела")
+                            .background(colorScheme == .light
+                                ? Resources.LightTheme.Back.primaryColor
+                                : Resources.DarkTheme.Back.primaryColor
+                            )
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    NavigationLink(destination: CalendarViewControllerRepresentable(items: $viewModel.todosArray)
+                                        .navigationBarHidden(true)
+                                            .background(colorScheme == .light
+                                                ? Resources.LightTheme.Back.primaryColor
+                                                : Resources.DarkTheme.Back.primaryColor
+                                            )
+                                        ) {
+                                                calendarButton
+                                        }
                 
-                ListView(viewModel: viewModel, editingTodoItem: $editingTodoItem, isShowingModal: $isShowingModal, buttonTitle: $buttonTitle)
-                    .navigationTitle("Мои дела")
+                                }
+        
+                            }
+                    } detail: {
+                        EmptyView()
+                    }
                     .background(colorScheme == .light
                         ? Resources.LightTheme.Back.primaryColor
-                        :   Resources.DarkTheme.Back.primaryColor
+                        : Resources.DarkTheme.Back.primaryColor
                     )
-            
-            } detail: {
-                
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    VStack {
+                        Spacer()
+                        addButton
+                            .padding(.bottom, 54)
+                    }
+                }
+                .environmentObject(viewModel)
+                .background(colorScheme == .light
+                    ? Resources.LightTheme.Back.primaryColor
+                    : Resources.DarkTheme.Back.primaryColor
+                )
             }
-            .background(colorScheme == .light
-                ? Resources.LightTheme.Back.primaryColor
-                :   Resources.DarkTheme.Back.primaryColor
-            )
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            VStack {
-                Spacer()
-                addButton
-                    .padding(.bottom, 54)
-            }
-            
         }
-        .environmentObject(viewModel)
-        .background(colorScheme == .light
-            ? Resources.LightTheme.Back.primaryColor
-            :   Resources.DarkTheme.Back.primaryColor
-        )
-    }
     
+    var calendarButton: some View {
+        Image(systemName: "calendar")
+    }
     
     var addButton: some View {
         Button {
