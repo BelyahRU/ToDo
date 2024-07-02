@@ -15,6 +15,11 @@ struct ContentView: View {
     @State private var buttonTitle = "Скрыть"
     
     var body: some View {
+//        content
+        CalendarViewControllerRepresentable(items: viewModel.todosArray)
+    }
+    
+    var content: some View {
         ZStack {
             NavigationSplitView {
                 
