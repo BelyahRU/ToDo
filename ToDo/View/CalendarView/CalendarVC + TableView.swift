@@ -12,7 +12,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
     
     
     func setupTableView() {
-        tableView = UITableView()
+        tableView = UITableView(frame: CGRect(), style: .insetGrouped)
         tableView.backgroundColor = Resources.uikitColors.backGroundColor
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,6 +39,32 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let doneAction = UIContextualAction(style: .normal, title:  "Выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let deadline = self.viewModel.keysArray[indexPath.section]
+            self.viewModel.dict[deadline]![indexPath.row].isTaskDone = true
+            tableView.reloadData()
+            success(true)
+        })
+        doneAction.backgroundColor = .green
+        
+        return UISwipeActionsConfiguration(actions: [doneAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let doneAction = UIContextualAction(style: .normal, title:  "Не выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let deadline = self.viewModel.keysArray[indexPath.section]
+            self.viewModel.dict[deadline]![indexPath.row].isTaskDone = false
+            tableView.reloadData()
+            success(true)
+        })
+        doneAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [doneAction])
+    }
+    
         
     func sectionForTopCell() -> Int? {
         if let topIndexPath = tableView.indexPathsForVisibleRows?.first {
@@ -48,7 +74,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36
+        return 20
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,7 +98,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         
         let deadline = viewModel.keysArray[indexPath.section]
-        cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text)
+        print(viewModel.dict[deadline]![indexPath.row].text,  viewModel.dict[deadline]![indexPath.row].isTaskDone)
+        cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text, isDone: viewModel.dict[deadline]![indexPath.row].isTaskDone)
         return cell
     }
 }

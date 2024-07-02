@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class CalendarViewModel {
     
     var toDosModel: [TodoItem] = [] {
@@ -40,7 +38,7 @@ class CalendarViewModel {
                 keysArray.append(i.getDayMonthFormatted())
             }
         }
-        keysArray.append("Другие")
+        keysArray.append("Другое")
     }
     
     public func setupDict() {
@@ -53,10 +51,10 @@ class CalendarViewModel {
                 }
                 tempDict[deadline]?.append(item)
             } else {
-                if tempDict["Другие"] == nil {
-                    tempDict["Другие"] = []
+                if tempDict["Другое"] == nil {
+                    tempDict["Другое"] = []
                 }
-                tempDict["Другие"]?.append(item)
+                tempDict["Другое"]?.append(item)
             }
         }
         self.dict = tempDict

@@ -17,7 +17,6 @@ class CalendarViewController: UIViewController {
     var viewModel: CalendarViewModel!
     var customNavigationBar: CustomNavigationBar!
     
-    
     var onItemsChanged: (([TodoItem]) -> Void)?
 
     override func viewDidLoad() {
