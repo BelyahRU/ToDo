@@ -81,7 +81,7 @@ struct ContentView: View {
                 viewModel.addToDo(new: newItem)
             }
         }) {
-            ToDoModalView(todoItem: $editingTodoItem)
+            ToDoModalView(todoItem: $editingTodoItem, currentFramework: .swiftUI)
         }
     }
     

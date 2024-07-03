@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
@@ -39,6 +40,24 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let deadline = viewModel.keysArray[indexPath.section]
+        let currentTodoItem = viewModel.dict[deadline]![indexPath.row]
+        
+        let todoItemBinding = Binding<TodoItem?>(get: {
+                return currentTodoItem
+            }, set: { newValue in
+                guard let newValue = newValue else { return }
+                
+                self.viewModel.updateValue(by: currentTodoItem.id, item: newValue)
+                self.reloadTableView()
+                
+            })
+        let swiftUIView = UIHostingController(rootView: ToDoModalView(todoItem: todoItemBinding, currentFramework: .UIkit))
+        self.present(swiftUIView, animated: true)
+        
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let doneAction = UIContextualAction(style: .normal, title:  "Выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
@@ -63,6 +82,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         doneAction.backgroundColor = .red
         
         return UISwipeActionsConfiguration(actions: [doneAction])
+    }
+    
+    func reloadTableView() {
+        print(viewModel.keysArray)
+        self.tableView.reloadData()
+        self.collectionView.reloadData()
     }
     
         
@@ -98,7 +123,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         
         let deadline = viewModel.keysArray[indexPath.section]
-        print(viewModel.dict[deadline]![indexPath.row].text,  viewModel.dict[deadline]![indexPath.row].isTaskDone)
         cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text, isDone: viewModel.dict[deadline]![indexPath.row].isTaskDone)
         return cell
     }

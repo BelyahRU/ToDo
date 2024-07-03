@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
-class CalendarViewModel {
+class CalendarViewModel: ObservableObject {
     
-    var toDosModel: [TodoItem] = [] {
+    @Published var toDosModel: [TodoItem] = [] {
         willSet {
             setupDict()
             setupKeys()
@@ -58,5 +59,21 @@ class CalendarViewModel {
             }
         }
         self.dict = tempDict
+    }
+    
+    public func updateValue(by id: String, item: TodoItem) {
+        print(keysArray)
+        guard let index = toDosModel.firstIndex(where: {$0.id == item.id}) else {
+            print("Updating error. Index not found")
+            return
+        }
+        let removedValue = toDosModel.remove(at: index)
+        toDosModel.append(item)
+        setupDict()
+        setupKeys()
+        print(keysArray)
+        print(removedValue)
+        print()
+        print(dict[item.deadline!.getDayMonthFormatted()])
     }
 }

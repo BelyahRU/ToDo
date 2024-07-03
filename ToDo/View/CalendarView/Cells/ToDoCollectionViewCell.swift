@@ -73,7 +73,6 @@ extension ToDoCollectionViewCell {
         // Разбиваем текст на слова и соединяем их с символом новой строки
         let words = text.split(separator: " ")
         let newText = words.joined(separator: "\n\n")
-        print(newText)
         self.textLabel.text = newText
     }
 }

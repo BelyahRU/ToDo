@@ -85,7 +85,7 @@ struct TodoItemView: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, 8)
             .sheet(isPresented: $isShowingModal) {
-                ToDoModalView(todoItem: Binding($todoItem))
+                ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
             }
     }
 

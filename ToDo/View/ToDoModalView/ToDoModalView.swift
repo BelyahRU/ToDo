@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum CurrentFramework {
+    case swiftUI
+    case UIkit
+}
+
 struct ToDoModalView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var todoItem: TodoItem?
+    var currentFramework: CurrentFramework
     @EnvironmentObject var viewModel: MainViewModel
     
     @State private var text: String = "Что надо сделать?"
@@ -98,13 +104,17 @@ struct ToDoModalView: View {
             creationDate: creationDate,
             modifiedDate: Date()
         )
-
-        if let _ = todoItem {
-            viewModel.updateTodoItem(updatedTodoItem)
-        } else {
-            viewModel.addToDo(new: updatedTodoItem)
-        }
-
+        
+        todoItem = updatedTodoItem
+        
+        if currentFramework == .swiftUI {
+            if let _ = todoItem {
+                viewModel.updateTodoItem(updatedTodoItem)
+            } else {
+                viewModel.addToDo(new: updatedTodoItem)
+            }
+            
+        } 
         self.presentationMode.wrappedValue.dismiss()
     }
 
@@ -129,6 +139,6 @@ struct ToDoModalView: View {
 struct AddToDoModalView_Previews: PreviewProvider {
     @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
     static var previews: some View {
-        ToDoModalView(todoItem: $examleToDoItem)
+        ToDoModalView(todoItem: $examleToDoItem, currentFramework: .swiftUI)
     }
 }
