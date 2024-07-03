@@ -11,6 +11,7 @@ import SwiftUI
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
+
     
     func setupTableView() {
         tableView = UITableView(frame: CGRect(), style: .insetGrouped)
@@ -48,15 +49,19 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
                 return currentTodoItem
             }, set: { newValue in
                 guard let newValue = newValue else { return }
-                
-                self.viewModel.updateValue(by: currentTodoItem.id, item: newValue)
+                self.mainViewModel.updateTodoItem(newValue)
                 self.reloadTableView()
-                
             })
-        let swiftUIView = UIHostingController(rootView: ToDoModalView(todoItem: todoItemBinding, currentFramework: .UIkit))
-        self.present(swiftUIView, animated: true)
         
+        // Create the SwiftUI view with the binding and environmentObject
+        let swiftUIView = ToDoModalView(todoItem: todoItemBinding, currentFramework: .UIkit)
+            .environmentObject(mainViewModel)
+        
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        self.present(hostingController, animated: true, completion: nil)
     }
+
+
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let doneAction = UIContextualAction(style: .normal, title:  "Выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in

@@ -12,6 +12,7 @@ import SwiftUI
 struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
     
     @Binding var items: [TodoItem]
+    @EnvironmentObject var mainViewModel: MainViewModel
     
     func makeUIViewController(context: Context) -> CalendarViewController {
         let vc = CalendarViewController()
@@ -20,6 +21,7 @@ struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
            items = updatedItems
        }
         vc.setupViewModel(viewModel: viewModel)
+        vc.mainViewModel = mainViewModel
         return vc
     }
 

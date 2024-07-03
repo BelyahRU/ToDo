@@ -15,10 +15,13 @@ struct ContentView: View {
     @State private var buttonTitle = "Скрыть"
     
     var body: some View {
+        
             NavigationView {
+                
                 ZStack {
                     NavigationSplitView {
                         ListView(viewModel: viewModel, editingTodoItem: $editingTodoItem, isShowingModal: $isShowingModal, buttonTitle: $buttonTitle)
+                            .environmentObject(viewModel)
                             .navigationTitle("Мои дела")
                             .background(colorScheme == .light
                                 ? Resources.LightTheme.Back.primaryColor
@@ -27,6 +30,7 @@ struct ContentView: View {
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     NavigationLink(destination: CalendarViewControllerRepresentable(items: $viewModel.todosArray)
+                                        .environmentObject(viewModel)
                                         .navigationBarHidden(true)
                                             .background(colorScheme == .light
                                                 ? Resources.LightTheme.Back.primaryColor
@@ -54,7 +58,6 @@ struct ContentView: View {
                             .padding(.bottom, 54)
                     }
                 }
-                .environmentObject(viewModel)
                 .background(colorScheme == .light
                     ? Resources.LightTheme.Back.primaryColor
                     : Resources.DarkTheme.Back.primaryColor

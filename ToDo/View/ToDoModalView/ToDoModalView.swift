@@ -105,7 +105,6 @@ struct ToDoModalView: View {
             modifiedDate: Date()
         )
         
-        todoItem = updatedTodoItem
         
         if currentFramework == .swiftUI {
             if let _ = todoItem {
@@ -113,8 +112,9 @@ struct ToDoModalView: View {
             } else {
                 viewModel.addToDo(new: updatedTodoItem)
             }
-            
-        } 
+        }
+        
+        todoItem = updatedTodoItem
         self.presentationMode.wrappedValue.dismiss()
     }
 
@@ -138,7 +138,9 @@ struct ToDoModalView: View {
 
 struct AddToDoModalView_Previews: PreviewProvider {
     @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+
     static var previews: some View {
         ToDoModalView(todoItem: $examleToDoItem, currentFramework: .swiftUI)
     }
 }
+

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class CalendarViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class CalendarViewController: UIViewController {
     var layout: UICollectionViewFlowLayout!
     var viewModel: CalendarViewModel!
     var customNavigationBar: CustomNavigationBar!
+    var mainViewModel: MainViewModel!
     
     var onItemsChanged: (([TodoItem]) -> Void)?
 
