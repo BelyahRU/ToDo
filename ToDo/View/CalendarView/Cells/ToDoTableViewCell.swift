@@ -14,6 +14,7 @@ class ToDoTableViewCell: UITableViewCell {
     var noteLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 3
         return label
     }()
     
@@ -39,6 +40,7 @@ class ToDoTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         configure()
     }
     

@@ -24,6 +24,8 @@
 		1A66519C2C358E5F00E7DC01 /* CollectionView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66519B2C358E5F00E7DC01 /* CollectionView + Ext.swift */; };
 		1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66519E2C3641CD00E7DC01 /* Category.swift */; };
 		1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */; };
+		1A6651A52C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A42C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift */; };
+		1A6651A72C36664800E7DC01 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A62C36664800E7DC01 /* SettingsView.swift */; };
 		1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */; };
 		1A80797B2C2F643600E42C5C /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80797A2C2F643600E42C5C /* ToDoItemView.swift */; };
 		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
@@ -80,6 +82,8 @@
 		1A66519B2C358E5F00E7DC01 /* CollectionView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + Ext.swift"; sourceTree = "<group>"; };
 		1A66519E2C3641CD00E7DC01 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1A6651A42C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		1A6651A62C36664800E7DC01 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFilter.swift; sourceTree = "<group>"; };
 		1A80797A2C2F643600E42C5C /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
 		1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModalView.swift; sourceTree = "<group>"; };
@@ -148,7 +152,7 @@
 			children = (
 				1A66519A2C34C3D700E7DC01 /* Subviews */,
 				1A66518F2C34878400E7DC01 /* Cells */,
-				1A6651842C34864800E7DC01 /* Representative */,
+				1A6651842C34864800E7DC01 /* Representable */,
 				1A6651872C3486CC00E7DC01 /* CalendarViewController.swift */,
 				1A66518B2C34871C00E7DC01 /* CalendarVC + TableView.swift */,
 				1A66518D2C34874200E7DC01 /* CalendarVC + CollectionView.swift */,
@@ -156,12 +160,12 @@
 			path = CalendarView;
 			sourceTree = "<group>";
 		};
-		1A6651842C34864800E7DC01 /* Representative */ = {
+		1A6651842C34864800E7DC01 /* Representable */ = {
 			isa = PBXGroup;
 			children = (
 				1A6651852C34866E00E7DC01 /* CalendarViewControllerRepresentable.swift */,
 			);
-			path = Representative;
+			path = Representable;
 			sourceTree = "<group>";
 		};
 		1A66518F2C34878400E7DC01 /* Cells */ = {
@@ -192,9 +196,19 @@
 		1A6651A02C365D7900E7DC01 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				1A6651A32C365FAB00E7DC01 /* Representable */,
 				1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */,
+				1A6651A62C36664800E7DC01 /* SettingsView.swift */,
 			);
 			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		1A6651A32C365FAB00E7DC01 /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				1A6651A42C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift */,
+			);
+			path = Representable;
 			sourceTree = "<group>";
 		};
 		1A9223412C2616E3001B3E72 /* Help */ = {
@@ -430,12 +444,14 @@
 				1A9FBBF92C24C0B50026F420 /* FileManager + Ext.swift in Sources */,
 				1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */,
 				1A5C4FE12C2FBF8B0022D15B /* NewToDoItemView.swift in Sources */,
+				1A6651A72C36664800E7DC01 /* SettingsView.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,
 				1A9223462C28E52D001B3E72 /* Resources.swift in Sources */,
 				1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */,
 				1A66518A2C3486F100E7DC01 /* CalendarViewModel.swift in Sources */,
 				1A6651932C3487E600E7DC01 /* ToDoTableViewCell.swift in Sources */,
 				1A6651862C34866E00E7DC01 /* CalendarViewControllerRepresentable.swift in Sources */,
+				1A6651A52C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift in Sources */,
 				1A9FBBD52C20D33B0026F420 /* TodoItem + JSON parsing.swift in Sources */,
 				1A66518C2C34871C00E7DC01 /* CalendarVC + TableView.swift in Sources */,
 				1A93B59E2C2E0AB000C03756 /* Date + Ext.swift in Sources */,

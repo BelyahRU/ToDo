@@ -20,7 +20,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.delegate = self
         tableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.reuseId)
         tableView.sectionHeaderTopPadding = 0
-        
     }
     
     func setupTableViewConstraints() {
@@ -28,7 +27,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: bottomBorderView.bottomAnchor, constant: 2),
+            tableView.topAnchor.constraint(equalTo: bottomBorderView.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -117,9 +116,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return 20
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 55
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.keysArray[section]

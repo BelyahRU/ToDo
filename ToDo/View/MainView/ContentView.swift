@@ -14,6 +14,9 @@ struct ContentView: View {
     @State private var isShowingModal = false
     @State private var buttonTitle = "Скрыть"
     
+    @State private var isSettingsViewPresented = false
+
+    
     var body: some View {
         
             NavigationView {
@@ -29,7 +32,14 @@ struct ContentView: View {
                             )
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
-                                    settingsButton
+                                    NavigationLink(destination: SettingsViewControllerRepresentable().navigationBarHidden(true)
+                                        .background(colorScheme == .light
+                                            ? Resources.LightTheme.Back.primaryColor
+                                            : Resources.DarkTheme.Back.primaryColor
+                                        ), isActive: $isSettingsViewPresented){
+                                        settingsButton
+                                    }
+                                    
                                 }
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     NavigationLink(destination: CalendarViewControllerRepresentable(items: $viewModel.todosArray)
@@ -54,12 +64,14 @@ struct ContentView: View {
                         : Resources.DarkTheme.Back.primaryColor
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    VStack {
-                        Spacer()
-                        addButton
-                            .padding(.bottom, 54)
+                    if !isSettingsViewPresented {
+                        VStack {
+                            Spacer()
+                            addButton
+                                .padding(.bottom, 54)
+                        }
                     }
+
                 }
                 .background(colorScheme == .light
                     ? Resources.LightTheme.Back.primaryColor

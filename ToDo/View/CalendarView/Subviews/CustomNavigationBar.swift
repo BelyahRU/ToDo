@@ -12,7 +12,6 @@ class CustomNavigationBar: UIView {
     public var navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.text = "Мои дела"
         label.textAlignment = .center
         return label
     }()
@@ -25,6 +24,7 @@ class CustomNavigationBar: UIView {
     
     init(title: String) {
         super.init(frame: CGRect())
+        self.navigationTitleLabel.text = title
         configure()
     }
     
