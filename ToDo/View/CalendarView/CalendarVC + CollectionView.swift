@@ -17,11 +17,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(ToDoCollectionViewCell.self, forCellWithReuseIdentifier: ToDoCollectionViewCell.reuseId)
-        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
         collectionView.backgroundColor = .clear
-        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1.5)
-        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
-//
+        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
+        
         
     }
     

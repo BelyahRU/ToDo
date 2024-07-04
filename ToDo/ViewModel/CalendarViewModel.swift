@@ -71,9 +71,5 @@ class CalendarViewModel: ObservableObject {
         toDosModel.append(item)
         setupDict()
         setupKeys()
-        print(keysArray)
-        print(removedValue)
-        print()
-        print(dict[item.deadline!.getDayMonthFormatted()])
     }
 }

@@ -22,16 +22,20 @@ class SettingsView: UIView {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.makeBorders(width: 1)
+        tf.makeRadius(radius: 8)
         return tf
     }()
     
+    let chooseColorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Выберите цвет"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let colorButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .blue
-        button.makeBorders(width: 1)
-        button.makeRadius(radius: 10)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Выберите цвет", for: .normal)
+        let button = UIButton()
+        button.setImage(UIImage(named: "pickerButton"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -67,10 +71,9 @@ class SettingsView: UIView {
     
     var saveButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
         button.makeBorders(width: 1)
-        button.makeRadius(radius: 10)
-        button.setTitleColor(.white, for: .normal)
+        button.makeRadius(radius: 13)
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Сохранить", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -78,7 +81,7 @@ class SettingsView: UIView {
     
     var statusLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ошибка сохранения, не все поля заполнены"
+        label.text = ""
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -103,6 +106,7 @@ class SettingsView: UIView {
     private func setupSubviews() {
         customNavigationBar.translatesAutoresizingMaskIntoConstraints = false
         addSubview(customNavigationBar)
+        addSubview(chooseColorLabel)
         addSubview(nameLabel)
         addSubview(nameTextField)
         addSubview(colorButton)
@@ -115,38 +119,48 @@ class SettingsView: UIView {
         colorSV.addArrangedSubview(choosenColorLabel)
         colorSV.addArrangedSubview(colorCircle)
     }
-    
+
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            customNavigationBar.widthAnchor.constraint(equalTo: self.widthAnchor),
-            customNavigationBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            customNavigationBar.topAnchor.constraint(equalTo: self.topAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 30),
-            
-            nameLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 15),
-            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            
-            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
-            nameTextField.widthAnchor.constraint(equalTo: nameLabel.widthAnchor),
-            nameTextField.heightAnchor.constraint(equalTo: nameLabel.heightAnchor),
-            nameTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            
-            colorButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 15),
-            colorButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            
-            colorSV.topAnchor.constraint(equalTo: colorButton.bottomAnchor, constant: 15),
-            colorSV.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            colorSV.heightAnchor.constraint(equalToConstant: 20),
-            
-            colorCircle.widthAnchor.constraint(equalToConstant: 20),
-            colorCircle.heightAnchor.constraint(equalToConstant: 20),
-            
-            saveButton.topAnchor.constraint(equalTo: colorSV.bottomAnchor, constant: 15),
-            saveButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            
-            statusLabel.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 15),
-            statusLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-        ])
-        
+    NSLayoutConstraint.activate([
+        customNavigationBar.widthAnchor.constraint(equalTo: self.widthAnchor),
+        customNavigationBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        customNavigationBar.topAnchor.constraint(equalTo: self.topAnchor),
+        customNavigationBar.heightAnchor.constraint(equalToConstant: 30),
+
+        nameLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 15),
+        nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+
+        nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
+        nameTextField.widthAnchor.constraint(equalTo: nameLabel.widthAnchor),
+        nameTextField.heightAnchor.constraint(equalTo: nameLabel.heightAnchor),
+        nameTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+
+        chooseColorLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 30),
+        chooseColorLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+
+        colorButton.centerYAnchor.constraint(equalTo: chooseColorLabel.centerYAnchor),
+        colorButton.leadingAnchor.constraint(equalTo: chooseColorLabel.trailingAnchor, constant: 16),
+        colorButton.widthAnchor.constraint(equalToConstant: 30),
+        colorButton.heightAnchor.constraint(equalToConstant: 30),
+
+        colorSV.topAnchor.constraint(equalTo: chooseColorLabel.bottomAnchor, constant: 30),
+        colorSV.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+//        colorSV.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+        colorSV.heightAnchor.constraint(equalToConstant: 20),
+
+        colorCircle.widthAnchor.constraint(equalToConstant: 20),
+        colorCircle.heightAnchor.constraint(equalToConstant: 20),
+
+        saveButton.topAnchor.constraint(equalTo: colorSV.bottomAnchor, constant: 30),
+        saveButton.widthAnchor.constraint(equalToConstant: 162),
+        saveButton.heightAnchor.constraint(equalToConstant: 34),
+        saveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+        statusLabel.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 15),
+        statusLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+        statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+    ])
     }
 }
+
+

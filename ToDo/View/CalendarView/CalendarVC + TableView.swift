@@ -37,15 +37,18 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
     //сролл коллекшн вью при скролле тейбл вью
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //(196.5, 439.5) - позиция scrollView у tableView
-        if scrollView.layer.position.y > 100 {
-            if let section = sectionForTopCell() {
-                collectionView.selectItem(at: IndexPath(row: section, section: 0), animated: false, scrollPosition: .left)
+        if viewModel.dict.count > 1 {
+            if scrollView.layer.position.y > 100 {
+                if let section = sectionForTopCell() {
+                    collectionView.selectItem(at: IndexPath(row: section, section: 0), animated: false, scrollPosition: .left)
+                }
             }
         }
     }
     
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let deadline = viewModel.keysArray[indexPath.section]
         let currentTodoItem = viewModel.dict[deadline]![indexPath.row]
         
@@ -116,9 +119,9 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return 20
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 55
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.keysArray[section]
@@ -136,8 +139,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         
-        let deadline = viewModel.keysArray[indexPath.section]
-        cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text, isDone: viewModel.dict[deadline]![indexPath.row].isTaskDone, category: viewModel.dict[deadline]![indexPath.row].category)
+        let deadline = viewModel.keysArray[indexPath.section] 
+        guard let item = viewModel.dict[deadline]?[indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.setupCell(text: item.text, isDone: item.isTaskDone, category: item.category)
         return cell
     }
 }

@@ -59,7 +59,7 @@ class ToDoTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -25),
             noteLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             noteLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
   

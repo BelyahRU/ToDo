@@ -137,6 +137,11 @@ struct MainListView: View {
             Text("Категория заметки:")
                 .font(.system(size: 17))
             Spacer()
+            Circle()
+                .fill(category.categoryColor)
+                .frame(height: 20)
+                .frame(width: 20)
+            Spacer()
             Menu {
                 ForEach(categories, id: \.self) { selectedCategory in
                     Button(action: {
@@ -145,9 +150,7 @@ struct MainListView: View {
                         HStack {
                             Text(selectedCategory.categoryName)
                             Spacer()
-                            Circle()
-                                .fill(.red)
-                                .frame(width: 10, height: 10)
+
 //                                .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
                         }
                     }

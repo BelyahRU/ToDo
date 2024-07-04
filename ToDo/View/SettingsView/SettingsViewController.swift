@@ -63,10 +63,14 @@ extension SettingsViewController {
         if currentText != "" && currentColor != nil{
             Categories.shared.createCategory(name: currentText, color: Color(currentColor!))
             self.settingsView.statusLabel.isHidden = false
-            self.settingsView.statusLabel.text = "OK"
+            self.settingsView.statusLabel.text = "Новая категория успешно добавлена"
+            self.settingsView.colorCircle.backgroundColor = .clear
+            self.settingsView.nameTextField.text = ""
+            self.settingsView.statusLabel.textColor = .green
         } else {
             self.settingsView.statusLabel.isHidden = false
-            self.settingsView.statusLabel.text = "NOT OK"
+            self.settingsView.statusLabel.text = "Ошибка сохранения, не все поля заполнены"
+            self.settingsView.statusLabel.textColor = .red
         }
     }
     
