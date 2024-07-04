@@ -77,6 +77,7 @@ struct ContentView: View {
             Image(systemName: "plus.circle.fill")
                 .resizable()
                 .frame(width: 44, height: 44)
+                .shadow(radius: 5)
         }
         .padding(.bottom, 15)
         .sheet(isPresented: $isShowingModal, onDismiss: {

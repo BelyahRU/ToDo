@@ -18,18 +18,23 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         collectionView.dataSource = self
         collectionView.register(ToDoCollectionViewCell.self, forCellWithReuseIdentifier: ToDoCollectionViewCell.reuseId)
         collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
+        collectionView.backgroundColor = .clear
+        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1.5)
+        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
+//
+        
+    }
+    
+    func setupCollectionViewConstratints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 90)
+            collectionView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 90),
+            
         ])
-        collectionView.backgroundColor = .clear
-        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1.5)
-        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
-        print("ok")
     }
     
     func setupFlowLayout() -> UICollectionViewFlowLayout {

@@ -25,9 +25,9 @@ class CalendarViewModel: ObservableObject {
     
     public var dict: [String: [TodoItem]] = [:]
     
-    public var keysArray: [String] = []
+    public private(set) var keysArray: [String] = []
     
-    public func setupKeys() {
+    private func setupKeys() {
         keysArray = []
         var deadlines = toDosModel.filter({$0.deadline != nil}).map { $0.deadline! }
         deadlines = deadlines.sorted { item1, item2 in
@@ -42,7 +42,7 @@ class CalendarViewModel: ObservableObject {
         keysArray.append("Другое")
     }
     
-    public func setupDict() {
+    private func setupDict() {
         var tempDict: [String: [TodoItem]] = [:]
         
         for item in toDosModel {

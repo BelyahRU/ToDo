@@ -21,17 +21,21 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.reuseId)
         tableView.sectionHeaderTopPadding = 0
         
+    }
+    
+    func setupTableViewConstraints() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 2),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
+    //сролл коллекшн вью при скролле тейбл вью
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //(196.5, 439.5) - позиция scrollView у tableView
         if scrollView.layer.position.y > 100 {
@@ -41,6 +45,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let deadline = viewModel.keysArray[indexPath.section]
         let currentTodoItem = viewModel.dict[deadline]![indexPath.row]
@@ -49,11 +54,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
                 return currentTodoItem
             }, set: { newValue in
                 guard let newValue = newValue else { return }
-                self.mainViewModel.updateTodoItem(newValue)
-                self.reloadTableView()
+                self.mainViewModel.updateTodoItem(newValue) //обновляем значение
+                self.tableView.reloadData()
+                self.collectionView.reloadData()
             })
         
-        // Create the SwiftUI view with the binding and environmentObject
         let swiftUIView = ToDoModalView(todoItem: todoItemBinding, currentFramework: .UIkit)
             .environmentObject(mainViewModel)
         
@@ -62,11 +67,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
     }
 
 
-    
+    //свайп влево
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let doneAction = UIContextualAction(style: .normal, title:  "Выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
             let deadline = self.viewModel.keysArray[indexPath.section]
+            
+            var item = self.viewModel.dict[deadline]![indexPath.row]
+            item.isTaskDone = true
+            self.mainViewModel.updateTodoItem(item)
+            
             self.viewModel.dict[deadline]![indexPath.row].isTaskDone = true
             tableView.reloadData()
             success(true)
@@ -76,23 +86,23 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
     
+    //свайп вправо
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let doneAction = UIContextualAction(style: .normal, title:  "Не выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
             let deadline = self.viewModel.keysArray[indexPath.section]
+            
+            var item = self.viewModel.dict[deadline]![indexPath.row]
+            item.isTaskDone = false
+            self.mainViewModel.updateTodoItem(item)
             self.viewModel.dict[deadline]![indexPath.row].isTaskDone = false
+            
             tableView.reloadData()
             success(true)
         })
         doneAction.backgroundColor = .red
         
         return UISwipeActionsConfiguration(actions: [doneAction])
-    }
-    
-    func reloadTableView() {
-        print(viewModel.keysArray)
-        self.tableView.reloadData()
-        self.collectionView.reloadData()
     }
     
         

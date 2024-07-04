@@ -20,7 +20,7 @@ class CalendarViewController: UIViewController {
     var mainViewModel: MainViewModel!
     
     var onItemsChanged: (([TodoItem]) -> Void)?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -28,8 +28,8 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1)
-        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
+//        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1)
+//        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
     }
     
     public func updateUI() {
@@ -46,7 +46,15 @@ class CalendarViewController: UIViewController {
         setupView()
         setupCustomNavigationBar()
         setupCollectionView()
+        setupCollectionViewConstratints()
         setupTableView()
+        setupTableViewConstraints()
+    }
+    
+    private func setupView() {
+        self.navigationController?.navigationBar.barTintColor = UIColor.green
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        view.backgroundColor = Resources.uikitColors.backGroundColor
     }
     
     private func setupCustomNavigationBar() {
@@ -61,12 +69,6 @@ class CalendarViewController: UIViewController {
         ])
         
         customNavigationBar.backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
-    }
-    
-    private func setupView() {
-        self.navigationController?.navigationBar.barTintColor = UIColor.green
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        view.backgroundColor = Resources.uikitColors.backGroundColor
     }
     
 }
