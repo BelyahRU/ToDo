@@ -16,6 +16,7 @@ extension TodoItem {
         case isTaskDone
         case creationDate
         case modifiedDate
+        case category
     }
     
     var json: Any {
@@ -39,6 +40,8 @@ extension TodoItem {
         if let modifiedDate = modifiedDate {
             dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate)
         }
+        
+        dictionary[ToDoDictionaryKeys.category.rawValue] = category
         return dictionary
     }
     
@@ -85,6 +88,10 @@ extension TodoItem {
             return nil
         }
         
+        
+        let categoryStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "Другое"
+        let category = Categories.shared.getCategory(by: categoryStr)
+        
         let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
         
         let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
@@ -96,7 +103,8 @@ extension TodoItem {
                             deadline: deadline,
                             isTaskDone: isTaskDone,
                             creationDate: creationDate,
-                            modifiedDate: modifiedDate)
+                            modifiedDate: modifiedDate,
+                            category: category)
 
         return item
     }

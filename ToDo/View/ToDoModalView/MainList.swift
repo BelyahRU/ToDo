@@ -17,9 +17,11 @@ struct MainListView: View {
     @Binding var switchIsOn: Bool
     @Binding var datePickerIsOn: Bool
     @Binding var todoItem: TodoItem?
+    @Binding var category: Category
     @EnvironmentObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode
-    
+
+    let categories = Categories.shared.getAllCategories()
 
     var body: some View {
         List {
@@ -28,8 +30,8 @@ struct MainListView: View {
             }
             Section {
                 importanceHStack
+                categoryHStack
                 deadlineHStack
-                
                 if datePickerIsOn {
                     datePicker
                 }
@@ -40,7 +42,6 @@ struct MainListView: View {
         }
         .listSectionSpacing(16)
         .listStyle(.insetGrouped)
-        .listRowBackground(Resources.LightTheme.Back.primaryColor)
         .frame(minHeight: 112.5)
     }
 
@@ -49,26 +50,24 @@ struct MainListView: View {
             .foregroundStyle(self.text == "Что надо сделать?" ?
                                 (colorScheme == .light ?
                                  Resources.LightTheme.Label.TetiaryColor
-                                 :Resources.DarkTheme.Label.TetiaryColor)
-                             :(colorScheme == .light ?
-                               Resources.LightTheme.Label.blackColor
-                               :Resources.DarkTheme.Label.primaryColor))
-            .frame(minHeight: 120)
-            
-            .cornerRadius(16)
+                                 : Resources.DarkTheme.Label.TetiaryColor)
+                             : (colorScheme == .light ?
+                                Resources.LightTheme.Label.blackColor
+                                : Resources.DarkTheme.Label.primaryColor))
+            .frame(minHeight: 80)
+            .cornerRadius(8)
             .onTapGesture {
                 if self.text == "Что надо сделать?" {
                     self.text = ""
                 }
             }
     }
-    
+
     var importanceHStack: some View {
         HStack {
             Text("Важность")
                 .font(.system(size: 17))
             Spacer()
-            
             Picker("importance", selection: $selectedImportanceIndex) {
                 Image(systemName: "arrow.down").tag(0)
                 Text("нет").tag(1)
@@ -78,6 +77,7 @@ struct MainListView: View {
             .frame(width: 150)
             .accentColor(.red)
         }
+        .padding(.vertical, 4)
     }
 
     var deadlineHStack: some View {
@@ -112,6 +112,7 @@ struct MainListView: View {
                 }
             }
         }
+        .padding(.vertical, 4)
     }
 
     var datePicker: some View {
@@ -131,6 +132,37 @@ struct MainListView: View {
         .padding(.horizontal)
     }
 
+    var categoryHStack: some View {
+        HStack {
+            Text("Категория заметки:")
+                .font(.system(size: 17))
+            Spacer()
+            Menu {
+                ForEach(categories, id: \.self) { selectedCategory in
+                    Button(action: {
+                        category = selectedCategory
+                    }) {
+                        HStack {
+                            Text(selectedCategory.categoryName)
+                            Spacer()
+                            Circle()
+                                .fill(.red)
+                                .frame(width: 10, height: 10)
+//                                .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
+                        }
+                    }
+                }
+            } label: {
+                Label(category.categoryName, systemImage: "chevron.down")
+                    .padding(.horizontal)
+                    .padding(.vertical, 6)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+            }
+        }
+        .padding(.vertical, 4)
+    }
+
     var removeButton: some View {
         Button {
             viewModel.removeItem(item: todoItem)
@@ -138,9 +170,9 @@ struct MainListView: View {
         } label: {
             Text("Удалить")
                 .foregroundColor(Resources.LightTheme.redColor)
-                .frame(maxHeight: 70)
+                .frame(maxHeight: 50)
                 .frame(maxWidth: .infinity)
         }
-        .cornerRadius(16)
+        .cornerRadius(8)
     }
 }

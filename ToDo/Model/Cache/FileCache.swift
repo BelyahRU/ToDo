@@ -15,7 +15,8 @@ final class FileCache {
             deadline: Calendar.current.date(byAdding: .day, value: 1, to: Date()),
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Работа")
         ),
         TodoItem(
             text: "Завершить проект",
@@ -31,7 +32,8 @@ final class FileCache {
             deadline: nil,
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Работа")
         ),
         TodoItem(
             text: "Сделать дз",
@@ -71,7 +73,8 @@ final class FileCache {
             deadline: Calendar.current.date(byAdding: .day, value: 3, to: Date()),
             isTaskDone: true,
             creationDate: Date(),
-            modifiedDate: Date()
+            modifiedDate: Date(),
+            category: Categories.shared.getCategory(by: "Учеба")
         ),
         TodoItem(
             text: "Прочитать журнал",
@@ -79,7 +82,8 @@ final class FileCache {
             deadline: nil,
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Учеба")
         ),
         
         TodoItem(
@@ -88,7 +92,8 @@ final class FileCache {
             deadline: Calendar.current.date(byAdding: .day, value: 1, to: Date()),
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Учеба")
         ),
         TodoItem(
             text: "Завершить проект",
@@ -96,7 +101,8 @@ final class FileCache {
             deadline: Calendar.current.date(byAdding: .day, value: 7, to: Date()),
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Хобби")
         ),
         TodoItem(
             text: "Позвонить маме",
@@ -112,7 +118,8 @@ final class FileCache {
             deadline: Calendar.current.date(byAdding: .day, value: 3, to: Date()),
             isTaskDone: true,
             creationDate: Date(),
-            modifiedDate: Date()
+            modifiedDate: Date(),
+            category: Categories.shared.getCategory(by: "Другое")
         ),
         TodoItem(
             text: "Прочитать книгу",
@@ -160,7 +167,8 @@ final class FileCache {
             deadline: nil,
             isTaskDone: false,
             creationDate: Date(),
-            modifiedDate: nil
+            modifiedDate: nil,
+            category: Categories.shared.getCategory(by: "Хобби")
         ),
         TodoItem(
             text: "Посетить концерт",

@@ -26,13 +26,30 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func setupCollectionViewConstratints() {
+        topBorderView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(topBorderView)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
+        
+        bottomBorderView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bottomBorderView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
+            
+            topBorderView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
+            topBorderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topBorderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topBorderView.heightAnchor.constraint(equalToConstant: 1),
+            
+            collectionView.topAnchor.constraint(equalTo: topBorderView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 90),
+            
+            bottomBorderView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            bottomBorderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomBorderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomBorderView.heightAnchor.constraint(equalToConstant: 2),
             
         ])
     }
@@ -64,10 +81,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.cellForItem(at: indexPath) as? ToDoCollectionViewCell else { return }
         cell.isSelected = true
         
-        DispatchQueue.main.async {
-            //animation ?
-            self.tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: false)
-        }
+        self.tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: false)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

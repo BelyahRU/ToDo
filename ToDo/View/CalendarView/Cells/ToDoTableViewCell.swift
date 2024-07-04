@@ -23,6 +23,19 @@ class ToDoTableViewCell: UITableViewCell {
         view.isHidden = true
         return view
     }()
+    
+    var categoryCircle: UIView = {
+        let view = UIView()
+        let diameter: CGFloat = 10
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = diameter / 2
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.shadowRadius = 2
+        view.isHidden = true
+        return view
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -36,9 +49,11 @@ class ToDoTableViewCell: UITableViewCell {
     private func configure() {
         contentView.addSubview(noteLabel)
         contentView.addSubview(blackLine)
+        contentView.addSubview(categoryCircle)
 
         noteLabel.translatesAutoresizingMaskIntoConstraints = false
         blackLine.translatesAutoresizingMaskIntoConstraints = false
+        categoryCircle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -49,7 +64,13 @@ class ToDoTableViewCell: UITableViewCell {
             blackLine.centerYAnchor.constraint(equalTo: noteLabel.centerYAnchor, constant: 2),
             blackLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             blackLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            blackLine.heightAnchor.constraint(equalToConstant: 1)
+            blackLine.heightAnchor.constraint(equalToConstant: 1),
+            
+            categoryCircle.widthAnchor.constraint(equalToConstant: 10),
+            categoryCircle.heightAnchor.constraint(equalToConstant: 10),
+            categoryCircle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            categoryCircle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+
             
         ])
     }
@@ -58,7 +79,17 @@ class ToDoTableViewCell: UITableViewCell {
 }
 
 extension ToDoTableViewCell {
-    public func setupCell(text: String, isDone: Bool) {
+    public func setupCell(text: String, isDone: Bool, category: Category) {
+        if category.categoryName == "Другое" {
+            categoryCircle.isHidden = true
+        } else {
+            categoryCircle.backgroundColor = UIColor(category.categoryColor)
+            if isDone {
+                categoryCircle.isHidden = true
+            } else {
+                categoryCircle.isHidden = false
+            }
+        }
         if isDone {
             noteLabel.text = text
             noteLabel.textColor = .black.withAlphaComponent(0.4)
@@ -69,5 +100,6 @@ extension ToDoTableViewCell {
             noteLabel.textColor = .black
             blackLine.isHidden = true
         }
+ 
     }
 }

@@ -28,7 +28,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 2),
+            tableView.topAnchor.constraint(equalTo: bottomBorderView.bottomAnchor, constant: 2),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -138,7 +138,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         
         let deadline = viewModel.keysArray[indexPath.section]
-        cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text, isDone: viewModel.dict[deadline]![indexPath.row].isTaskDone)
+        cell.setupCell(text: viewModel.dict[deadline]![indexPath.row].text, isDone: viewModel.dict[deadline]![indexPath.row].isTaskDone, category: viewModel.dict[deadline]![indexPath.row].category)
         return cell
     }
 }

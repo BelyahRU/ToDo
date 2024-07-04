@@ -28,6 +28,7 @@ struct ToDoModalView: View {
     @State private var selectedImportanceIndex = 0
     @State private var switchIsOn: Bool = false
     @State private var datePickerIsOn: Bool = false
+    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .clear)
 
     var body: some View {
         mainNavigationStack
@@ -42,7 +43,8 @@ struct ToDoModalView: View {
                 selectedImportanceIndex: $selectedImportanceIndex,
                 switchIsOn: $switchIsOn,
                 datePickerIsOn: $datePickerIsOn,
-                todoItem: $todoItem
+                todoItem: $todoItem,
+                category: $category
             )
             .padding(.top, -20)
             .navigationTitle("Дело")
@@ -102,7 +104,8 @@ struct ToDoModalView: View {
             deadline: deadline,
             isTaskDone: isTaskDone,
             creationDate: creationDate,
-            modifiedDate: Date()
+            modifiedDate: Date(),
+            category: category
         )
         
         
@@ -130,6 +133,7 @@ struct ToDoModalView: View {
         }
         text = todoItem?.text ?? "Что надо сделать?"
         deadline = todoItem?.deadline ?? nil
+        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .clear)
         if deadline != nil {
             switchIsOn = true
         }

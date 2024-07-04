@@ -29,6 +29,9 @@ struct ContentView: View {
                             )
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
+                                    settingsButton
+                                }
+                                ToolbarItem(placement: .navigationBarTrailing) {
                                     NavigationLink(destination: CalendarViewControllerRepresentable(items: $viewModel.todosArray)
                                         .environmentObject(viewModel)
                                         .navigationBarHidden(true)
@@ -41,7 +44,7 @@ struct ContentView: View {
                                         }
                 
                                 }
-        
+                                
                             }
                     } detail: {
                         EmptyView()
@@ -67,6 +70,12 @@ struct ContentView: View {
     
     var calendarButton: some View {
         Image(systemName: "calendar")
+            .foregroundStyle(.blue)
+    }
+    
+    var settingsButton: some View {
+        Image(systemName: "gearshape")
+            .foregroundStyle(.blue)
     }
     
     var addButton: some View {

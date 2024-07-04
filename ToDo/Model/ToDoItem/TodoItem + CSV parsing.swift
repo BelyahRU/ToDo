@@ -19,6 +19,7 @@ extension TodoItem {
         columns.append(DateHelper.getStringFromDate(date: creationDate)!)
         columns.append(DateHelper.getStringFromDate(date: modifiedDate) ?? "")
         columns.append(DateHelper.getStringFromDate(date: deadline) ?? "")
+        columns.append(category.categoryName)
         return columns.joined(separator: ",")
     }
     
@@ -35,15 +36,18 @@ extension TodoItem {
             let modifiedDate = columns[5].isEmpty ? nil :
             DateHelper.getDateFromString(stringDate: columns[5])
             let deadline = columns[6].isEmpty ? nil : DateHelper.getDateFromString(stringDate: columns[6])
-            let importance = Importance(rawValue: importanceStr) ?? Importance.ordinary
+            let categoryStr = columns[7].isEmpty ? "Другое" : columns[7]
             
+            let importance = Importance(rawValue: importanceStr) ?? Importance.ordinary
+            let category = Categories.shared.getCategory(by: categoryStr)
             return TodoItem(id: id,
                             text: text,
                             importance: importance,
                             deadline: deadline,
                             isTaskDone: isTaskDone,
                             creationDate: creationDate,
-                            modifiedDate: modifiedDate)
+                            modifiedDate: modifiedDate,
+                            category: category)
         } else {
             print("CSV parse error")
             return nil

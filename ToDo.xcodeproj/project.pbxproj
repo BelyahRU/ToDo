@@ -22,6 +22,8 @@
 		1A6651952C34886300E7DC01 /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651942C34886300E7DC01 /* UIView + Ext.swift */; };
 		1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */; };
 		1A66519C2C358E5F00E7DC01 /* CollectionView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66519B2C358E5F00E7DC01 /* CollectionView + Ext.swift */; };
+		1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66519E2C3641CD00E7DC01 /* Category.swift */; };
+		1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */; };
 		1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */; };
 		1A80797B2C2F643600E42C5C /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80797A2C2F643600E42C5C /* ToDoItemView.swift */; };
 		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
@@ -76,6 +78,8 @@
 		1A6651942C34886300E7DC01 /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
 		1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1A66519B2C358E5F00E7DC01 /* CollectionView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView + Ext.swift"; sourceTree = "<group>"; };
+		1A66519E2C3641CD00E7DC01 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFilter.swift; sourceTree = "<group>"; };
 		1A80797A2C2F643600E42C5C /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
 		1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModalView.swift; sourceTree = "<group>"; };
@@ -177,6 +181,22 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		1A66519D2C3641BE00E7DC01 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1A66519E2C3641CD00E7DC01 /* Category.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		1A6651A02C365D7900E7DC01 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		1A9223412C2616E3001B3E72 /* Help */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +217,7 @@
 		1A9223472C2999BC001B3E72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A6651A02C365D7900E7DC01 /* SettingsView */,
 				1A6651832C34863600E7DC01 /* CalendarView */,
 				1A5C4FDB2C2FB3D00022D15B /* ToDoModalView */,
 				1A5C4FD42C2FB3070022D15B /* MainView */,
@@ -255,6 +276,7 @@
 		1A9FBBCF2C20D2240026F420 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A66519D2C3641BE00E7DC01 /* Category */,
 				1A9223442C28E51F001B3E72 /* Resources */,
 				1A9223412C2616E3001B3E72 /* Help */,
 				1A9FBC122C24E1FE0026F420 /* ToDoItem */,
@@ -406,9 +428,11 @@
 				1A9FBBC42C20D21C0026F420 /* ContentView.swift in Sources */,
 				1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */,
 				1A9FBBF92C24C0B50026F420 /* FileManager + Ext.swift in Sources */,
+				1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */,
 				1A5C4FE12C2FBF8B0022D15B /* NewToDoItemView.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,
 				1A9223462C28E52D001B3E72 /* Resources.swift in Sources */,
+				1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */,
 				1A66518A2C3486F100E7DC01 /* CalendarViewModel.swift in Sources */,
 				1A6651932C3487E600E7DC01 /* ToDoTableViewCell.swift in Sources */,
 				1A6651862C34866E00E7DC01 /* CalendarViewControllerRepresentable.swift in Sources */,

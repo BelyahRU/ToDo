@@ -21,15 +21,21 @@ class CalendarViewController: UIViewController {
     
     var onItemsChanged: (([TodoItem]) -> Void)?
     
+    var topBorderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.2)
+        return view
+    }()
+    
+    var bottomBorderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.6)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        collectionView.addTopBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.2), width: 1)
-//        collectionView.addBottomBorderWithColor(color: Resources.uikitColors.cellBorderColor.withAlphaComponent(0.6), width: 2)
     }
     
     public func updateUI() {
