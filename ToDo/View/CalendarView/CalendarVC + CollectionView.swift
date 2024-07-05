@@ -67,12 +67,14 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return layout
     }
     
+    //Выделение убрано
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.deselectItem(at: indexPath, animated: false) as? ToDoCollectionViewCell else { return }
         cell.isSelected = false
         
     }
     
+    //Айтем выделен
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Выделяем выбранную ячейку
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
@@ -83,10 +85,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
     
+    //количество элементов
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.keysArray.count
     }
     
+    //создание ячейки
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Ячейки для задач с дедлайнами

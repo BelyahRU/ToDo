@@ -42,6 +42,7 @@ class ToDoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configure()
+        setupColors()
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +50,7 @@ class ToDoTableViewCell: UITableViewCell {
     }
     
     private func configure() {
+    
         contentView.addSubview(noteLabel)
         contentView.addSubview(blackLine)
         contentView.addSubview(categoryCircle)
@@ -94,14 +96,29 @@ extension ToDoTableViewCell {
         }
         if isDone {
             noteLabel.text = text
-            noteLabel.textColor = .black.withAlphaComponent(0.4)
+            self.setupColorsIsDone()
             blackLine.isHidden = false
         } else {
-//            noteLabel.attributedText = nil
             noteLabel.text = text
-            noteLabel.textColor = .black
+            self.setupColors()
             blackLine.isHidden = true
         }
  
+    }
+    
+    private func setupColors() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            noteLabel.textColor = Resources.uikitColors.foregroundColorDark
+        } else {
+            noteLabel.textColor = .black
+        }
+    }
+    
+    private func setupColorsIsDone() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            noteLabel.textColor = Resources.uikitColors.foregroundColorIsDoneDark
+        } else {
+            noteLabel.textColor = .black.withAlphaComponent(0.4)
+        }
     }
 }

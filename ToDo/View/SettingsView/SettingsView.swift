@@ -73,7 +73,6 @@ class SettingsView: UIView {
         let button = UIButton()
         button.makeBorders(width: 1)
         button.makeRadius(radius: 13)
-        button.setTitleColor(.black, for: .normal)
         button.setTitle("Сохранить", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -101,6 +100,7 @@ class SettingsView: UIView {
         setupSubviews()
         setupStackView()
         setupConstraints()
+        setupButtonTextColor()
     }
     
     private func setupSubviews() {
@@ -113,6 +113,15 @@ class SettingsView: UIView {
         addSubview(colorSV)
         addSubview(saveButton)
         addSubview(statusLabel)
+    }
+    
+    private func setupButtonTextColor() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            saveButton.setTitleColor(.white, for: .normal)
+        } else {
+            saveButton.setTitleColor(.black, for: .normal)
+        }
     }
     
     private func setupStackView() {

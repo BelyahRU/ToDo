@@ -94,6 +94,10 @@ enum Resources {
         static let cellBorderCGColor = UIColor(red: 0.627, green: 0.627, blue: 0.627, alpha: 1.0).cgColor
         
         static let backGroundColor = UIColor(red: 247/255, green: 246/255, blue: 242/255, alpha: 1.0)
+        
+        static let backgroundColorDark = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1.0)
+        static let foregroundColorDark = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        static let foregroundColorIsDoneDark = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
     }
 
 }

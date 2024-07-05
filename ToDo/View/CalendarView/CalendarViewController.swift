@@ -36,7 +36,6 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
     }
     
     public func updateUI() {
@@ -50,18 +49,23 @@ class CalendarViewController: UIViewController {
     
     
     private func configure() {
-        setupView()
         setupCustomNavigationBar()
         setupCollectionView()
         setupCollectionViewConstratints()
         setupTableView()
         setupTableViewConstraints()
+        setupView()
     }
     
     private func setupView() {
-        self.navigationController?.navigationBar.barTintColor = UIColor.green
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        view.backgroundColor = Resources.uikitColors.backGroundColor
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            view.backgroundColor = Resources.uikitColors.backgroundColorDark
+            tableView.backgroundColor = Resources.uikitColors.backgroundColorDark
+        } else {
+            view.backgroundColor = Resources.uikitColors.backGroundColor
+            tableView.backgroundColor = Resources.uikitColors.backGroundColor
+        }
     }
     
     private func setupCustomNavigationBar() {

@@ -11,11 +11,8 @@ import SwiftUI
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
-
-    
     func setupTableView() {
         tableView = UITableView(frame: CGRect(), style: .insetGrouped)
-        tableView.backgroundColor = Resources.uikitColors.backGroundColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.reuseId)
@@ -46,7 +43,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
     }
     
-
+    //выделенная ячейка
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let deadline = viewModel.keysArray[indexPath.section]
@@ -107,7 +104,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
     
-        
+    //получаем верхнюю секцию
     func sectionForTopCell() -> Int? {
         if let topIndexPath = tableView.indexPathsForVisibleRows?.first {
             return topIndexPath.section
@@ -115,27 +112,35 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return nil
     }
     
+    
+    //высота хедера в секции
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     
+    //высота каждой ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
     
+    //тайтлы для секцмм
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.keysArray[section]
     }
     
+    
+    //количество секций
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.keysArray.count
     }
     
+    //количество rows в секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let deadline = viewModel.keysArray[section]
         return viewModel.dict[deadline]?.count ?? 0
     }
     
+    //создание ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         

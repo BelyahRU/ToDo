@@ -23,7 +23,7 @@ class CalendarViewModel: ObservableObject {
         setupKeys()
     }
     
-    public var dict: [String: [TodoItem]] = [:]
+    public var dict: [String: [TodoItem]] = [:] //ключи - sections, значения - rows
     
     public private(set) var keysArray: [String] = []
     

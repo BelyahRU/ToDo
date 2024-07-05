@@ -19,8 +19,6 @@ struct SettingsViewControllerRepresentable: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: SettingsViewController, context: Context) {
         // Обновление данных во ViewController если требуется
-//        uiViewController.setupViewModel(viewModel: CalendarViewModel(toDosModel: items))
-//        uiViewController.updateUI()
     }
     
 }

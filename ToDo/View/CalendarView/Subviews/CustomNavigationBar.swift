@@ -35,6 +35,16 @@ class CustomNavigationBar: UIView {
     private func configure() {
         setupTitle()
         setupBackButton()
+        setupButtonTextColor()
+    }
+    
+    private func setupButtonTextColor() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            backButton.tintColor = .white
+        } else {
+            backButton.tintColor = .black
+        }
     }
     
     private func setupTitle() {

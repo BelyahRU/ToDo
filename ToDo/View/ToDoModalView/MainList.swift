@@ -150,8 +150,6 @@ struct MainListView: View {
                         HStack {
                             Text(selectedCategory.categoryName)
                             Spacer()
-
-//                                .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
                         }
                     }
                 }
