@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum CurrentFramework {
+    case swiftUI
+    case UIkit
+}
+//viewModels - observers filecache
 struct ToDoModalView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var todoItem: TodoItem?
+    var currentFramework: CurrentFramework
     @EnvironmentObject var viewModel: MainViewModel
     
     @State private var text: String = "Что надо сделать?"
@@ -22,6 +28,7 @@ struct ToDoModalView: View {
     @State private var selectedImportanceIndex = 0
     @State private var switchIsOn: Bool = false
     @State private var datePickerIsOn: Bool = false
+    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .clear)
 
     var body: some View {
         mainNavigationStack
@@ -36,7 +43,8 @@ struct ToDoModalView: View {
                 selectedImportanceIndex: $selectedImportanceIndex,
                 switchIsOn: $switchIsOn,
                 datePickerIsOn: $datePickerIsOn,
-                todoItem: $todoItem
+                todoItem: $todoItem,
+                category: $category
             )
             .padding(.top, -20)
             .navigationTitle("Дело")
@@ -96,15 +104,20 @@ struct ToDoModalView: View {
             deadline: deadline,
             isTaskDone: isTaskDone,
             creationDate: creationDate,
-            modifiedDate: Date()
+            modifiedDate: Date(),
+            category: category
         )
-
-        if let _ = todoItem {
-            viewModel.updateTodoItem(updatedTodoItem)
-        } else {
-            viewModel.addToDo(new: updatedTodoItem)
+        
+        
+        if currentFramework == .swiftUI {
+            if let _ = todoItem {
+                viewModel.updateTodoItem(updatedTodoItem)
+            } else {
+                viewModel.addToDo(new: updatedTodoItem)
+            }
         }
-
+        
+        todoItem = updatedTodoItem
         self.presentationMode.wrappedValue.dismiss()
     }
 
@@ -120,6 +133,7 @@ struct ToDoModalView: View {
         }
         text = todoItem?.text ?? "Что надо сделать?"
         deadline = todoItem?.deadline ?? nil
+        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .clear)
         if deadline != nil {
             switchIsOn = true
         }
@@ -128,7 +142,9 @@ struct ToDoModalView: View {
 
 struct AddToDoModalView_Previews: PreviewProvider {
     @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+
     static var previews: some View {
-        ToDoModalView(todoItem: $examleToDoItem)
+        ToDoModalView(todoItem: $examleToDoItem, currentFramework: .swiftUI)
     }
 }
+

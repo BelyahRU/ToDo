@@ -22,13 +22,15 @@ struct TodoItem: Identifiable, Equatable {
     let creationDate: Date
     let modifiedDate: Date?
     
+    let category: Category
+    
     init(id: String = UUID().uuidString,
          text: String,
          importance: Importance,
          deadline: Date?,
          isTaskDone: Bool,
          creationDate: Date,
-         modifiedDate: Date?) {
+         modifiedDate: Date?, category: Category = Category(categoryName: "Другое", categoryColor: .clear)) {
         
         self.id = id
         self.text = text
@@ -37,6 +39,7 @@ struct TodoItem: Identifiable, Equatable {
         self.isTaskDone = isTaskDone
         self.creationDate = creationDate
         self.modifiedDate = modifiedDate
+        self.category = category
         
     }
 }
