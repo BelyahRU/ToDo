@@ -73,6 +73,7 @@ struct ContentView: View {
                     }
 
                 }
+                .environmentObject(viewModel)
                 .background(colorScheme == .light
                     ? Resources.LightTheme.Back.primaryColor
                     : Resources.DarkTheme.Back.primaryColor

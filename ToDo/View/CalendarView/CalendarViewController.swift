@@ -47,7 +47,6 @@ class CalendarViewController: UIViewController {
         self.viewModel = viewModel
     }
     
-    
     private func configure() {
         setupCustomNavigationBar()
         setupCollectionView()

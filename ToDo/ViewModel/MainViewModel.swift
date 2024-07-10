@@ -8,7 +8,7 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
-    @Published private(set) var fileCacheModel = FileCache()
+    @Published private(set) var fileCacheModel = ToDoItemModel()
     
     @Published var contentFilter: ContentFilter = .allItems {
         didSet {

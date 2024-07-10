@@ -4,6 +4,7 @@
 //
 //  Created by Александр Андреев on 21.06.2024.
 //
+// This is a very long comment that should trigger a SwiftLint warning or error because it exceeds the line length limit set in the configuration file. This is just to test if SwiftLint is working correctly.
 
 import Foundation
 extension TodoItem {

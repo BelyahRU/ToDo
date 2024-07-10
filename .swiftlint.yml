@@ -1,0 +1,34 @@
+# .swiftlint.yml
+
+included:
+  - Source
+  - Tests
+
+excluded:
+  - Carthage
+  - Pods
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+
+disabled_rules:
+  - line_length
+  - type_body_length
+
+line_length:
+  warning: 120
+  error: 200
+
+type_body_length:
+  warning: 300
+  error: 400
+
+custom_rules:
+  no_console_logs:
+    included: ".*.swift"
+    name: "No Console Logs"
+    regex: "(print|NSLog)\\("
+    message: "Don't use console logs."
+    severity: warning
+
