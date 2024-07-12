@@ -59,11 +59,11 @@ class CalendarViewController: UIViewController {
     private func setupView() {
         if self.traitCollection.userInterfaceStyle == .dark {
             
-            view.backgroundColor = Resources.uikitColors.backgroundColorDark
-            tableView.backgroundColor = Resources.uikitColors.backgroundColorDark
+            view.backgroundColor = Resources.UIKitColors.backgroundColorDark
+            tableView.backgroundColor = Resources.UIKitColors.backgroundColorDark
         } else {
-            view.backgroundColor = Resources.uikitColors.backGroundColor
-            tableView.backgroundColor = Resources.uikitColors.backGroundColor
+            view.backgroundColor = Resources.UIKitColors.backGroundColor
+            tableView.backgroundColor = Resources.UIKitColors.backGroundColor
         }
     }
     
@@ -82,14 +82,11 @@ class CalendarViewController: UIViewController {
     }
     
 }
-//MARK: Action
+// MARK: Action
 extension CalendarViewController {
-    @objc func backPressed() {
+    @objc 
+    func backPressed() {
         onItemsChanged?(viewModel.toDosModel)
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-
-
-

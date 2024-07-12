@@ -11,7 +11,7 @@ import SwiftUI
 class SettingsViewController: UIViewController, UIColorPickerViewControllerDelegate {
     
     let settingsView = SettingsView()
-    var currentColor: UIColor? = nil
+    var currentColor: UIColor?
     var currentText: String = ""
 
     override func viewDidLoad() {
@@ -41,16 +41,16 @@ class SettingsViewController: UIViewController, UIColorPickerViewControllerDeleg
         settingsView.colorButton.addTarget(self, action: #selector(colorPickerTapped), for: .touchUpInside)
         settingsView.saveButton.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
     }
-    
-
 }
 
 extension SettingsViewController {
-    @objc func backPressed() {
+    @objc 
+    func backPressed() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func colorPickerTapped() {
+    @objc 
+    func colorPickerTapped() {
         let colorPickerVC = UIColorPickerViewController()
         colorPickerVC.modalPresentationStyle = .popover
         colorPickerVC.modalTransitionStyle = .crossDissolve
@@ -58,9 +58,10 @@ extension SettingsViewController {
         present(colorPickerVC, animated: true)
     }
     
-    @objc func savePressed() {
+    @objc 
+    func savePressed() {
         self.currentText = settingsView.nameTextField.text ?? ""
-        if currentText != "" && currentColor != nil{
+        if currentText != "" && currentColor != nil {
             Categories.shared.createCategory(name: currentText, color: Color(currentColor!))
             self.settingsView.statusLabel.isHidden = false
             self.settingsView.statusLabel.text = "Новая категория успешно добавлена"
@@ -74,11 +75,9 @@ extension SettingsViewController {
         }
     }
     
-    
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         self.settingsView.colorCircle.backgroundColor = viewController.selectedColor
         self.currentColor = viewController.selectedColor
     }
     
-     
 }

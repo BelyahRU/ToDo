@@ -8,14 +8,12 @@
 import Foundation
 import UIKit
 class ToDoCollectionViewCell: UICollectionViewCell {
-    
     static let reuseId = "CollectionViewCell"
-    
     let textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = Resources.uikitColors.cellBorderColor
+        label.textColor = Resources.UIKitColors.cellBorderColor
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -25,15 +23,14 @@ class ToDoCollectionViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     override var isSelected: Bool {
         didSet {
             // Изменяем стиль ячейки при выборе
             if isSelected {
-                backView.backgroundColor = Resources.uikitColors.cellBackgoundColor
+                backView.backgroundColor = Resources.UIKitColors.cellBackgoundColor
                 backView.makeBorders(width: 2)
                 backView.makeRadius(radius: 15)
-                backView.makeBordersColor(color: Resources.uikitColors.cellBorderCGColor)
+                backView.makeBordersColor(color: Resources.UIKitColors.cellBorderCGColor)
             } else {
                 backView.makeBorders(width: 0)
                 backView.backgroundColor = .clear
@@ -76,4 +73,3 @@ extension ToDoCollectionViewCell {
         self.textLabel.text = newText
     }
 }
-

@@ -31,19 +31,20 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         ])
     }
     
-    //сролл коллекшн вью при скролле тейбл вью
+    // сролл коллекшн вью при скролле тейбл вью
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //(196.5, 439.5) - позиция scrollView у tableView
+        // (196.5, 439.5) - позиция scrollView у tableView
         if viewModel.dict.count > 1 {
             if scrollView.layer.position.y > 100 {
                 if let section = sectionForTopCell() {
-                    collectionView.selectItem(at: IndexPath(row: section, section: 0), animated: false, scrollPosition: .left)
+                    collectionView.selectItem(at: IndexPath(row: section, section: 0),
+                                              animated: false, scrollPosition: .left)
                 }
             }
         }
     }
     
-    //выделенная ячейка
+    // выделенная ячейка
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let deadline = viewModel.keysArray[indexPath.section]
@@ -53,7 +54,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
                 return currentTodoItem
             }, set: { newValue in
                 guard let newValue = newValue else { return }
-                self.mainViewModel.updateTodoItem(newValue) //обновляем значение
+                self.mainViewModel.updateTodoItem(newValue)// обновляем значение
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
             })
@@ -65,10 +66,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         self.present(hostingController, animated: true, completion: nil)
     }
 
-
-    //свайп влево
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let doneAction = UIContextualAction(style: .normal, title:  "Выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+    // свайп влево
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+        let doneAction = UIContextualAction(style: .normal, title: "Выполнено",
+                                            handler: 
+                                                { (_, _, success: (Bool) -> Void) in
             
             let deadline = self.viewModel.keysArray[indexPath.section]
             
@@ -85,26 +88,45 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
     
-    //свайп вправо
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let doneAction = UIContextualAction(style: .normal, title:  "Не выполнено", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+    // свайп вправо
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+        let doneAction = UIContextualAction(style: .normal, title: "Не выполнено") { [weak self] (_, _, completion) in
+            guard let self = self else {
+                completion(false)
+                return
+            }
             
             let deadline = self.viewModel.keysArray[indexPath.section]
             
-            var item = self.viewModel.dict[deadline]![indexPath.row]
-            item.isTaskDone = false
-            self.mainViewModel.updateTodoItem(item)
-            self.viewModel.dict[deadline]![indexPath.row].isTaskDone = false
+            // Проверяем наличие элемента по индексу
+            guard var item = self.viewModel.dict[deadline]?[indexPath.row] else {
+                completion(false)
+                return
+            }
             
+            // Обновляем свойство isTaskDone
+            item.isTaskDone = false
+            
+            // Обновляем данные в модели
+            self.mainViewModel.updateTodoItem(item)
+            
+            // Обновляем данные в текущем списке
+            self.viewModel.dict[deadline]?[indexPath.row].isTaskDone = false
+            
+            // Перезагружаем таблицу
             tableView.reloadData()
-            success(true)
-        })
+            
+            // Вызываем обратный вызов с успехом
+            completion(true)
+        }
+        
         doneAction.backgroundColor = .red
         
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
-    
-    //получаем верхнюю секцию
+
+    // получаем верхнюю секцию
     func sectionForTopCell() -> Int? {
         if let topIndexPath = tableView.indexPathsForVisibleRows?.first {
             return topIndexPath.section
@@ -112,37 +134,37 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate, UI
         return nil
     }
     
-    
-    //высота хедера в секции
+    // высота хедера в секции
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     
-    //высота каждой ячейки
+    // высота каждой ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
     
-    //тайтлы для секцмм
+    // тайтлы для секцмм
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.keysArray[section]
     }
     
-    
-    //количество секций
+    // количество секций
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.keysArray.count
     }
     
-    //количество rows в секции
+    // количество rows в секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let deadline = viewModel.keysArray[section]
         return viewModel.dict[deadline]?.count ?? 0
     }
     
-    //создание ячейки
+    // создание ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseId, 
+                                                       for: indexPath) as? ToDoTableViewCell
+        else { return UITableViewCell() }
         
         let deadline = viewModel.keysArray[indexPath.section] 
         guard let item = viewModel.dict[deadline]?[indexPath.row] else {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//Класс для обработки Date. Тут мы можем получить date из string и наоборот
+// Класс для обработки Date. Тут мы можем получить date из string и наоборот
 class DateHelper {
     
     static var dateFormatterISO8601: DateFormatter = {

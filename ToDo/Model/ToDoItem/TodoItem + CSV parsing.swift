@@ -4,7 +4,6 @@
 //
 //  Created by Александр Андреев on 21.06.2024.
 //
-// This is a very long comment that should trigger a SwiftLint warning or error because it exceeds the line length limit set in the configuration file. This is just to test if SwiftLint is working correctly.
 
 import Foundation
 extension TodoItem {
@@ -23,9 +22,12 @@ extension TodoItem {
         columns.append(category.categoryName)
         return columns.joined(separator: ",")
     }
-    
+    /// используем кастомный сплит с регулярным выражением,
+    /// т.к. csv файл разделяется на запятые, но в text могут быть тоже запятые,
+    /// поэтому text у меня обраблен кавычками и благодаря регулярному выражению и этой функции запятые,
+    /// которые находяся в кавычках не будут "заспличены"
     static func parse(csv: String) -> TodoItem? {
-        let columns = String.customSplit(text: csv, regexStr: regex)//используем кастомный сплит с регулярным выражением, т.к. csv файл разделяется на запятые, но в text могут быть тоже запятые, поэтому text у меня обраблен кавычками и благодаря регулярному выражению и этой функции запятые, которые находяся в кавычках не будут "заспличены"
+        let columns = String.customSplit(text: csv, regexStr: regex)
         if columns.count == ToDoDictionaryKeys.allCases.count {
             let id = columns[0]
             let text = columns[1]

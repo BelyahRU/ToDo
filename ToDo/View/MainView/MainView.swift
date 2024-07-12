@@ -10,13 +10,12 @@ import SwiftUI
 struct MainView: View {
 //    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = MainViewModel()
-    @State private var editingTodoItem: TodoItem? = nil
+    @State private var editingTodoItem: TodoItem?
     @State private var isShowingModal = false
     @State private var buttonTitle = "Скрыть"
     
     @State private var isSettingsViewPresented = false
 
-    
     var body: some View {
             NavigationView {
                 ZStack {
@@ -38,21 +37,26 @@ struct MainView: View {
     
     var navigationSplitView: some View {
             NavigationSplitView {
-                ListView(viewModel: viewModel, editingTodoItem: $editingTodoItem, isShowingModal: $isShowingModal, buttonTitle: $buttonTitle)
+                ListView(viewModel: viewModel, 
+                         editingTodoItem: $editingTodoItem,
+                         isShowingModal: $isShowingModal,
+                         buttonTitle: $buttonTitle)
                     .environmentObject(viewModel)
                     .navigationTitle("Мои дела")
                     .background(Resources.Colors.Back.primaryColor)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             
-                            NavigationLink(destination: SettingsViewControllerRepresentable()
+                            NavigationLink(destination: 
+                                            SettingsViewControllerRepresentable()
                                 .navigationBarHidden(true)
                                 .background(Resources.Colors.Back.primaryColor),
-                                           isActive: $isSettingsViewPresented) {
+                                           isActive: $isSettingsViewPresented
+                            ) {
                                 settingsButton
                             }
-                            
-                            NavigationLink(destination: CalendarViewControllerRepresentable(items: $viewModel.todosArray)
+                            NavigationLink(destination:
+                                            CalendarViewControllerRepresentable(items: $viewModel.todosArray)
                                 .environmentObject(viewModel)
                                 .navigationBarHidden(true)
                                 .background(Resources.Colors.Back.primaryColor)
@@ -66,8 +70,6 @@ struct MainView: View {
             }
         }
 
-    
-    
     var calendarButton: some View {
         Image(systemName: "calendar")
             .foregroundStyle(.blue)

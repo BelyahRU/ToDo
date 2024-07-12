@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 struct TodoItemView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) 
+    var colorScheme
     @Binding var todoItem: TodoItem
     @State private var isShowingModal = false
     @EnvironmentObject var viewModel: MainViewModel
@@ -16,7 +17,7 @@ struct TodoItemView: View {
     var body: some View {
         HStack {
             checkboxButton
-            if let _ = todoItem.deadline {
+            if todoItem.deadline != nil {
                 VStack(alignment: .leading) {
                     titleText
                     deadlineText
@@ -43,10 +44,10 @@ struct TodoItemView: View {
     }
     
     var checkboxButton: some View {
-        Button(action: {
+        Button {
             todoItem.isTaskDone.toggle()
             viewModel.updateTodoItem(todoItem)
-        }) {
+        } label: {
             Image(systemName: imageName(forState: todoItem.isTaskDone))
                 .resizable()
                 .frame(width: 30, height: 30)
@@ -54,9 +55,20 @@ struct TodoItemView: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(PlainButtonStyle())
+
+//        Button(action: {
+//            todoItem.isTaskDone.toggle()
+//            viewModel.updateTodoItem(todoItem)
+//        } ) {
+//            Image(systemName: imageName(forState: todoItem.isTaskDone))
+//                .resizable()
+//                .frame(width: 30, height: 30)
+//                .foregroundColor(color(forState: todoItem.isTaskDone, importance: todoItem.importance))
+//                .contentShape(Rectangle())
+//        }
+//        .buttonStyle(PlainButtonStyle())
     }
-    
-    
+
     var titleText: some View {
         HStack(spacing: 0) {
             if todoItem.importance == .important {
@@ -72,17 +84,29 @@ struct TodoItemView: View {
     }
     
     var arrowChangeButton: some View {
-        Button(action: {
+        Button {
             self.isShowingModal = true
-        }) {
+        } label: {
             Image(Resources.LightTheme.Buttons.arrowButton)
                 .contentShape(Rectangle())
         }
-            .buttonStyle(PlainButtonStyle())
-            .padding(.trailing, 8)
-            .sheet(isPresented: $isShowingModal) {
-                ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
-            }
+        .buttonStyle(PlainButtonStyle())
+        .padding(.trailing, 8)
+        .sheet(isPresented: $isShowingModal) {
+            ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
+        }
+
+//        Button(action: {
+//            self.isShowingModal = true
+//        }) {
+//            Image(Resources.LightTheme.Buttons.arrowButton)
+//                .contentShape(Rectangle())
+//        }
+//            .buttonStyle(PlainButtonStyle())
+//            .padding(.trailing, 8)
+//            .sheet(isPresented: $isShowingModal) {
+//                ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
+//            }
     }
 
     func imageName(forState isSelected: Bool) -> String {

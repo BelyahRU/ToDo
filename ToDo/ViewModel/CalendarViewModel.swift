@@ -23,20 +23,20 @@ class CalendarViewModel: ObservableObject {
         setupKeys()
     }
     
-    public var dict: [String: [TodoItem]] = [:] //ключи - sections, значения - rows
+    public var dict: [String: [TodoItem]] = [:] // ключи - sections, значения - rows
     
     public private(set) var keysArray: [String] = []
     
     private func setupKeys() {
         keysArray = []
-        var deadlines = toDosModel.filter({$0.deadline != nil}).map { $0.deadline! }
+        var deadlines = toDosModel.filter({ $0.deadline != nil }).map { $0.deadline! }
         deadlines = deadlines.sorted { item1, item2 in
             return item1 < item2
         }
         
-        for i in deadlines {
-            if !keysArray.contains(i.getDayMonthFormatted()) {
-                keysArray.append(i.getDayMonthFormatted())
+        for deadline in deadlines {
+            if !keysArray.contains(deadline.getDayMonthFormatted()) {
+                keysArray.append(deadline.getDayMonthFormatted())
             }
         }
         keysArray.append("Другое")
@@ -63,11 +63,11 @@ class CalendarViewModel: ObservableObject {
     
     public func updateValue(by id: String, item: TodoItem) {
         print(keysArray)
-        guard let index = toDosModel.firstIndex(where: {$0.id == item.id}) else {
+        guard let index = toDosModel.firstIndex(where: { $0.id == item.id }) else {
             print("Updating error. Index not found")
             return
         }
-        let removedValue = toDosModel.remove(at: index)
+        toDosModel.remove(at: index)
         toDosModel.append(item)
         setupDict()
         setupKeys()

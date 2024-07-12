@@ -14,7 +14,6 @@ struct NewToDoItemView: View {
     @State var text: String
     var closureItem: (String) -> Void
     
-    
     var body: some View {
             TextField("Новое", text: $text)
                 .frame(height: 56)

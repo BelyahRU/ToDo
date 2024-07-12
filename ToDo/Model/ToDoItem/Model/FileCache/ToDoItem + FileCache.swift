@@ -7,15 +7,15 @@
 
 import Foundation
 
-//MARK: FileCache
+// MARK: FileCache
 extension ToDoItemModel {
         
-    //сохранение в файл
+    // сохранение в файл
     func saveInFile(fileName: String) {
         fileCache.saveInFile(items: self.toDos, fileName: fileName)
         
     }
-    //загрузка данных из файла
+    // загрузка данных из файла
     func uploadFromFile(fileName: String) -> [TodoItem] {
         fileCache.uploadFromFile(fileName: fileName)
     }

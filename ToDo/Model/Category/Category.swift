@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUI
 
 struct Category: Equatable, Hashable {
     var categoryName: String
@@ -27,10 +26,9 @@ class Categories {
         Category(categoryName: "Другое", categoryColor: .clear)
     ]
     
-    
     public func createCategory(name: String, color: Color) {
         let newCategory = Category(categoryName: name, categoryColor: color)
-        if self.standartCategories.filter({$0 == newCategory}).count == 0 {
+        if self.standartCategories.filter({ $0 == newCategory }).count == 0 {
             self.standartCategories.append(newCategory)
         } else {
             print("Категория уже добавлена")
@@ -46,7 +44,7 @@ class Categories {
     }
     
     public func getCategory(by name: String) -> Category {
-        if let category = self.standartCategories.filter({$0.categoryName == name}).first {
+        if let category = self.standartCategories.filter({ $0.categoryName == name }).first {
             return category
         }
         print("Категория не найдена")

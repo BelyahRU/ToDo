@@ -19,7 +19,8 @@ extension String {
             
             for match in matches {
                 let range = match.range
-                var substring = nsText.substring(with: NSRange(location: previousIndex, length: range.location - previousIndex))
+                var substring = nsText.substring(with: NSRange(location: previousIndex,
+                                                               length: range.location - previousIndex))
                 // Удаляем кавычки в начале и конце подстроки
                 substring = substring.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
                 substrings.append(substring)

@@ -29,10 +29,8 @@ class MainViewModel: ObservableObject {
         countingAreDone()
     }
     
-    
-    
     private func countingAreDone() {
-        countItemsAreDone = model.toDos.filter({$0.isTaskDone == true}).count
+        countItemsAreDone = model.toDos.filter({ $0.isTaskDone == true }).count
     }
     
     private func filterTodos() {
@@ -73,4 +71,3 @@ class MainViewModel: ObservableObject {
         updateData()
     }
 }
-

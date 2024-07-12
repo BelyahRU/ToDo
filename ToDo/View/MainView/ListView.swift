@@ -20,20 +20,24 @@ struct ListView: View {
         List {
             Section {
                 ForEach($viewModel.todosArray) { $item in
-                    //ячейка
+                    // ячейка
                     TodoItemView(todoItem: $item)
                         .frame(height: 50)
                         .background(Resources.Colors.Back.secondaryColor)
                         .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 0))
                 }
-                //новое
+                // новое
                 NewToDoItemView(text: "") { text in
-                    viewModel.addToDo(new: TodoItem(text: text, importance: .ordinary, deadline: nil, isTaskDone: false, creationDate: Date(), modifiedDate: nil))
+                    viewModel.addToDo(new: TodoItem(text: text, 
+                                                    importance: .ordinary,
+                                                    deadline: nil,
+                                                    isTaskDone: false,
+                                                    creationDate: Date(),
+                                                    modifiedDate: nil))
                 }
                     .frame(height: 50)
-//                    .background(colorScheme == .light ? Resources.LightTheme.Back.secondaryColor : Resources.DarkTheme.Back.secondaryColor)
                     .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 0))
-            //ListHeaderView - Выполнено - 5    Показать
+            // ListHeaderView - Выполнено - 5    Показать
             } header: {
                 ListHeaderView(viewModel: viewModel, buttonTitle: $buttonTitle)
                     .padding(.bottom, 15)
@@ -68,6 +72,5 @@ struct ListView: View {
                 .padding(.leading, 39)
         }
     }
-    
     
 }

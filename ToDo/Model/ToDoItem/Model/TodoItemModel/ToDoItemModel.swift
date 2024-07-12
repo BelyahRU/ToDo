@@ -20,11 +20,11 @@ class ToDoItemModel {
     public let fileCache = FileCache<TodoItem>()
     
     func add(new task: TodoItem) {
-        //проверка на дублирование
+        // проверка на дублирование
         if toDos.first(where: { $0.id == task.id }) != nil {
             print("FileCache Error. Task added before")
             DDLogError("task with the same id was added before")
-        } else{
+        } else {
             toDos.append(task)
             DDLogInfo("new task added to ToDoItemModel")
         }
@@ -45,4 +45,3 @@ class ToDoItemModel {
         }
     }
 }
-

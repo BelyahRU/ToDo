@@ -11,10 +11,9 @@ import SwiftUI
 
 struct SettingsViewControllerRepresentable: UIViewControllerRepresentable {
     
-    
     func makeUIViewController(context: Context) -> SettingsViewController {
-        let vc = SettingsViewController()
-        return vc
+        let settingsVC = SettingsViewController()
+        return settingsVC
     }
 
     func updateUIViewController(_ uiViewController: SettingsViewController, context: Context) {

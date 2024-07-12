@@ -61,7 +61,7 @@ class ToDoTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -25),
+            noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             noteLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             noteLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
   
@@ -75,10 +75,8 @@ class ToDoTableViewCell: UITableViewCell {
             categoryCircle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             categoryCircle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
-            
         ])
     }
-    
     
 }
 
@@ -108,7 +106,7 @@ extension ToDoTableViewCell {
     
     private func setupColors() {
         if self.traitCollection.userInterfaceStyle == .dark {
-            noteLabel.textColor = Resources.uikitColors.foregroundColorDark
+            noteLabel.textColor = Resources.UIKitColors.foregroundColorDark
         } else {
             noteLabel.textColor = .black
         }
@@ -116,7 +114,7 @@ extension ToDoTableViewCell {
     
     private func setupColorsIsDone() {
         if self.traitCollection.userInterfaceStyle == .dark {
-            noteLabel.textColor = Resources.uikitColors.foregroundColorIsDoneDark
+            noteLabel.textColor = Resources.UIKitColors.foregroundColorIsDoneDark
         } else {
             noteLabel.textColor = .black.withAlphaComponent(0.4)
         }

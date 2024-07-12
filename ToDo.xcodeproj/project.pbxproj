@@ -35,6 +35,10 @@
 		1A708F9D2C415F5F006A5FAE /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708F9C2C415F5F006A5FAE /* CocoaLumberjack */; };
 		1A708F9F2C415F5F006A5FAE /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708F9E2C415F5F006A5FAE /* CocoaLumberjackSwift */; };
 		1A708FA12C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708FA02C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend */; };
+		1A708FA22C41763C006A5FAE /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543CA2C3E54E800C88C50 /* ToDoItemModel.swift */; };
+		1A708FA32C41763F006A5FAE /* ToDoItem + FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */; };
+		1A708FA42C417646006A5FAE /* ToDoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */; };
+		1A708FA52C41795A006A5FAE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66519E2C3641CD00E7DC01 /* Category.swift */; };
 		1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */; };
 		1A80797B2C2F643600E42C5C /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80797A2C2F643600E42C5C /* ToDoItemView.swift */; };
 		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
@@ -546,6 +550,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		1ABBC2A32C3D764C0083A8E4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -559,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
 		};
 		32270D253253550C9B282FEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -658,11 +663,15 @@
 			files = (
 				1A9223432C261843001B3E72 /* String + Ext.swift in Sources */,
 				1A9FBC242C24E3F30026F420 /* TodoItem + JSON parsing.swift in Sources */,
+				1A708FA42C417646006A5FAE /* ToDoItems.swift in Sources */,
+				1A708FA32C41763F006A5FAE /* ToDoItem + FileCache.swift in Sources */,
 				1A9FBC262C24E3F90026F420 /* DateHelp.swift in Sources */,
 				1A9FBC232C24E3F10026F420 /* TodoItem.swift in Sources */,
+				1A708FA22C41763C006A5FAE /* ToDoItemModel.swift in Sources */,
 				1A9FBC222C24E33C0026F420 /* FileCacheTest.swift in Sources */,
 				1A9223422C2617E3001B3E72 /* TodoItem + CSV parsing.swift in Sources */,
 				1A9FBC2C2C24EB4B0026F420 /* ToDoItemTest.swift in Sources */,
+				1A708FA52C41795A006A5FAE /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -746,6 +756,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

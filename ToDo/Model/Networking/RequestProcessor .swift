@@ -13,8 +13,8 @@ enum RequestProcessor {
         components.host = "mybookstore.ru"
         components.path = "/api/books"
         components.queryItems = [
-            URLQueryItem (name: "order", value: "asc"),
-            URLQueryItem(name: "genre", value: "all"),
+            URLQueryItem(name: "order", value: "asc"),
+            URLQueryItem(name: "genre", value: "all")
         ]
         guard let url = components.url else {
             throw RequestProcessorError.wrongUrl(components) }
@@ -29,6 +29,6 @@ enum RequestProcessor {
     }
 }
             
-enum RequestProcessorError: Error  {
+enum RequestProcessorError: Error {
     case wrongUrl(URLComponents)
 }

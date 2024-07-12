@@ -19,7 +19,8 @@ struct MainListView: View {
     @Binding var todoItem: TodoItem?
     @Binding var category: Category
     @EnvironmentObject var viewModel: MainViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) 
+    var presentationMode
 
     let categories = Categories.shared.getAllCategories()
 
@@ -140,9 +141,9 @@ struct MainListView: View {
             Spacer()
             Menu {
                 ForEach(categories, id: \.self) { selectedCategory in
-                    Button(action: {
+                    Button {
                         category = selectedCategory
-                    }) {
+                    } label: {
                         HStack {
                             Text(selectedCategory.categoryName)
                             Spacer()

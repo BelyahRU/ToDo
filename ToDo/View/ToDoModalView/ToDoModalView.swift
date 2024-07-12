@@ -11,19 +11,21 @@ enum CurrentFramework {
     case swiftUI
     case UIkit
 }
-//viewModels - observers filecache
+// viewModels - observers filecache
 struct ToDoModalView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode)
+    var presentationMode
+    
     @Binding var todoItem: TodoItem?
     var currentFramework: CurrentFramework
     @EnvironmentObject var viewModel: MainViewModel
     
     @State private var text: String = "Что надо сделать?"
     @State private var importance: Importance = .unimportant
-    @State private var deadline: Date? = nil
+    @State private var deadline: Date?
     @State private var isTaskDone: Bool = false
     @State private var creationDate: Date = Date()
-    @State private var modifiedDate: Date? = nil
+    @State private var modifiedDate: Date?
 
     @State private var selectedImportanceIndex = 0
     @State private var switchIsOn: Bool = false
@@ -108,9 +110,8 @@ struct ToDoModalView: View {
             category: category
         )
         
-        
         if currentFramework == .swiftUI {
-            if let _ = todoItem {
+            if todoItem != nil {
                 viewModel.updateTodoItem(updatedTodoItem)
             } else {
                 viewModel.addToDo(new: updatedTodoItem)
@@ -141,10 +142,14 @@ struct ToDoModalView: View {
 }
 
 struct AddToDoModalView_Previews: PreviewProvider {
-    @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+    @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg",
+                                                    importance: .important,
+                                                    deadline: Date(),
+                                                    isTaskDone: true,
+                                                    creationDate: Date(),
+                                                    modifiedDate: nil)
 
     static var previews: some View {
         ToDoModalView(todoItem: $examleToDoItem, currentFramework: .swiftUI)
     }
 }
-
