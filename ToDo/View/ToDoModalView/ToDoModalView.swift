@@ -57,13 +57,13 @@ struct ToDoModalView: View {
                     saveButton
                 }
             })
-            .background(Resources.LightTheme.Back.primaryColor)
+            .background(Resources.Colors.Back.primaryColor)
             .onAppear {
                 loadTodoItem()
             }
         }
         .frame(minHeight: 112.5, maxHeight: .infinity, alignment: .top)
-        .background(Resources.LightTheme.Back.primaryColor)
+        .background(Resources.Colors.Back.primaryColor)
     }
 
     var saveButton: some View {

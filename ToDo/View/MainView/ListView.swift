@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ListView: View {
-    @Environment(\.colorScheme) var colorScheme
+//    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var viewModel: MainViewModel
     @Binding var editingTodoItem: TodoItem?
     @Binding var isShowingModal: Bool
@@ -23,7 +23,7 @@ struct ListView: View {
                     //ячейка
                     TodoItemView(todoItem: $item)
                         .frame(height: 50)
-                        .background(colorScheme == .light ? Resources.LightTheme.Back.secondaryColor : Resources.DarkTheme.Back.secondaryColor)
+                        .background(Resources.Colors.Back.secondaryColor)
                         .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 0))
                 }
                 //новое
@@ -39,12 +39,12 @@ struct ListView: View {
                     .padding(.bottom, 15)
                     .padding(.top, -15)
             }
-            .listRowBackground(colorScheme == .light ? Resources.LightTheme.Back.secondaryColor : Resources.DarkTheme.Back.secondaryColor)
+            .listRowBackground(Resources.Colors.Back.secondaryColor)
             .listRowInsets(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
-            .listRowSeparatorTint(colorScheme == .light ? Resources.LightTheme.Support.separatorColor : Resources.DarkTheme.Support.separatorColor)
+            .listRowSeparatorTint(Resources.Colors.Support.separatorColor)
         }
         .listStyle(PlainListStyle())
-        .background(colorScheme == .light ? Resources.LightTheme.Back.primaryColor : Resources.DarkTheme.Back.primaryColor)
+        .background(Resources.Colors.Back.primaryColor)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal, 16)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -54,12 +54,12 @@ struct ListView: View {
         ZStack(alignment: .leading) {
             if newItemText.isEmpty {
                 Text("Новое")
-                    .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.TetiaryColor : Resources.DarkTheme.Label.TetiaryColor)
+                    .foregroundColor(Resources.Colors.Label.TetiaryColor)
                     .padding(.leading, 50)
             }
             TextEditor(text: $newItemText)
-                .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.blackColor : Resources.DarkTheme.Label.primaryColor)
-                .background(colorScheme == .light ? Resources.LightTheme.Back.primaryColor : Resources.DarkTheme.Back.primaryColor)
+                .foregroundColor(Resources.Colors.Label.primaryColor)
+                .background(Resources.Colors.Back.primaryColor)
                 .onTapGesture {
                     if newItemText == "Новое" {
                         newItemText = ""

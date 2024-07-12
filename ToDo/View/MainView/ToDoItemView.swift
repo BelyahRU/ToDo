@@ -37,9 +37,7 @@ struct TodoItemView: View {
                   Resources.LightTheme.Images.lightCalendar
                   : Resources.LightTheme.Images.darkCalendar)
             Text("\(todoItem.deadline!.getDayMonthFormatted())")
-                .foregroundColor(colorScheme == .light ?
-                                 Resources.LightTheme.Label.TetiaryColor
-                                 : Resources.DarkTheme.Label.TetiaryColor)
+                .foregroundColor(Resources.Colors.Label.TetiaryColor)
                 .font(.system(size: 15))
         }
     }
@@ -65,11 +63,9 @@ struct TodoItemView: View {
                 Image(Resources.LightTheme.Images.exclamationMark)
             }
             Text(todoItem.text)
-                .foregroundColor(colorScheme == .light
-                                 ? (todoItem.isTaskDone ? Resources.LightTheme.Label.TetiaryColor
-                                    : Resources.LightTheme.Label.blackColor)
-                                 : (todoItem.isTaskDone ? Resources.DarkTheme.Label.TetiaryColor
-                                   : Resources.DarkTheme.Label.primaryColor))
+                .foregroundColor(todoItem.isTaskDone 
+                                 ? Resources.Colors.Label.TetiaryColor
+                                 : Resources.Colors.Label.primaryColor)
                 .strikethrough(todoItem.isTaskDone)
                 .padding(.leading, 8)
         }
@@ -96,11 +92,11 @@ struct TodoItemView: View {
     func color(forState isSelected: Bool, importance: Importance) -> Color {
         switch importance {
         case .unimportant:
-            return isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
+            return isSelected ? Resources.Colors.greenColor : Resources.Colors.grayColor
         case .ordinary:
-            return isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.grayColor
+            return isSelected ? Resources.Colors.greenColor : Resources.Colors.grayColor
         case .important:
-            return isSelected ? Resources.LightTheme.greenColor : Resources.LightTheme.redColor
+            return isSelected ? Resources.Colors.greenColor : Resources.Colors.redColor
         }
     }
 }

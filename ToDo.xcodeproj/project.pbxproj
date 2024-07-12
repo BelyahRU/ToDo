@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06571A5CC4FD54B6C1FB82AD /* Pods_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2F0A20EEC5B1C516AA8433 /* Pods_ToDo.framework */; };
 		1A3543CB2C3E54E800C88C50 /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543CA2C3E54E800C88C50 /* ToDoItemModel.swift */; };
 		1A3543E12C3E5D4E00C88C50 /* FileCachePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 1A3543E02C3E5D4E00C88C50 /* FileCachePackage */; };
 		1A3543E82C3ED13B00C88C50 /* ToDoItem + FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */; };
+		1A3543F92C3EF0BA00C88C50 /* RequestProcessor .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543F82C3EF0BA00C88C50 /* RequestProcessor .swift */; };
+		1A3543FC2C3F5F8900C88C50 /* ViewModelNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */; };
+		1A3543FE2C3F63A500C88C50 /* ToDoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */; };
 		1A5C4FD12C2F8AFD0022D15B /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD02C2F8AFD0022D15B /* MainList.swift */; };
 		1A5C4FD32C2F8F1C0022D15B /* Binding + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */; };
 		1A5C4FDD2C2FB4190022D15B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FDC2C2FB4190022D15B /* ListView.swift */; };
@@ -28,6 +32,9 @@
 		1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A12C365D9300E7DC01 /* SettingsViewController.swift */; };
 		1A6651A52C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A42C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift */; };
 		1A6651A72C36664800E7DC01 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6651A62C36664800E7DC01 /* SettingsView.swift */; };
+		1A708F9D2C415F5F006A5FAE /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708F9C2C415F5F006A5FAE /* CocoaLumberjack */; };
+		1A708F9F2C415F5F006A5FAE /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708F9E2C415F5F006A5FAE /* CocoaLumberjackSwift */; };
+		1A708FA12C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 1A708FA02C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend */; };
 		1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */; };
 		1A80797B2C2F643600E42C5C /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80797A2C2F643600E42C5C /* ToDoItemView.swift */; };
 		1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F24E2C2C95AE00352D56 /* ToDoModalView.swift */; };
@@ -39,7 +46,7 @@
 		1A92234A2C299A50001B3E72 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9223492C299A50001B3E72 /* MainViewModel.swift */; };
 		1A93B59E2C2E0AB000C03756 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93B59D2C2E0AB000C03756 /* Date + Ext.swift */; };
 		1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */; };
-		1A9FBBC42C20D21C0026F420 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC32C20D21C0026F420 /* ContentView.swift */; };
+		1A9FBBC42C20D21C0026F420 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC32C20D21C0026F420 /* MainView.swift */; };
 		1A9FBBC62C20D21E0026F420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC52C20D21E0026F420 /* Assets.xcassets */; };
 		1A9FBBC92C20D21E0026F420 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FBBC82C20D21E0026F420 /* Preview Assets.xcassets */; };
 		1A9FBBD12C20D3080026F420 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBD02C20D3080026F420 /* TodoItem.swift */; };
@@ -51,9 +58,7 @@
 		1A9FBC262C24E3F90026F420 /* DateHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBBFA2C24CD050026F420 /* DateHelp.swift */; };
 		1A9FBC2C2C24EB4B0026F420 /* ToDoItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FBC2B2C24EB4B0026F420 /* ToDoItemTest.swift */; };
 		1AF50A1B2C3850AA000FB363 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF50A1A2C3850AA000FB363 /* Observable.swift */; };
-		1AF50A462C3D718A000FB363 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF50A452C3D718A000FB363 /* CocoaLumberjack */; };
-		1AF50A482C3D718A000FB363 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF50A472C3D718A000FB363 /* CocoaLumberjackSwift */; };
-		1AF50A4A2C3D718A000FB363 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF50A492C3D718A000FB363 /* CocoaLumberjackSwiftLogBackend */; };
+		3F298B035CA0FD4141DDA9E9 /* Pods_ToDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322EA28A6D6A532A8295E7AF /* Pods_ToDoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,9 @@
 /* Begin PBXFileReference section */
 		1A3543CA2C3E54E800C88C50 /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
 		1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem + FileCache.swift"; sourceTree = "<group>"; };
+		1A3543F82C3EF0BA00C88C50 /* RequestProcessor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestProcessor .swift"; sourceTree = "<group>"; };
+		1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelNetworking.swift; sourceTree = "<group>"; };
+		1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItems.swift; sourceTree = "<group>"; };
 		1A5C4FD02C2F8AFD0022D15B /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding + Ext.swift"; sourceTree = "<group>"; };
 		1A5C4FDC2C2FB4190022D15B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -97,7 +105,7 @@
 		1A93B59D2C2E0AB000C03756 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		1A9FBBBE2C20D21C0026F420 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
-		1A9FBBC32C20D21C0026F420 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A9FBBC32C20D21C0026F420 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1A9FBBC52C20D21E0026F420 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A9FBBC82C20D21E0026F420 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A9FBBD02C20D3080026F420 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
@@ -107,6 +115,12 @@
 		1A9FBC212C24E33C0026F420 /* FileCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTest.swift; sourceTree = "<group>"; };
 		1A9FBC2B2C24EB4B0026F420 /* ToDoItemTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTest.swift; sourceTree = "<group>"; };
 		1AF50A1A2C3850AA000FB363 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		25F604E9D84337886684E349 /* Pods-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo.debug.xcconfig"; path = "Target Support Files/Pods-ToDo/Pods-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
+		322EA28A6D6A532A8295E7AF /* Pods_ToDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E61A0690AE559490722DF1C /* Pods-ToDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoTests/Pods-ToDoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EE720566C82F69F4DA88C54 /* Pods-ToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTests.release.xcconfig"; path = "Target Support Files/Pods-ToDoTests/Pods-ToDoTests.release.xcconfig"; sourceTree = "<group>"; };
+		9C2F0A20EEC5B1C516AA8433 /* Pods_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2934827F66D95832E979D9B /* Pods-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo.release.xcconfig"; path = "Target Support Files/Pods-ToDo/Pods-ToDo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +128,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF50A482C3D718A000FB363 /* CocoaLumberjackSwift in Frameworks */,
-				1AF50A4A2C3D718A000FB363 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
-				1AF50A462C3D718A000FB363 /* CocoaLumberjack in Frameworks */,
+				1A708F9D2C415F5F006A5FAE /* CocoaLumberjack in Frameworks */,
 				1A3543E12C3E5D4E00C88C50 /* FileCachePackage in Frameworks */,
+				1A708FA12C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend in Frameworks */,
+				1A708F9F2C415F5F006A5FAE /* CocoaLumberjackSwift in Frameworks */,
+				06571A5CC4FD54B6C1FB82AD /* Pods_ToDo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,12 +140,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F298B035CA0FD4141DDA9E9 /* Pods_ToDoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19A79FC6F46F99692268FD6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25F604E9D84337886684E349 /* Pods-ToDo.debug.xcconfig */,
+				D2934827F66D95832E979D9B /* Pods-ToDo.release.xcconfig */,
+				5E61A0690AE559490722DF1C /* Pods-ToDoTests.debug.xcconfig */,
+				5EE720566C82F69F4DA88C54 /* Pods-ToDoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		1A3543E42C3ED10A00C88C50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +183,34 @@
 			path = FileCache;
 			sourceTree = "<group>";
 		};
+		1A3543F72C3EF09F00C88C50 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1A3543F82C3EF0BA00C88C50 /* RequestProcessor .swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		1A3543FA2C3F5F7300C88C50 /* ViewModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */,
+			);
+			path = ViewModelNetworking;
+			sourceTree = "<group>";
+		};
+		1A3543FF2C3F63A900C88C50 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		1A5C4FD42C2FB3070022D15B /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				1A9FBBC32C20D21C0026F420 /* ContentView.swift */,
-				1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */,
+				1A9FBBC32C20D21C0026F420 /* MainView.swift */,
 				1A80797A2C2F643600E42C5C /* ToDoItemView.swift */,
 				1A5C4FDC2C2FB4190022D15B /* ListView.swift */,
 				1A5C4FDE2C2FB47E0022D15B /* ListHeaderView.swift */,
@@ -262,6 +312,7 @@
 		1A9223472C2999BC001B3E72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A9FBBC12C20D21C0026F420 /* ToDoApp.swift */,
 				1A6651A02C365D7900E7DC01 /* SettingsView */,
 				1A6651832C34863600E7DC01 /* CalendarView */,
 				1A5C4FDB2C2FB3D00022D15B /* ToDoModalView */,
@@ -273,6 +324,7 @@
 		1A9223482C299A3F001B3E72 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1A3543FA2C3F5F7300C88C50 /* ViewModelNetworking */,
 				1A7E5C8D2C2F2652008B520B /* ContentFilter.swift */,
 				1A9223492C299A50001B3E72 /* MainViewModel.swift */,
 				1A6651892C3486F100E7DC01 /* CalendarViewModel.swift */,
@@ -285,7 +337,8 @@
 			children = (
 				1A9FBBC02C20D21C0026F420 /* ToDo */,
 				1A9FBBBF2C20D21C0026F420 /* Products */,
-				8AE84C0BA0873FF8335BF13A /* Pods */,
+				19A79FC6F46F99692268FD6A /* Pods */,
+				39A5B176AECF050A4DC6AB45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,6 +374,7 @@
 		1A9FBBCF2C20D2240026F420 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A3543F72C3EF09F00C88C50 /* Networking */,
 				1AF50A192C385086000FB363 /* Classes */,
 				1A9FBBDD2C2391570026F420 /* Extension */,
 				1A66519D2C3641BE00E7DC01 /* Category */,
@@ -345,6 +399,7 @@
 		1A9FBC122C24E1FE0026F420 /* ToDoItem */ = {
 			isa = PBXGroup;
 			children = (
+				1A3543FF2C3F63A900C88C50 /* Data */,
 				1A3543E42C3ED10A00C88C50 /* Model */,
 				1A9FBBD02C20D3080026F420 /* TodoItem.swift */,
 				1A9FBBD42C20D33B0026F420 /* TodoItem + JSON parsing.swift */,
@@ -370,11 +425,13 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8AE84C0BA0873FF8335BF13A /* Pods */ = {
+		39A5B176AECF050A4DC6AB45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C2F0A20EEC5B1C516AA8433 /* Pods_ToDo.framework */,
+				322EA28A6D6A532A8295E7AF /* Pods_ToDoTests.framework */,
 			);
-			path = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +442,7 @@
 			buildConfigurationList = 1A9FBBCC2C20D21E0026F420 /* Build configuration list for PBXNativeTarget "ToDo" */;
 			buildPhases = (
 				1ABBC2A32C3D764C0083A8E4 /* ShellScript */,
+				D8743B18AABBE90C15A83977 /* [CP] Check Pods Manifest.lock */,
 				1A9FBBBA2C20D21C0026F420 /* Sources */,
 				1A9FBBBB2C20D21C0026F420 /* Frameworks */,
 				1A9FBBBC2C20D21C0026F420 /* Resources */,
@@ -396,10 +454,10 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
-				1AF50A452C3D718A000FB363 /* CocoaLumberjack */,
-				1AF50A472C3D718A000FB363 /* CocoaLumberjackSwift */,
-				1AF50A492C3D718A000FB363 /* CocoaLumberjackSwiftLogBackend */,
 				1A3543E02C3E5D4E00C88C50 /* FileCachePackage */,
+				1A708F9C2C415F5F006A5FAE /* CocoaLumberjack */,
+				1A708F9E2C415F5F006A5FAE /* CocoaLumberjackSwift */,
+				1A708FA02C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend */,
 			);
 			productName = ToDo;
 			productReference = 1A9FBBBE2C20D21C0026F420 /* ToDo.app */;
@@ -409,6 +467,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A9FBC1D2C24E2230026F420 /* Build configuration list for PBXNativeTarget "ToDoTests" */;
 			buildPhases = (
+				32270D253253550C9B282FEA /* [CP] Check Pods Manifest.lock */,
 				1A9FBC132C24E2230026F420 /* Sources */,
 				1A9FBC142C24E2230026F420 /* Frameworks */,
 				1A9FBC152C24E2230026F420 /* Resources */,
@@ -452,8 +511,8 @@
 			);
 			mainGroup = 1A9FBBB52C20D21C0026F420;
 			packageReferences = (
-				1AF50A442C3D718A000FB363 /* XCRemoteSwiftPackageReference "CocoaLumberjack?tab=readme-ov-file" */,
 				1A3543DF2C3E5D4E00C88C50 /* XCRemoteSwiftPackageReference "FileCachePackage" */,
+				1A708F9B2C415F5F006A5FAE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 			);
 			productRefGroup = 1A9FBBBF2C20D21C0026F420 /* Products */;
 			projectDirPath = "";
@@ -487,7 +546,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		1ABBC2A32C3D764C0083A8E4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -502,6 +561,50 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
+		32270D253253550C9B282FEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToDoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8743B18AABBE90C15A83977 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToDo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -509,10 +612,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A9FBBC42C20D21C0026F420 /* ContentView.swift in Sources */,
+				1A3543FC2C3F5F8900C88C50 /* ViewModelNetworking.swift in Sources */,
+				1A9FBBC42C20D21C0026F420 /* MainView.swift in Sources */,
 				1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */,
 				1A3543E82C3ED13B00C88C50 /* ToDoItem + FileCache.swift in Sources */,
 				1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */,
+				1A3543FE2C3F63A500C88C50 /* ToDoItems.swift in Sources */,
 				1A5C4FE12C2FBF8B0022D15B /* NewToDoItemView.swift in Sources */,
 				1A6651A72C36664800E7DC01 /* SettingsView.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,
@@ -539,6 +644,7 @@
 				1A5C4FD12C2F8AFD0022D15B /* MainList.swift in Sources */,
 				1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */,
 				1A6651952C34886300E7DC01 /* UIView + Ext.swift in Sources */,
+				1A3543F92C3EF0BA00C88C50 /* RequestProcessor .swift in Sources */,
 				1A5C4FDF2C2FB47E0022D15B /* ListHeaderView.swift in Sources */,
 				1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */,
 				1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */,
@@ -611,7 +717,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -672,7 +778,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -693,6 +799,7 @@
 		};
 		1A9FBBCD2C20D21E0026F420 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25F604E9D84337886684E349 /* Pods-ToDo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -700,6 +807,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -721,6 +829,7 @@
 		};
 		1A9FBBCE2C20D21E0026F420 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2934827F66D95832E979D9B /* Pods-ToDo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -728,6 +837,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -749,6 +859,7 @@
 		};
 		1A9FBC1E2C24E2230026F420 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E61A0690AE559490722DF1C /* Pods-ToDoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -766,6 +877,7 @@
 		};
 		1A9FBC1F2C24E2230026F420 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EE720566C82F69F4DA88C54 /* Pods-ToDoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -822,7 +934,7 @@
 				kind = branch;
 			};
 		};
-		1AF50A442C3D718A000FB363 /* XCRemoteSwiftPackageReference "CocoaLumberjack?tab=readme-ov-file" */ = {
+		1A708F9B2C415F5F006A5FAE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack?tab=readme-ov-file";
 			requirement = {
@@ -843,19 +955,19 @@
 			package = 1A3543DF2C3E5D4E00C88C50 /* XCRemoteSwiftPackageReference "FileCachePackage" */;
 			productName = FileCachePackage;
 		};
-		1AF50A452C3D718A000FB363 /* CocoaLumberjack */ = {
+		1A708F9C2C415F5F006A5FAE /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1AF50A442C3D718A000FB363 /* XCRemoteSwiftPackageReference "CocoaLumberjack?tab=readme-ov-file" */;
+			package = 1A708F9B2C415F5F006A5FAE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjack;
 		};
-		1AF50A472C3D718A000FB363 /* CocoaLumberjackSwift */ = {
+		1A708F9E2C415F5F006A5FAE /* CocoaLumberjackSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1AF50A442C3D718A000FB363 /* XCRemoteSwiftPackageReference "CocoaLumberjack?tab=readme-ov-file" */;
+			package = 1A708F9B2C415F5F006A5FAE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwift;
 		};
-		1AF50A492C3D718A000FB363 /* CocoaLumberjackSwiftLogBackend */ = {
+		1A708FA02C415F5F006A5FAE /* CocoaLumberjackSwiftLogBackend */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1AF50A442C3D718A000FB363 /* XCRemoteSwiftPackageReference "CocoaLumberjack?tab=readme-ov-file" */;
+			package = 1A708F9B2C415F5F006A5FAE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwiftLogBackend;
 		};
 /* End XCSwiftPackageProductDependency section */

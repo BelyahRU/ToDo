@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MainListView: View {
-    @Environment(\.colorScheme) var colorScheme
+//    @Environment(\.colorScheme) var colorScheme
     @Binding var text: String
     @Binding var importance: Importance
     @Binding var deadline: Date?
@@ -48,12 +48,8 @@ struct MainListView: View {
     var textEditor: some View {
         TextEditor(text: $text)
             .foregroundStyle(self.text == "Что надо сделать?" ?
-                                (colorScheme == .light ?
-                                 Resources.LightTheme.Label.TetiaryColor
-                                 : Resources.DarkTheme.Label.TetiaryColor)
-                             : (colorScheme == .light ?
-                                Resources.LightTheme.Label.blackColor
-                                : Resources.DarkTheme.Label.primaryColor))
+                                (Resources.Colors.Label.TetiaryColor)
+                             : (Resources.Colors.Label.primaryColor))
             .frame(minHeight: 80)
             .cornerRadius(8)
             .onTapGesture {
@@ -89,7 +85,7 @@ struct MainListView: View {
                     Text("\(deadline!.formattedDate())")
                         .bold()
                         .font(.system(size: 13))
-                        .foregroundColor(Resources.LightTheme.blueColor)
+                        .foregroundColor(Resources.Colors.blueColor)
                         .onTapGesture {
                             datePickerIsOn.toggle()
                         }
@@ -170,7 +166,7 @@ struct MainListView: View {
             self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Удалить")
-                .foregroundColor(Resources.LightTheme.redColor)
+                .foregroundColor(Resources.Colors.redColor)
                 .frame(maxHeight: 50)
                 .frame(maxWidth: .infinity)
         }

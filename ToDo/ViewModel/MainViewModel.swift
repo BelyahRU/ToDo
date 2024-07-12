@@ -8,7 +8,8 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
-    @Published private(set) var fileCacheModel = ToDoItemModel()
+    
+    @Published private(set) var model = ToDoItemModel()
     
     @Published var contentFilter: ContentFilter = .allItems {
         didSet {
@@ -28,15 +29,17 @@ class MainViewModel: ObservableObject {
         countingAreDone()
     }
     
+    
+    
     private func countingAreDone() {
-        countItemsAreDone = fileCacheModel.toDos.filter({$0.isTaskDone == true}).count
+        countItemsAreDone = model.toDos.filter({$0.isTaskDone == true}).count
     }
     
     private func filterTodos() {
         if contentFilter == .allItems {
-            todosArray = fileCacheModel.toDos
+            todosArray = model.toDos
         } else {
-            todosArray = fileCacheModel.toDos.filter { !$0.isTaskDone }
+            todosArray = model.toDos.filter { !$0.isTaskDone }
         }
     }
     
@@ -46,20 +49,20 @@ class MainViewModel: ObservableObject {
     
     public func addToDo(new item: TodoItem?) {
         guard let item = item else { return }
-        fileCacheModel.add(new: item)
+        model.add(new: item)
         updateData()
     }
     
     public func removeItem(item: TodoItem?) {
         guard let item = item else { return }
-        fileCacheModel.removeTask(by: item.id)
+        model.removeTask(by: item.id)
         updateData()
         print("успешно удалено")
     }
     
     public func updateTodoItem(_ item: TodoItem) {
         // Обновление элемента в fileCacheModel
-        fileCacheModel.updateTask(item)
+        model.updateTask(item)
         
         // Обновление элемента в todosArray
         if let index = todosArray.firstIndex(where: { $0.id == item.id }) {
