@@ -30,7 +30,7 @@ struct ToDoModalView: View {
     @State private var selectedImportanceIndex = 0
     @State private var switchIsOn: Bool = false
     @State private var datePickerIsOn: Bool = false
-    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .clear)
+    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .init(color: .clear))
 
     var body: some View {
         mainNavigationStack
@@ -134,7 +134,7 @@ struct ToDoModalView: View {
         }
         text = todoItem?.text ?? "Что надо сделать?"
         deadline = todoItem?.deadline ?? nil
-        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .clear)
+        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .init(color: .clear))
         if deadline != nil {
             switchIsOn = true
         }

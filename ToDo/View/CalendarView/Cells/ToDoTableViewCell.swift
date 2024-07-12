@@ -85,7 +85,7 @@ extension ToDoTableViewCell {
         if category.categoryName == "Другое" {
             categoryCircle.isHidden = true
         } else {
-            categoryCircle.backgroundColor = UIColor(category.categoryColor)
+            categoryCircle.backgroundColor = UIColor(category.categoryColor.color)
             if isDone {
                 categoryCircle.isHidden = true
             } else {

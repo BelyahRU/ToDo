@@ -62,7 +62,7 @@ extension SettingsViewController {
     func savePressed() {
         self.currentText = settingsView.nameTextField.text ?? ""
         if currentText != "" && currentColor != nil {
-            Categories.shared.createCategory(name: currentText, color: Color(currentColor!))
+            Categories().createCategory(name: currentText, color: Color(currentColor!))
             self.settingsView.statusLabel.isHidden = false
             self.settingsView.statusLabel.text = "Новая категория успешно добавлена"
             self.settingsView.colorCircle.backgroundColor = .clear

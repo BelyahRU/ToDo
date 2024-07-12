@@ -16,7 +16,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Работа")
+                category: Categories().getCategory(by: "Работа")
             ),
             TodoItem(
                 text: "Завершить проект",
@@ -33,7 +33,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Работа")
+                category: Categories().getCategory(by: "Работа")
             ),
             TodoItem(
                 text: "Сделать дз",
@@ -74,7 +74,7 @@ enum ToDoItems {
                 isTaskDone: true,
                 creationDate: Date(),
                 modifiedDate: Date(),
-                category: Categories.shared.getCategory(by: "Учеба")
+                category: Categories().getCategory(by: "Учеба")
             ),
             TodoItem(
                 text: "Прочитать журнал",
@@ -83,7 +83,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Учеба")
+                category: Categories().getCategory(by: "Учеба")
             ),
             
             TodoItem(
@@ -93,7 +93,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Учеба")
+                category: Categories().getCategory(by: "Учеба")
             ),
             TodoItem(
                 text: "Завершить проект",
@@ -102,7 +102,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Хобби")
+                category: Categories().getCategory(by: "Хобби")
             ),
             TodoItem(
                 text: "Позвонить маме",
@@ -119,7 +119,7 @@ enum ToDoItems {
                 isTaskDone: true,
                 creationDate: Date(),
                 modifiedDate: Date(),
-                category: Categories.shared.getCategory(by: "Другое")
+                category: Categories().getCategory(by: "Другое")
             ),
             TodoItem(
                 text: "Прочитать книгу",
@@ -168,7 +168,7 @@ enum ToDoItems {
                 isTaskDone: false,
                 creationDate: Date(),
                 modifiedDate: nil,
-                category: Categories.shared.getCategory(by: "Хобби")
+                category: Categories().getCategory(by: "Хобби")
             ),
             TodoItem(
                 text: "Посетить концерт",

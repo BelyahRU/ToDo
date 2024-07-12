@@ -42,7 +42,7 @@ extension TodoItem {
             let categoryStr = columns[7].isEmpty ? "Другое" : columns[7]
             
             let importance = Importance(rawValue: importanceStr) ?? Importance.ordinary
-            let category = Categories.shared.getCategory(by: categoryStr)
+            let category = Categories().getCategory(by: categoryStr)
             return TodoItem(id: id,
                             text: text,
                             importance: importance,

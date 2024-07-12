@@ -91,7 +91,7 @@ extension TodoItem: JSONParsable {
         }
         
         let categoryStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "Другое"
-        let category = Categories.shared.getCategory(by: categoryStr)
+        let category = Categories().getCategory(by: categoryStr)
         
         let deadline = DateHelper.getDateFromString(stringDate:
                         dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)

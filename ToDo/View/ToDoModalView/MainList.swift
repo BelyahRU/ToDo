@@ -22,7 +22,7 @@ struct MainListView: View {
     @Environment(\.presentationMode) 
     var presentationMode
 
-    let categories = Categories.shared.getAllCategories()
+    let categories = Categories().getAllCategories()
 
     var body: some View {
         List {
@@ -135,7 +135,7 @@ struct MainListView: View {
                 .font(.system(size: 17))
             Spacer()
             Circle()
-                .fill(category.categoryColor)
+                .fill(category.categoryColor.color)
                 .frame(height: 20)
                 .frame(width: 20)
             Spacer()
