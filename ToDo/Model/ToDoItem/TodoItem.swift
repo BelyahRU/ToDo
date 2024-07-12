@@ -30,7 +30,9 @@ struct TodoItem: Identifiable, Equatable {
          deadline: Date?,
          isTaskDone: Bool,
          creationDate: Date,
-         modifiedDate: Date?, category: Category = Category(categoryName: "Другое", categoryColor: .clear)) {
+         modifiedDate: Date?, 
+         category: Category = Category(categoryName: "Другое",
+                                       categoryColor: .init(color: .clear))) {
         
         self.id = id
         self.text = text

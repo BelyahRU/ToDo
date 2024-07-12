@@ -15,14 +15,14 @@ struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
     @EnvironmentObject var mainViewModel: MainViewModel
     
     func makeUIViewController(context: Context) -> CalendarViewController {
-        let vc = CalendarViewController()
+        let calendarVC = CalendarViewController()
         let viewModel = CalendarViewModel(toDosModel: items)
-        vc.onItemsChanged = { updatedItems in
+        calendarVC.onItemsChanged = { updatedItems in
            items = updatedItems
        }
-        vc.setupViewModel(viewModel: viewModel)
-        vc.mainViewModel = mainViewModel
-        return vc
+        calendarVC.setupViewModel(viewModel: viewModel)
+        calendarVC.mainViewModel = mainViewModel
+        return calendarVC
     }
 
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {

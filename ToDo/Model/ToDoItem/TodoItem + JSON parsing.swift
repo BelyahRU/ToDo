@@ -6,7 +6,9 @@
 //
 
 import Foundation
-extension TodoItem {
+import FileCachePackage
+
+extension TodoItem: JSONParsable {
     
     enum ToDoDictionaryKeys: String, CaseIterable {
         case id
@@ -19,7 +21,7 @@ extension TodoItem {
         case category
     }
     
-    var json: Any {
+    var json: [String: Any] {
         var dictionary = [String: Any]()
         
         dictionary[ToDoDictionaryKeys.id.rawValue] = id
@@ -32,20 +34,20 @@ extension TodoItem {
             dictionary[ToDoDictionaryKeys.importance.rawValue] = importance.rawValue
         }
         
-        if let deadline = deadline{
+        if let deadline = deadline {
             dictionary[ToDoDictionaryKeys.deadline.rawValue] = DateHelper.getStringFromDate(date: deadline)
         }
         
-        //нужно ли сохранять modifiedFate если он nil?
+        // нужно ли сохранять modifiedFate если он nil?
         if let modifiedDate = modifiedDate {
-            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate)
+            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] =  DateHelper.getStringFromDate(date: modifiedDate)
         }
         
         dictionary[ToDoDictionaryKeys.category.rawValue] = category
         return dictionary
     }
     
-    static func parse(json: Any) -> TodoItem? {
+    static func parse(json: [String: Any]) -> TodoItem? {
         
         guard JSONSerialization.isValidJSONObject(json) else { return nil }
         
@@ -88,18 +90,18 @@ extension TodoItem {
             return nil
         }
         
-        
         let categoryStr = dictionary[ToDoDictionaryKeys.importance.rawValue] as? String ?? "Другое"
-        let category = Categories.shared.getCategory(by: categoryStr)
+        let category = Categories().getCategory(by: categoryStr)
         
-        let deadline = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
+        let deadline = DateHelper.getDateFromString(stringDate:
+                        dictionary[ToDoDictionaryKeys.deadline.rawValue] as? String)
         
-        let modifiedDate = DateHelper.getDateFromString(stringDate: dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
+        let modifiedDate = DateHelper.getDateFromString(stringDate:
+                        dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] as? String)
         
-        print(creationDate)
         let item = TodoItem(id: id,
                             text: text,
-                            importance:  importance,
+                            importance: importance,
                             deadline: deadline,
                             isTaskDone: isTaskDone,
                             creationDate: creationDate,

@@ -11,7 +11,7 @@ import SwiftUI
 struct ListHeaderView: View {
     @ObservedObject var viewModel: MainViewModel
     @Binding var buttonTitle: String
-    @Environment(\.colorScheme) var colorScheme
+//    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack {
@@ -19,14 +19,14 @@ struct ListHeaderView: View {
             Spacer()
             showButton
         }
-        .background(colorScheme == .light ? Resources.LightTheme.Back.primaryColor : Resources.DarkTheme.Back.primaryColor)
+        .background(Resources.Colors.Back.primaryColor)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 18)
     }
     
     var completedText: some View {
         Text("Выполнено - \(viewModel.countItemsAreDone)")
-            .foregroundColor(colorScheme == .light ? Resources.LightTheme.Label.TetiaryColor : Resources.DarkTheme.Label.TetiaryColor)
+            .foregroundColor(Resources.Colors.Label.TetiaryColor)
             .font(.system(size: 15))
     }
     
@@ -39,7 +39,7 @@ struct ListHeaderView: View {
                 viewModel.contentFilter = ContentFilter.allItems
             }
         }
-        .foregroundColor(Resources.LightTheme.blueColor)
+        .foregroundColor(Resources.Colors.blueColor)
         .font(.system(size: 15))
         .bold()
     }

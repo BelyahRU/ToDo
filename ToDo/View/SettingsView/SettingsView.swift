@@ -19,11 +19,11 @@ class SettingsView: UIView {
     }()
     
     let nameTextField: UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.makeBorders(width: 1)
-        tf.makeRadius(radius: 8)
-        return tf
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.makeBorders(width: 1)
+        textField.makeRadius(radius: 8)
+        return textField
     }()
     
     let chooseColorLabel: UILabel = {
@@ -41,12 +41,12 @@ class SettingsView: UIView {
     }()
     
     let colorSV: UIStackView = {
-        let sv = UIStackView()
-        sv.spacing = 10
-        sv.alignment = .leading
-        sv.axis = .horizontal
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
+        let stackView = UIStackView()
+        stackView.spacing = 10
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     let choosenColorLabel: UILabel = {
@@ -94,7 +94,6 @@ class SettingsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private func configure() {
         setupSubviews()
@@ -171,5 +170,3 @@ class SettingsView: UIView {
     ])
     }
 }
-
-

@@ -22,9 +22,12 @@ extension TodoItem {
         columns.append(category.categoryName)
         return columns.joined(separator: ",")
     }
-    
+    /// используем кастомный сплит с регулярным выражением,
+    /// т.к. csv файл разделяется на запятые, но в text могут быть тоже запятые,
+    /// поэтому text у меня обраблен кавычками и благодаря регулярному выражению и этой функции запятые,
+    /// которые находяся в кавычках не будут "заспличены"
     static func parse(csv: String) -> TodoItem? {
-        let columns = String.customSplit(text: csv, regexStr: regex)//используем кастомный сплит с регулярным выражением, т.к. csv файл разделяется на запятые, но в text могут быть тоже запятые, поэтому text у меня обраблен кавычками и благодаря регулярному выражению и этой функции запятые, которые находяся в кавычках не будут "заспличены"
+        let columns = String.customSplit(text: csv, regexStr: regex)
         if columns.count == ToDoDictionaryKeys.allCases.count {
             let id = columns[0]
             let text = columns[1]
@@ -39,7 +42,7 @@ extension TodoItem {
             let categoryStr = columns[7].isEmpty ? "Другое" : columns[7]
             
             let importance = Importance(rawValue: importanceStr) ?? Importance.ordinary
-            let category = Categories.shared.getCategory(by: categoryStr)
+            let category = Categories().getCategory(by: categoryStr)
             return TodoItem(id: id,
                             text: text,
                             importance: importance,

@@ -11,24 +11,26 @@ enum CurrentFramework {
     case swiftUI
     case UIkit
 }
-//viewModels - observers filecache
+// viewModels - observers filecache
 struct ToDoModalView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode)
+    var presentationMode
+    
     @Binding var todoItem: TodoItem?
     var currentFramework: CurrentFramework
     @EnvironmentObject var viewModel: MainViewModel
     
     @State private var text: String = "Что надо сделать?"
     @State private var importance: Importance = .unimportant
-    @State private var deadline: Date? = nil
+    @State private var deadline: Date?
     @State private var isTaskDone: Bool = false
     @State private var creationDate: Date = Date()
-    @State private var modifiedDate: Date? = nil
+    @State private var modifiedDate: Date?
 
     @State private var selectedImportanceIndex = 0
     @State private var switchIsOn: Bool = false
     @State private var datePickerIsOn: Bool = false
-    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .clear)
+    @State private var category: Category = Category(categoryName: "Другое", categoryColor: .init(color: .clear))
 
     var body: some View {
         mainNavigationStack
@@ -57,13 +59,13 @@ struct ToDoModalView: View {
                     saveButton
                 }
             })
-            .background(Resources.LightTheme.Back.primaryColor)
+            .background(Resources.Colors.Back.primaryColor)
             .onAppear {
                 loadTodoItem()
             }
         }
         .frame(minHeight: 112.5, maxHeight: .infinity, alignment: .top)
-        .background(Resources.LightTheme.Back.primaryColor)
+        .background(Resources.Colors.Back.primaryColor)
     }
 
     var saveButton: some View {
@@ -108,9 +110,8 @@ struct ToDoModalView: View {
             category: category
         )
         
-        
         if currentFramework == .swiftUI {
-            if let _ = todoItem {
+            if todoItem != nil {
                 viewModel.updateTodoItem(updatedTodoItem)
             } else {
                 viewModel.addToDo(new: updatedTodoItem)
@@ -133,7 +134,7 @@ struct ToDoModalView: View {
         }
         text = todoItem?.text ?? "Что надо сделать?"
         deadline = todoItem?.deadline ?? nil
-        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .clear)
+        category = todoItem?.category ?? Category(categoryName: "Другое", categoryColor: .init(color: .clear))
         if deadline != nil {
             switchIsOn = true
         }
@@ -141,10 +142,14 @@ struct ToDoModalView: View {
 }
 
 struct AddToDoModalView_Previews: PreviewProvider {
-    @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: nil)
+    @State static var examleToDoItem: TodoItem? = TodoItem(text: "sdfgsdfg",
+                                                    importance: .important,
+                                                    deadline: Date(),
+                                                    isTaskDone: true,
+                                                    creationDate: Date(),
+                                                    modifiedDate: nil)
 
     static var previews: some View {
         ToDoModalView(todoItem: $examleToDoItem, currentFramework: .swiftUI)
     }
 }
-
