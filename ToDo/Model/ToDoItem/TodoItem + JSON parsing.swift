@@ -40,7 +40,7 @@ extension TodoItem: JSONParsable {
         
         // нужно ли сохранять modifiedFate если он nil?
         if let modifiedDate = modifiedDate {
-            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] = DateHelper.getStringFromDate(date: modifiedDate)
+            dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] =  DateHelper.getStringFromDate(date: modifiedDate)
         }
         
         dictionary[ToDoDictionaryKeys.category.rawValue] = category

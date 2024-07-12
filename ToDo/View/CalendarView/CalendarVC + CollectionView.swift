@@ -76,9 +76,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     // Айтем выделен
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Выделяем выбранную ячейку
-        guard let cell = collectionView.cellForItem(at: indexPath) 
-                as? ToDoCollectionViewCell else { return }
-        
+//        guard let cell = collectionView.cellForItem(at: indexPath) 
+//                as? ToDoCollectionViewCell else { return }
+//        
         self.tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: false)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally) 
         

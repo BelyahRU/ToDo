@@ -13,7 +13,7 @@ struct Category: Equatable, Hashable {
     var categoryColor: Color
 }
 
-class Categories {
+final class Categories: Sendable {
     
     static let shared = Categories()
     
@@ -51,7 +51,4 @@ class Categories {
         return Category(categoryName: "Другое", categoryColor: .clear)
     }
     
-//    public func updateCategories() {
-//
-//    }
 }

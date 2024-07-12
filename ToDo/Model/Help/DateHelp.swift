@@ -9,7 +9,7 @@ import Foundation
 // Класс для обработки Date. Тут мы можем получить date из string и наоборот
 class DateHelper {
     
-    static var dateFormatterISO8601: DateFormatter = {
+    static let dateFormatterISO8601: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return dateFormatter

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CocoaLumberjackSwift
 
 // MARK: FileCache
 extension ToDoItemModel {
@@ -13,6 +14,7 @@ extension ToDoItemModel {
     // сохранение в файл
     func saveInFile(fileName: String) {
         fileCache.saveInFile(items: self.toDos, fileName: fileName)
+        DDLogInfo("data saved in file \(fileName)")
         
     }
     // загрузка данных из файла

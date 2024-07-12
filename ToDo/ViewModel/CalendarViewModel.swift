@@ -34,10 +34,8 @@ class CalendarViewModel: ObservableObject {
             return item1 < item2
         }
         
-        for deadline in deadlines {
-            if !keysArray.contains(deadline.getDayMonthFormatted()) {
-                keysArray.append(deadline.getDayMonthFormatted())
-            }
+        for deadline in deadlines where !keysArray.contains(deadline.getDayMonthFormatted()) {
+            keysArray.append(deadline.getDayMonthFormatted())
         }
         keysArray.append("Другое")
     }
