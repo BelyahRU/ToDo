@@ -73,7 +73,6 @@ extension DefaultNetworkService {
     }
 }
 
-
 // MARK: REQUEST
 extension DefaultNetworkService {
     private func performRequest<T: JSONParsable>(request: URLRequest) async throws -> T {

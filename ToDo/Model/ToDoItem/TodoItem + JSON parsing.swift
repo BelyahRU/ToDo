@@ -43,7 +43,8 @@ extension TodoItem: JSONParsable {
         } else {
             dictionary[ToDoDictionaryKeys.modifiedDate.rawValue] =  Int64(creationDate.timeIntervalSince1970)
         }
-        dictionary[ToDoDictionaryKeys.lastUpdatedBy.rawValue] = UIDevice.current.identifierForVendor?.uuidString ?? "unknown"
+        dictionary[ToDoDictionaryKeys.lastUpdatedBy.rawValue] =
+        UIDevice.current.identifierForVendor?.uuidString ?? "unknown"
         dictionary[ToDoDictionaryKeys.color.rawValue] = category.categoryColor.hex
         return dictionary
     }
@@ -80,11 +81,6 @@ extension TodoItem: JSONParsable {
             print("JSON parsing error.creationDate is nil")
             return nil
         }
-        
-//        guard let creationDate = DateHelper.getDateFromString(stringDate: dateStr) else {
-//            print("JSON parsing error.creationDate is nil")
-//            return nil
-//        }
         
         let creationDate = DateHelper.getStringFromTimestamp(creationDateInt64)
         

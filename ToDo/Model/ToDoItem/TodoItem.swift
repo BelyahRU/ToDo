@@ -45,4 +45,3 @@ struct TodoItem: Identifiable, Equatable {
         
     }
 }
-

@@ -25,7 +25,7 @@ struct ToDoListResponse: JSONParsable {
         dictionary[CodingKeys.status] = status
         dictionary[CodingKeys.revision] = status
         if let result = result {
-            dictionary[CodingKeys.result] = result.map{ $0.json }
+            dictionary[CodingKeys.result] = result.map { $0.json }
         }
         return dictionary
     }
