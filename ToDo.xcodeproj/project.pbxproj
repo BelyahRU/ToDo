@@ -15,8 +15,11 @@
 		1A3543E82C3ED13B00C88C50 /* ToDoItem + FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */; };
 		1A3543FC2C3F5F8900C88C50 /* ViewModelNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */; };
 		1A3543FE2C3F63A500C88C50 /* ToDoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */; };
-		1A3B838A2C4818DF00A46D0E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B83892C4818DF00A46D0E /* NetworkService.swift */; };
+		1A3B838A2C4818DF00A46D0E /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B83892C4818DF00A46D0E /* DefaultNetworkService.swift */; };
 		1A3B838C2C4819A900A46D0E /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B838B2C4819A900A46D0E /* APICaller.swift */; };
+		1A3B838F2C4ABD3500A46D0E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B838E2C4ABD3500A46D0E /* NetworkService.swift */; };
+		1A3B83922C4ABE0700A46D0E /* ToDoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B83912C4ABE0700A46D0E /* ToDoListResponse.swift */; };
+		1A3B83942C4ABE1300A46D0E /* ToDoItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B83932C4ABE1300A46D0E /* ToDoItemResponse.swift */; };
 		1A5C4FD12C2F8AFD0022D15B /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD02C2F8AFD0022D15B /* MainList.swift */; };
 		1A5C4FD32C2F8F1C0022D15B /* Binding + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */; };
 		1A5C4FDD2C2FB4190022D15B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FDC2C2FB4190022D15B /* ListView.swift */; };
@@ -83,8 +86,11 @@
 		1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelNetworking.swift; sourceTree = "<group>"; };
 		1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItems.swift; sourceTree = "<group>"; };
 		1A3B83862C4800C600A46D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1A3B83892C4818DF00A46D0E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1A3B83892C4818DF00A46D0E /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		1A3B838B2C4819A900A46D0E /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		1A3B838E2C4ABD3500A46D0E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1A3B83912C4ABE0700A46D0E /* ToDoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListResponse.swift; sourceTree = "<group>"; };
+		1A3B83932C4ABE1300A46D0E /* ToDoItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemResponse.swift; sourceTree = "<group>"; };
 		1A5C4FD02C2F8AFD0022D15B /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding + Ext.swift"; sourceTree = "<group>"; };
 		1A5C4FDC2C2FB4190022D15B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -192,8 +198,10 @@
 		1A3543F72C3EF09F00C88C50 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				1A3B83902C4ABDF700A46D0E /* Response */,
+				1A3B838D2C4ABC9D00A46D0E /* NetworkService */,
 				1A14FA212C417E6A002A6492 /* URLSession + Ext.swift */,
-				1A3B83892C4818DF00A46D0E /* NetworkService.swift */,
+				1A3B83892C4818DF00A46D0E /* DefaultNetworkService.swift */,
 				1A3B838B2C4819A900A46D0E /* APICaller.swift */,
 			);
 			path = Networking;
@@ -213,6 +221,23 @@
 				1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		1A3B838D2C4ABC9D00A46D0E /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				1A3B838E2C4ABD3500A46D0E /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		1A3B83902C4ABDF700A46D0E /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				1A3B83912C4ABE0700A46D0E /* ToDoListResponse.swift */,
+				1A3B83932C4ABE1300A46D0E /* ToDoItemResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		1A5C4FD42C2FB3070022D15B /* MainView */ = {
@@ -622,6 +647,7 @@
 			files = (
 				1A3543FC2C3F5F8900C88C50 /* ViewModelNetworking.swift in Sources */,
 				1A9FBBC42C20D21C0026F420 /* MainView.swift in Sources */,
+				1A3B83942C4ABE1300A46D0E /* ToDoItemResponse.swift in Sources */,
 				1A6651972C34A78800E7DC01 /* CustomNavigationBar.swift in Sources */,
 				1A3543E82C3ED13B00C88C50 /* ToDoItem + FileCache.swift in Sources */,
 				1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */,
@@ -634,7 +660,7 @@
 				1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */,
 				1A66518A2C3486F100E7DC01 /* CalendarViewModel.swift in Sources */,
 				1A6651932C3487E600E7DC01 /* ToDoTableViewCell.swift in Sources */,
-				1A3B838A2C4818DF00A46D0E /* NetworkService.swift in Sources */,
+				1A3B838A2C4818DF00A46D0E /* DefaultNetworkService.swift in Sources */,
 				1A6651862C34866E00E7DC01 /* CalendarViewControllerRepresentable.swift in Sources */,
 				1A14FA222C417E6A002A6492 /* URLSession + Ext.swift in Sources */,
 				1A6651A52C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift in Sources */,
@@ -654,9 +680,11 @@
 				1A5C4FD12C2F8AFD0022D15B /* MainList.swift in Sources */,
 				1A82F24F2C2C95AE00352D56 /* ToDoModalView.swift in Sources */,
 				1A6651952C34886300E7DC01 /* UIView + Ext.swift in Sources */,
+				1A3B83922C4ABE0700A46D0E /* ToDoListResponse.swift in Sources */,
 				1A5C4FDF2C2FB47E0022D15B /* ListHeaderView.swift in Sources */,
 				1A7E5C8E2C2F2652008B520B /* ContentFilter.swift in Sources */,
 				1A9FBBC22C20D21C0026F420 /* ToDoApp.swift in Sources */,
+				1A3B838F2C4ABD3500A46D0E /* NetworkService.swift in Sources */,
 				1A92234A2C299A50001B3E72 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,6 +26,30 @@ struct CodableColor: Codable, Equatable, Hashable {
         self.blue = Double(blue)
         self.alpha = Double(alpha)
     }
+    
+    init?(hex: String) {
+        guard hex.hasPrefix("#") else { return nil }
+        let hexColor = String(hex.dropFirst())
+        guard hexColor.count == 8 else { return nil }
+
+        let scanner = Scanner(string: hexColor)
+        var hexNumber: UInt64 = 0
+
+        guard scanner.scanHexInt64(&hexNumber) else { return nil }
+
+        self.red = Double((hexNumber & 0xff000000) >> 24) / 255
+        self.green = Double((hexNumber & 0x00ff0000) >> 16) / 255
+        self.blue = Double((hexNumber & 0x0000ff00) >> 8) / 255
+        self.alpha = Double(hexNumber & 0x000000ff) / 255
+    }
+
+    var hex: String {
+        return String(format: "#%02lX%02lX%02lX%02lX",
+                      lround(red * 255),
+                      lround(green * 255),
+                      lround(blue * 255),
+                      lround(alpha * 255))
+    }
 
     var color: Color {
         return Color(red: red, green: green, blue: blue, opacity: alpha)
@@ -35,6 +59,33 @@ struct CodableColor: Codable, Equatable, Hashable {
 struct Category: Equatable, Hashable, Codable {
     var categoryName: String
     var categoryColor: CodableColor
+    
+    init(categoryName: String, categoryColor: CodableColor) {
+        self.categoryName = categoryName
+        self.categoryColor = categoryColor
+    }
+    
+    init(categoryColor: String) {
+        self.categoryName = categoryColor
+        self.categoryColor = CodableColor(hex: categoryColor) ?? .init(color: .clear)
+    }
+    
+    var json: [String: Any] {
+        return [
+            "categoryName": categoryName,
+            "categoryColor": categoryColor.hex // Преобразование categoryColor в HEX строку
+        ]
+    }
+    
+    static func parse(json: [String: Any]) -> Category? {
+            guard let categoryName = json["categoryName"] as? String,
+                  let hexColor = json["categoryColor"] as? String,
+                  let categoryColor = CodableColor(hex: hexColor) else {
+                return nil
+            }
+            
+            return Category(categoryName: categoryName, categoryColor: categoryColor)
+        }
 }
 
 final class Categories {

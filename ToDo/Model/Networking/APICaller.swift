@@ -24,4 +24,20 @@ struct APICaller {
         
         return request
     }
+    
+    public func createTodoItem(itemResponse: ToDoItemResponse, revision: Int) async throws -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(token)",
+                                       "X-Last-Known-Revision": "\(revision)"]
+        print(itemResponse.json)
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: itemResponse.json)
+        } catch {
+            print("JSONSerialization error: \(error.localizedDescription)")
+            throw error
+        }
+        return request
+    }
+
 }

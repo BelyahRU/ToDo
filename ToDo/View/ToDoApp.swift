@@ -40,8 +40,16 @@ struct ToDoApp: App {
     }
     func setupNetworking() async throws {
 
-        var ne = NetworkService()
-//        var ne = NetworkService(session: session)
+        var ne = DefaultNetworkService()
+//        let daata = try await ne.createItem(item: TodoItem(text: "data",
+//                                                           importance: .ordinary,
+//                                                           deadline: nil,
+//                                                           isTaskDone: true,
+//                                                           creationDate: Date(),
+//                                                           modifiedDate: nil,
+//                                                           category: Category(categoryName: "asd", categoryColor: CodableColor(color: .blue))),
+//                                            revision: 0)
+//        print(daata)
         let data = try await ne.fetchAllTodos()
         print(data)
 

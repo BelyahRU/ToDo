@@ -7,9 +7,9 @@
 
 import Foundation
 enum Importance: String {
-    case unimportant = "неважная"
-    case ordinary = "обычная"
-    case important = "важная"
+    case unimportant = "low"
+    case ordinary = "basic"
+    case important = "important"
 }
 
 struct TodoItem: Identifiable, Equatable {
@@ -45,3 +45,4 @@ struct TodoItem: Identifiable, Equatable {
         
     }
 }
+
