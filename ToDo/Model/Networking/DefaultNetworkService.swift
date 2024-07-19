@@ -7,6 +7,8 @@
 
 import Foundation
 import FileCachePackage
+import CocoaLumberjackSwift
+
 class DefaultNetworkService: NetworkService {
     
     enum NetworkErrors: Error {
@@ -24,8 +26,8 @@ class DefaultNetworkService: NetworkService {
     
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
+        DDLogInfo("DefaultNetworkService initialized with session: \(session)")
     }
-    
 }
 
 // MARK: GET
@@ -77,24 +79,30 @@ extension DefaultNetworkService {
 extension DefaultNetworkService {
     private func performRequest<T: JSONParsable>(request: URLRequest) async throws -> T {
         do {
+            DDLogInfo("Performing request: \(request)")
             let (data, response) = try await session.data(for: request)
             guard let response = response as? HTTPURLResponse else {
+                DDLogError("Unexpected response: \(response)")
                 throw NetworkErrors.unexpextedResponse(response)
             }
             guard DefaultNetworkService.httpStatusCodeSuccess.contains(response.statusCode) else {
+                DDLogError("Failed response with status code: \(response.statusCode)")
                 throw NetworkErrors.failedResponse(response)
             }
 
             guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                DDLogError("Failed to parse JSON object from data")
                 throw NetworkErrors.jsonObjectError
             }
             
             guard let requestObject = T.parse(json: json) else {
-                print("Parsing error with JSON: \(json)")
+                DDLogError("Parsing error with JSON: \(json)")
                 throw NetworkErrors.parsingError
             }
+            DDLogInfo("Request successful with parsed object: \(requestObject)")
             return requestObject
         } catch {
+            DDLogError("Error during request: \(error.localizedDescription)")
             throw error
         }
     }
