@@ -25,4 +25,11 @@ class DateHelper {
         guard let stringDate = stringDate else { return nil }
         return dateFormatter.date(from: stringDate)
     }
+    
+    static func getStringFromTimestamp(_ timestamp: Int64, 
+                                       dateFormatter: DateFormatter = dateFormatterISO8601)
+    -> Date {
+            let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+            return date
+        }
 }

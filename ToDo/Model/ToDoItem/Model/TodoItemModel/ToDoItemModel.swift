@@ -9,39 +9,65 @@ import Foundation
 import FileCachePackage
 import CocoaLumberjackSwift // логирование
 
+@MainActor // Гарантирует, что все методы выполняются на главном потоке
 class ToDoItemModel {
     
-    var toDos: [TodoItem] = []
-    
-    init(toDos: [TodoItem] = ToDoItems.getToDosArray()) {
-        self.toDos = toDos
-    }
+    private var defaultsNetworkService: DefaultNetworkService
+
+    private(set) var toDos: [TodoItem] = []
+    private(set) var revision = 0
+    private(set) var isDirty = false
     
     public let fileCache = FileCache<TodoItem>()
     
-    func add(new task: TodoItem) {
-        // проверка на дублирование
-        if toDos.first(where: { $0.id == task.id }) != nil {
-            print("FileCache Error. Task added before")
-            DDLogError("task with the same id was added before")
-        } else {
-            toDos.append(task)
-            DDLogInfo("new task added to ToDoItemModel")
+    init(networkService: DefaultNetworkService = DefaultNetworkService()) {
+        self.defaultsNetworkService = networkService
+        Task {
+            await fetchTodos()
         }
-        
     }
     
-    func removeTask(by id: String) {
-        toDos.removeAll(where: { $0.id == id })
-        DDLogInfo("task removed from ToDoItemModel")
+    func add(new task: TodoItem) async throws {
+        do {
+            try await defaultsNetworkService.createItem(item: task, revision: revision)
+            isDirty = true
+            await fetchTodos()
+        } catch {
+            print("Failed to add task: \(error.localizedDescription)")
+            throw error
+        }
     }
     
-    func updateTask(_ item: TodoItem) {
-        if let index = toDos.firstIndex(where: { $0.id == item.id }) {
-            toDos[index] = item
-            DDLogInfo("task id:\(item.id) was update")
-        } else {
-            DDLogWarn("task id:\(item.id) not updated because not found")
+    func removeTask(by id: String) async throws {
+        do {
+            try await defaultsNetworkService.deleteItem(id: id, revision: revision)
+            isDirty = true
+            await fetchTodos()
+        } catch {
+            print("Failed to remove task: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func updateTask(_ item: TodoItem) async throws {
+        do {
+            try await defaultsNetworkService.updateItem(id: item.id, item: item, revision: revision)
+            isDirty = true
+            await fetchTodos()
+        } catch {
+            print("Failed to update task: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func fetchTodos() async {
+        do {
+            let response: ToDoListResponse = try await defaultsNetworkService.fetchAllTodos()
+            self.revision = response.revision
+            self.toDos = response.result ?? []
+            self.isDirty = false
+        } catch {
+            print("Failed to fetch todos: \(error.localizedDescription)")
         }
     }
 }

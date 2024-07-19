@@ -13,12 +13,12 @@ struct ToDoApp: App {
     
     init() {
         setupLogger()
+        
     }
     
     var body: some Scene {
         WindowGroup {
             MainView()
-            
         }
     }
     
