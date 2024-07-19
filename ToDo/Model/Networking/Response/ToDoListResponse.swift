@@ -11,7 +11,7 @@ import FileCachePackage
 struct ToDoListResponse: JSONParsable {
     
     let status: String
-    let result: [TodoItem]
+    let result: [TodoItem]?
     let revision: Int
     
     enum CodingKeys {
@@ -24,7 +24,9 @@ struct ToDoListResponse: JSONParsable {
         var dictionary = [String: Any]()
         dictionary[CodingKeys.status] = status
         dictionary[CodingKeys.revision] = status
-        dictionary[CodingKeys.result] = result
+        if let result = result {
+            dictionary[CodingKeys.result] = result.map{ $0.json }
+        }
         return dictionary
     }
     

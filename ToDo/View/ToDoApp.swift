@@ -41,25 +41,24 @@ struct ToDoApp: App {
     func setupNetworking() async throws {
 
         var ne = DefaultNetworkService()
-//        let daata = try await ne.createItem(item: TodoItem(text: "data",
-//                                                           importance: .ordinary,
-//                                                           deadline: nil,
-//                                                           isTaskDone: true,
-//                                                           creationDate: Date(),
-//                                                           modifiedDate: nil,
-//                                                           category: Category(categoryName: "asd", categoryColor: CodableColor(color: .blue))),
-//                                            revision: 0)
-//        print(daata)
-        let data = try await ne.fetchAllTodos()
-        print(data)
-
-    }
-}
-class URLSessionDelegateHandler: NSObject, URLSessionDelegate {
-    func urlSession(_ session: URLSession,
-                    didReceive challenge: URLAuthenticationChallenge,
-                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        // Игнорируем ошибки сертификата
-        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+        print("111111")
+        let data1 = try await ne.fetchAllTodos()
+        let data2 = try await ne.createItem(item: TodoItem(text: "огромный крутой текст", importance: Importance.unimportant, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: Date()), revision: data1.revision)
+        print("new data")
+        let data3 = try await ne.fetchAllTodos()
+        print("222222")
+        print(data3)
+        let data4 = try await ne.deleteItem(id: "F482B244-5359-4E71-8121-34CF5F0330EF", revision: data3.revision)
+        
+        let data5 = try await ne.updateItem(id: "305F4E4F-72E3-4A63-9C39-D5E0963CA479", item: TodoItem(text: "Купить пиво", importance: .important, deadline: Date(), isTaskDone: true, creationDate: Date(), modifiedDate: Date()),revision: data4.revision)
+        print("333333")
+        print(data5)
+        
+        let data6 = try await ne.updateAllTodos(list: [], revision: data5.revision)
+        print("444444")
+        print(data6)
+        
+        
+                                            
     }
 }

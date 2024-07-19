@@ -22,9 +22,9 @@ struct ToDoItemResponse: JSONParsable {
     var json: [String: Any] {
         var dictionary = [String: Any]()
         dictionary[ResponseCodingKeys.status] = status
-        dictionary[ResponseCodingKeys.revision] = revision // Исправлено, было status
+        dictionary[ResponseCodingKeys.revision] = revision 
         if let result = result {
-            dictionary[ResponseCodingKeys.result] = result.json // Сериализация TodoItem в словарь
+            dictionary[ResponseCodingKeys.result] = result.json
         }
         return dictionary
     }
