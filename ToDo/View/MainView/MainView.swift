@@ -97,13 +97,7 @@ struct MainView: View {
         }}, content: {
             ToDoModalView(todoItem: $editingTodoItem, currentFramework: .swiftUI)
         })
-//        .sheet(isPresented: $isShowingModal, onDismiss: {
-//            if let newItem = editingTodoItem {
-//                viewModel.addToDo(new: newItem)
-//            }
-//        }) {
-//            ToDoModalView(todoItem: $editingTodoItem, currentFramework: .swiftUI)
-//        }
+
     }
     
 }

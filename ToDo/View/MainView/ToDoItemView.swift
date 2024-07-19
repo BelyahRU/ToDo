@@ -12,8 +12,7 @@ struct TodoItemView: View {
     var colorScheme
     @Binding var todoItem: TodoItem
     @State private var isShowingModal = false
-    @EnvironmentObject var viewModel: MainViewModel
-    
+    @EnvironmentObject var viewModel: MainViewModel    
     var body: some View {
         HStack {
             checkboxButton
@@ -95,18 +94,6 @@ struct TodoItemView: View {
         .sheet(isPresented: $isShowingModal) {
             ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
         }
-
-//        Button(action: {
-//            self.isShowingModal = true
-//        }) {
-//            Image(Resources.LightTheme.Buttons.arrowButton)
-//                .contentShape(Rectangle())
-//        }
-//            .buttonStyle(PlainButtonStyle())
-//            .padding(.trailing, 8)
-//            .sheet(isPresented: $isShowingModal) {
-//                ToDoModalView(todoItem: Binding($todoItem), currentFramework: .swiftUI)
-//            }
     }
 
     func imageName(forState isSelected: Bool) -> String {

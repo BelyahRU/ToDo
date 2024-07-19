@@ -15,6 +15,8 @@
 		1A3543E82C3ED13B00C88C50 /* ToDoItem + FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */; };
 		1A3543FC2C3F5F8900C88C50 /* ViewModelNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */; };
 		1A3543FE2C3F63A500C88C50 /* ToDoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */; };
+		1A3B838A2C4818DF00A46D0E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B83892C4818DF00A46D0E /* NetworkService.swift */; };
+		1A3B838C2C4819A900A46D0E /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B838B2C4819A900A46D0E /* APICaller.swift */; };
 		1A5C4FD12C2F8AFD0022D15B /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD02C2F8AFD0022D15B /* MainList.swift */; };
 		1A5C4FD32C2F8F1C0022D15B /* Binding + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */; };
 		1A5C4FDD2C2FB4190022D15B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C4FDC2C2FB4190022D15B /* ListView.swift */; };
@@ -80,6 +82,9 @@
 		1A3543E72C3ED13B00C88C50 /* ToDoItem + FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem + FileCache.swift"; sourceTree = "<group>"; };
 		1A3543FB2C3F5F8800C88C50 /* ViewModelNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelNetworking.swift; sourceTree = "<group>"; };
 		1A3543FD2C3F63A500C88C50 /* ToDoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItems.swift; sourceTree = "<group>"; };
+		1A3B83862C4800C600A46D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1A3B83892C4818DF00A46D0E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1A3B838B2C4819A900A46D0E /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		1A5C4FD02C2F8AFD0022D15B /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		1A5C4FD22C2F8F1C0022D15B /* Binding + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding + Ext.swift"; sourceTree = "<group>"; };
 		1A5C4FDC2C2FB4190022D15B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -188,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				1A14FA212C417E6A002A6492 /* URLSession + Ext.swift */,
+				1A3B83892C4818DF00A46D0E /* NetworkService.swift */,
+				1A3B838B2C4819A900A46D0E /* APICaller.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -234,7 +241,6 @@
 			children = (
 				1A66519A2C34C3D700E7DC01 /* Subviews */,
 				1A66518F2C34878400E7DC01 /* Cells */,
-				1A6651842C34864800E7DC01 /* Representable */,
 				1A6651872C3486CC00E7DC01 /* CalendarViewController.swift */,
 				1A66518B2C34871C00E7DC01 /* CalendarVC + TableView.swift */,
 				1A66518D2C34874200E7DC01 /* CalendarVC + CollectionView.swift */,
@@ -262,6 +268,7 @@
 		1A66519A2C34C3D700E7DC01 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				1A6651842C34864800E7DC01 /* Representable */,
 				1A6651962C34A78800E7DC01 /* CustomNavigationBar.swift */,
 			);
 			path = Subviews;
@@ -355,6 +362,7 @@
 		1A9FBBC02C20D21C0026F420 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				1A3B83862C4800C600A46D0E /* Info.plist */,
 				1A9FBBCF2C20D2240026F420 /* Model */,
 				1A9223472C2999BC001B3E72 /* View */,
 				1A9223482C299A3F001B3E72 /* ViewModel */,
@@ -619,12 +627,14 @@
 				1A66519F2C3641CD00E7DC01 /* Category.swift in Sources */,
 				1A3543FE2C3F63A500C88C50 /* ToDoItems.swift in Sources */,
 				1A5C4FE12C2FBF8B0022D15B /* NewToDoItemView.swift in Sources */,
+				1A3B838C2C4819A900A46D0E /* APICaller.swift in Sources */,
 				1A6651A72C36664800E7DC01 /* SettingsView.swift in Sources */,
 				1A9223402C261122001B3E72 /* String + Ext.swift in Sources */,
 				1A9223462C28E52D001B3E72 /* Resources.swift in Sources */,
 				1A6651A22C365D9300E7DC01 /* SettingsViewController.swift in Sources */,
 				1A66518A2C3486F100E7DC01 /* CalendarViewModel.swift in Sources */,
 				1A6651932C3487E600E7DC01 /* ToDoTableViewCell.swift in Sources */,
+				1A3B838A2C4818DF00A46D0E /* NetworkService.swift in Sources */,
 				1A6651862C34866E00E7DC01 /* CalendarViewControllerRepresentable.swift in Sources */,
 				1A14FA222C417E6A002A6492 /* URLSession + Ext.swift in Sources */,
 				1A6651A52C365FD000E7DC01 /* SettingsViewControllerRepresentable.swift in Sources */,
@@ -814,6 +824,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -845,6 +856,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
