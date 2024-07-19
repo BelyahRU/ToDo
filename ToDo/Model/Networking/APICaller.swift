@@ -14,7 +14,7 @@ struct APICaller {
     private let pathComponent = "list"
     
     init(baseURL: URL = URL(string: "https://hive.mrdekk.ru/todo")!,
-         token: String = "Silmarien") {
+         token: String = "") {
         self.baseURL = baseURL
         self.token = token
         DDLogInfo("APICaller initialized with baseURL: \(baseURL) and token: \(token)")
